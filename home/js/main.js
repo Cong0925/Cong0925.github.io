@@ -170,6 +170,23 @@ function initEventListeners() {
         renderProjects();
     });
 
+    // 点赞按钮：未登录时自动触发登录流程
+    document.addEventListener('click', (e) => {
+        const likeBtn = e.target.closest('.gt-comment-like, .gt-btn-like, [class*="like"]');
+        if (!likeBtn) return;
+
+        // 检查是否已登录（Gitalk 登录后会移除登录按钮）
+        const loginBtn = document.querySelector('#gitalk-container .gt-btn-login');
+        if (loginBtn) {
+            e.preventDefault();
+            e.stopPropagation();
+            const gitalk = document.getElementById('gitalk-container').gitalk;
+            if (gitalk && typeof gitalk.login === 'function') {
+                gitalk.login();
+            }
+        }
+    }, true);
+
     // 添加项目卡片悬停效果
     document.addEventListener('mouseover', (e) => {
         const card = e.target.closest('.project-card');
