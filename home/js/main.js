@@ -12,7 +12,7 @@ const projects = [
         // 项目按钮配置
         repo: '',  // 私有仓库，不公开
         repoPrivate: true,  // 标记为私有仓库
-        homepage: '../write-helper-index-master/',  // 项目页面
+        homepage: '../write-helper/',  // 项目页面
         demo: '',  // 演示，暂未制作
     },
     {
@@ -26,7 +26,7 @@ const projects = [
         icon: 'fas fa-wallet',
         // 项目按钮配置
         repo: 'https://github.com/Cong0925/SpendNote',  // 开源仓库
-        homepage: '../spend-note-index-main/',  // 项目页面
+        homepage: '../spend-note/',  // 项目页面
         demo: '',  // 演示，暂未制作
     },
     {
