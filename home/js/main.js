@@ -202,8 +202,8 @@ function initGitalk() {
     // 4. 获取 Client ID 和 Client Secret
 
     const gitalkConfig = {
-        clientID: 'YOUR_CLIENT_ID', // 替换为你的Client ID
-        clientSecret: 'YOUR_CLIENT_SECRET', // 替换为你的Client Secret
+        clientID: 'Ov23liOexhleMGPD9to6',
+        clientSecret: 'e9750c6504d42a31f94247b96c65522504ea7393',
         repo: 'Cong0925.github.io',
         owner: 'Cong0925',
         admin: ['Cong0925'],
@@ -214,7 +214,7 @@ function initGitalk() {
         perPage: 20,
         pagerDirection: 'last',
         createIssueManually: false,
-        proxy: 'https://cors-anywhere.herokuapp.com/', // CORS代理
+        proxy: 'https://cors-proxy.htmldriven.com/', // CORS代理
         flipMovementUp: false
     };
 
