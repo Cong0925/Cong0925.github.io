@@ -214,7 +214,7 @@ function initGitalk() {
         perPage: 20,
         pagerDirection: 'last',
         createIssueManually: false,
-        proxy: 'https://cors-proxy.htmldriven.com/', // CORS代理
+        proxy: '', // 无需代理，GitHub API 允许跨域
         flipMovementUp: false
     };
 
