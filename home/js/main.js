@@ -174,8 +174,10 @@ function initEventListeners() {
     document.addEventListener('mouseover', (e) => {
         const card = e.target.closest('.project-card');
         if (card) {
-            card.style.transform = 'translateY(-10px)';
-            card.style.boxShadow = '0 20px 40px rgba(74, 144, 226, 0.2)';
+            card.style.transform = 'translateY(-6px)';
+            card.style.boxShadow = '0 16px 40px rgba(37, 99, 235, 0.12), 0 4px 12px rgba(0, 0, 0, 0.04)';
+            card.style.background = 'rgba(255, 255, 255, 0.72)';
+            card.style.borderColor = 'rgba(37, 99, 235, 0.3)';
         }
     });
 
@@ -183,7 +185,9 @@ function initEventListeners() {
         const card = e.target.closest('.project-card');
         if (card) {
             card.style.transform = 'translateY(0)';
-            card.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.05)';
+            card.style.boxShadow = '0 4px 24px rgba(0, 0, 0, 0.04)';
+            card.style.background = 'rgba(255, 255, 255, 0.5)';
+            card.style.borderColor = 'rgba(255, 255, 255, 0.6)';
         }
     });
 }
@@ -317,3 +321,110 @@ console.log(`
 %c 如需添加新项目，请编辑 js/main.js 中的 projects 数组
 
 `, 'color: #667eea; font-size: 20px; font-weight: bold;', 'color: #a0aec0;', 'color: #718096;');
+
+// ========== 粒子系统 ==========
+(function initParticles() {
+    const canvas = document.getElementById('particleCanvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+
+    function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    const PARTICLE_COUNT = 40;
+    const particles = [];
+
+    // 粒子颜色调色板 - 与背景光球协调
+    const colors = [
+        'rgba(37, 99, 235, 0.35)',   // primary blue
+        'rgba(14, 165, 233, 0.3)',    // accent cyan
+        'rgba(139, 92, 246, 0.25)',   // purple
+        'rgba(59, 130, 246, 0.3)',    // lighter blue
+        'rgba(6, 182, 212, 0.25)',    // teal
+    ];
+
+    function createParticle() {
+        return {
+            x: Math.random() * canvas.width,
+            y: canvas.height + Math.random() * 80,
+            radius: Math.random() * 2.2 + 0.6,
+            speedY: -(Math.random() * 0.35 + 0.1),
+            speedX: (Math.random() - 0.5) * 0.2,
+            opacity: Math.random() * 0.5 + 0.2,
+            color: colors[Math.floor(Math.random() * colors.length)],
+            wobbleSpeed: Math.random() * 0.01 + 0.005,
+            wobbleAmplitude: Math.random() * 25 + 10,
+            wobbleOffset: Math.random() * Math.PI * 2,
+            age: 0,
+        };
+    }
+
+    for (let i = 0; i < PARTICLE_COUNT; i++) {
+        const p = createParticle();
+        p.y = Math.random() * canvas.height; // 初始随机分布
+        p.age = Math.random() * 200;
+        particles.push(p);
+    }
+
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        for (const p of particles) {
+            p.age++;
+            p.y += p.speedY;
+            p.x += p.speedX + Math.sin(p.age * p.wobbleSpeed + p.wobbleOffset) * 0.3;
+
+            // 超出屏幕则重置到底部
+            if (p.y < -20) {
+                Object.assign(p, createParticle());
+            }
+
+            // 渐入渐出
+            let alpha = p.opacity;
+            if (p.age < 60) {
+                alpha *= p.age / 60;
+            }
+
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+            ctx.fillStyle = p.color.replace(/[\d.]+\)$/, `${alpha})`);
+            ctx.fill();
+        }
+
+        requestAnimationFrame(animate);
+    }
+    animate();
+})();
+
+// ========== 鼠标跟随光晕 ==========
+(function initMouseGlow() {
+    const glow = document.querySelector('.mouse-glow');
+    if (!glow) return;
+
+    let mouseX = -500, mouseY = -500;
+    let glowX = -500, glowY = -500;
+
+    document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        glow.classList.add('active');
+    });
+
+    document.addEventListener('mouseleave', () => {
+        glow.classList.remove('active');
+    });
+
+    function updateGlow() {
+        // 平滑插值跟随
+        glowX += (mouseX - glowX) * 0.08;
+        glowY += (mouseY - glowY) * 0.08;
+        glow.style.left = glowX + 'px';
+        glow.style.top = glowY + 'px';
+        requestAnimationFrame(updateGlow);
+    }
+    updateGlow();
+})();

@@ -10,6 +10,17 @@
     <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
 </head>
 <body>
+    <!-- 动态背景层 -->
+    <div class="bg-layer" aria-hidden="true">
+        <div class="bg-orb bg-orb-1"></div>
+        <div class="bg-orb bg-orb-2"></div>
+        <div class="bg-orb bg-orb-3"></div>
+        <div class="bg-orb bg-orb-4"></div>
+        <div class="bg-orb bg-orb-5"></div>
+        <canvas id="particleCanvas"></canvas>
+    </div>
+    <div class="mouse-glow" aria-hidden="true"></div>
+
     <!-- 主容器 -->
     <div class="container">
         <!-- 头部区域 -->
