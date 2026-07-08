@@ -214,7 +214,7 @@ function initGitalk() {
         perPage: 20,
         pagerDirection: 'last',
         createIssueManually: false,
-        proxy: '', // 无需代理，GitHub API 允许跨域
+        // proxy 已移除，GitHub API 原生支持跨域
         flipMovementUp: false
     };
 
