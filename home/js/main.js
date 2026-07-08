@@ -111,7 +111,7 @@ function createProjectCard(project, index) {
 
     // 网址首页按钮
     if (project.homepage) {
-        buttonsHtml += `<a href="${project.homepage}" class="card-btn btn-homepage"><i class="fas fa-globe"></i> 网址首页</a>`;
+        buttonsHtml += `<a href="${project.homepage}" target="_blank" class="card-btn btn-homepage"><i class="fas fa-globe"></i> 网址首页</a>`;
     } else {
         buttonsHtml += `<span class="card-btn btn-homepage disabled"><i class="fas fa-globe"></i> 网址首页</span>`;
     }
