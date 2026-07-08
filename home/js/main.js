@@ -214,7 +214,7 @@ function initGitalk() {
         perPage: 20,
         pagerDirection: 'last',
         createIssueManually: false,
-        // proxy 已移除，GitHub API 原生支持跨域
+        proxy: 'https://cong0925.2207156200.workers.dev', // Cloudflare Worker CORS代理
         flipMovementUp: false
     };
 
