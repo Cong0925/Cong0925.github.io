@@ -4,23 +4,43 @@ const projects = [
         id: 1,
         name: 'write-helper-index',
         title: 'Write Helper',
-        description: '一款为创作者打造的桌面写作助手，集成 AI 智能写作、多类型创作模板，还有可爱的桌面宠物陪伴你的每一次创作。',
+        description: '一款为创作者打造的桌面写作软件，主打自主写作与本地留档，AI 轻度辅助创作。重量级宠物模块支持领养专属像素宠物，陪伴你的每一次创作。',
         status: 'completed',
         statusText: '已完成',
-        tags: ['AI写作', '桌面应用', '创作者工具'],
-        link: 'https://github.com/Cong0925/write-helper-index',
-        icon: 'fas fa-pen-fancy'
+        tags: ['桌面软件', '自主写作', '像素宠物', '本地留档'],
+        icon: 'fas fa-pen-fancy',
+        // 项目按钮配置
+        repo: '',  // 私有仓库，未开源，按钮禁用
+        homepage: 'https://www.writehelp.qzz.io/',  // 项目主页
+        demo: '',  // 演示视频地址，暂无
     },
     {
         id: 2,
         name: 'spend-note-index',
         title: 'Spend Note',
         description: '智能记账笔记应用，帮助你轻松管理个人财务，追踪支出，分析消费习惯。',
-        status: 'planning',
-        statusText: '规划中',
+        status: 'completed',
+        statusText: '已完成',
         tags: ['记账', '财务工具', '个人管理'],
-        link: 'https://github.com/Cong0925/spend-note-index',
-        icon: 'fas fa-wallet'
+        icon: 'fas fa-wallet',
+        // 项目按钮配置
+        repo: 'https://github.com/Cong0925/SpendNote',  // 开源仓库
+        homepage: '',  // 项目主页，暂无
+        demo: '',  // 演示，暂无
+    },
+    {
+        id: 3,
+        name: 'nodejs_mysql_Sequelize',
+        title: 'Node.js MySQL Sequelize 代码生成器',
+        description: '使用 Vue3 前端以及 Node + WebSocket 自动生成 Node.js + MySQL + Sequelize 的后端接口项目，快速搭建 RESTful API。',
+        status: 'completed',
+        statusText: '已完成',
+        tags: ['代码生成', 'Node.js', 'MySQL', 'Vue3'],
+        icon: 'fas fa-code',
+        // 项目按钮配置
+        repo: 'https://github.com/Cong0925/nodejs_mysql_Sequelize',  // 开源仓库
+        homepage: '',  // 项目主页，暂无
+        demo: '',  // 演示，暂无
     }
     // 后续添加新项目在这里
 ];
@@ -29,10 +49,8 @@ const projects = [
 const projectsGrid = document.getElementById('projectsGrid');
 const searchInput = document.getElementById('searchInput');
 const clearSearch = document.getElementById('clearSearch');
-const filterButtons = document.querySelectorAll('.filter-btn');
 
-// 当前筛选状态
-let currentFilter = 'all';
+// 当前搜索状态
 let currentSearch = '';
 
 // 初始化
@@ -47,12 +65,18 @@ function renderProjects() {
     const filteredProjects = filterProjects();
     projectsGrid.innerHTML = '';
 
+    // 更新项目数量
+    const projectCountEl = document.getElementById('projectCount');
+    if (projectCountEl) {
+        projectCountEl.textContent = projects.length;
+    }
+
     if (filteredProjects.length === 0) {
         projectsGrid.innerHTML = `
             <div class="no-results">
                 <i class="fas fa-search"></i>
                 <h3>未找到匹配的项目</h3>
-                <p>试试其他关键词或筛选条件</p>
+                <p>试试其他关键词</p>
             </div>
         `;
         return;
@@ -72,6 +96,30 @@ function createProjectCard(project, index) {
 
     const statusClass = `status-${project.status}`;
 
+    // 生成按钮HTML - 三个按钮都显示
+    let buttonsHtml = '';
+
+    // 项目地址按钮
+    if (project.repo) {
+        buttonsHtml += `<a href="${project.repo}" target="_blank" class="card-btn btn-repo"><i class="fab fa-github"></i> 项目地址</a>`;
+    } else {
+        buttonsHtml += `<span class="card-btn btn-repo disabled"><i class="fas fa-lock"></i> 未开源</span>`;
+    }
+
+    // 网址首页按钮
+    if (project.homepage) {
+        buttonsHtml += `<a href="${project.homepage}" target="_blank" class="card-btn btn-homepage"><i class="fas fa-globe"></i> 网址首页</a>`;
+    } else {
+        buttonsHtml += `<span class="card-btn btn-homepage disabled"><i class="fas fa-globe"></i> 网址首页</span>`;
+    }
+
+    // 演示按钮
+    if (project.demo) {
+        buttonsHtml += `<a href="${project.demo}" target="_blank" class="card-btn btn-demo"><i class="fas fa-desktop"></i> 演示</a>`;
+    } else {
+        buttonsHtml += `<span class="card-btn btn-demo disabled"><i class="fas fa-desktop"></i> 演示</span>`;
+    }
+
     card.innerHTML = `
         <div class="project-header">
             <h3 class="project-title">
@@ -84,9 +132,9 @@ function createProjectCard(project, index) {
         <div class="project-tags">
             ${project.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
         </div>
-        <a href="${project.link}" target="_blank" class="project-link">
-            查看项目 <i class="fas fa-arrow-right"></i>
-        </a>
+        <div class="project-buttons">
+            ${buttonsHtml}
+        </div>
     `;
 
     return card;
@@ -98,8 +146,7 @@ function filterProjects() {
         const matchesSearch = project.title.toLowerCase().includes(currentSearch.toLowerCase()) ||
                             project.description.toLowerCase().includes(currentSearch.toLowerCase()) ||
                             project.tags.some(tag => tag.toLowerCase().includes(currentSearch.toLowerCase()));
-        const matchesFilter = currentFilter === 'all' || project.status === currentFilter;
-        return matchesSearch && matchesFilter;
+        return matchesSearch;
     });
 }
 
@@ -118,16 +165,6 @@ function initEventListeners() {
         currentSearch = '';
         clearSearch.style.display = 'none';
         renderProjects();
-    });
-
-    // 筛选按钮
-    filterButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            filterButtons.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            currentFilter = btn.dataset.status;
-            renderProjects();
-        });
     });
 
     // 添加项目卡片悬停效果
