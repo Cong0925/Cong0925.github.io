@@ -10,7 +10,8 @@ const projects = [
         tags: ['桌面软件', '自主写作', '像素宠物', '本地留档'],
         icon: 'fas fa-pen-fancy',
         // 项目按钮配置
-        repo: 'https://github.com/Cong0925/write-helper',  // 开源仓库
+        repo: '',  // 私有仓库，不公开
+        repoPrivate: true,  // 标记为私有仓库
         homepage: '../write-helper-index-master/',  // 项目页面
         demo: '',  // 演示，暂未制作
     },
@@ -100,7 +101,9 @@ function createProjectCard(project, index) {
     let buttonsHtml = '';
 
     // 项目地址按钮
-    if (project.repo) {
+    if (project.repoPrivate) {
+        buttonsHtml += `<button class="card-btn btn-repo btn-private" onclick="showPrivateNotice()"><i class="fas fa-lock"></i> 项目地址</button>`;
+    } else if (project.repo) {
         buttonsHtml += `<a href="${project.repo}" target="_blank" class="card-btn btn-repo"><i class="fab fa-github"></i> 项目地址</a>`;
     } else {
         buttonsHtml += `<span class="card-btn btn-repo disabled"><i class="fas fa-lock"></i> 未开源</span>`;
@@ -261,6 +264,27 @@ function importProjects(jsonString) {
         console.error('导入失败:', error);
         return false;
     }
+}
+
+// 私有仓库提示
+function showPrivateNotice() {
+    // 移除已有toast
+    const old = document.querySelector('.toast-notice');
+    if (old) old.remove();
+
+    const toast = document.createElement('div');
+    toast.className = 'toast-notice';
+    toast.innerHTML = '<i class="fas fa-lock"></i> 该仓库为私有仓库，如需源码请联系作者';
+    document.body.appendChild(toast);
+
+    // 触发动画
+    requestAnimationFrame(() => toast.classList.add('toast-show'));
+
+    // 3秒后消失
+    setTimeout(() => {
+        toast.classList.remove('toast-show');
+        setTimeout(() => toast.remove(), 300);
+    }, 3000);
 }
 
 // 平滑滚动到顶部
