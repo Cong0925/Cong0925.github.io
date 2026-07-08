@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cong0925 - 项目导航</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Gitalk CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+</head>
+<body>
+    <!-- 背景动画 -->
+    <div class="bg-animation">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <!-- 主容器 -->
+    <div class="container">
+        <!-- 头部区域 -->
+        <header class="header">
+            <div class="avatar-container">
+                <img src="https://avatars.githubusercontent.com/u/77568025?v=4" alt="Avatar" class="avatar">
+                <div class="avatar-ring"></div>
+            </div>
+            <h1 class="name">Cong0925</h1>
+            <p class="bio">开发者 | 创造者 | 探索者</p>
+            <div class="social-links">
+                <a href="https://github.com/Cong0925" target="_blank" class="social-link">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+        </header>
+
+        <!-- 搜索区域 -->
+        <div class="search-container">
+            <div class="search-box">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" id="searchInput" placeholder="搜索项目..." class="search-input">
+                <button id="clearSearch" class="clear-btn" style="display: none;">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-status="all">全部</button>
+                <button class="filter-btn" data-status="completed">已完成</button>
+                <button class="filter-btn" data-status="development">开发中</button>
+                <button class="filter-btn" data-status="planning">规划中</button>
+            </div>
+        </div>
+
+        <!-- 项目网格 -->
+        <div class="projects-grid" id="projectsGrid">
+            <!-- 项目卡片会通过JS动态生成 -->
+        </div>
+
+        <!-- 留言区域 -->
+        <section class="message-section">
+            <h2 class="section-title">
+                <i class="fas fa-comments"></i>
+                留言板
+            </h2>
+            <div id="gitalk-container"></div>
+        </section>
+
+        <!-- 页脚 -->
+        <footer class="footer">
+            <p>&copy; 2024 Cong0925. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <!-- Gitalk JS -->
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
