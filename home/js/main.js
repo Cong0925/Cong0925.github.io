@@ -2,7 +2,7 @@
 const projects = [
     {
         id: 1,
-        name: 'write-helper-index',
+        name: 'write-helper',
         title: 'Write Helper',
         description: '一款为创作者打造的桌面写作软件，主打自主写作与本地留档，AI 轻度辅助创作。重量级宠物模块支持领养专属像素宠物，陪伴你的每一次创作。',
         status: 'completed',
@@ -10,13 +10,13 @@ const projects = [
         tags: ['桌面软件', '自主写作', '像素宠物', '本地留档'],
         icon: 'fas fa-pen-fancy',
         // 项目按钮配置
-        repo: '',  // 私有仓库，未开源，按钮禁用
-        homepage: 'https://www.writehelp.qzz.io/',  // 项目主页
-        demo: '',  // 演示视频地址，暂无
+        repo: 'https://github.com/Cong0925/write-helper',  // 开源仓库
+        homepage: '../write-helper-index-master/',  // 项目页面
+        demo: '',  // 演示，暂未制作
     },
     {
         id: 2,
-        name: 'spend-note-index',
+        name: 'SpendNote',
         title: 'Spend Note',
         description: '智能记账笔记应用，帮助你轻松管理个人财务，追踪支出，分析消费习惯。',
         status: 'completed',
@@ -25,8 +25,8 @@ const projects = [
         icon: 'fas fa-wallet',
         // 项目按钮配置
         repo: 'https://github.com/Cong0925/SpendNote',  // 开源仓库
-        homepage: '',  // 项目主页，暂无
-        demo: '',  // 演示，暂无
+        homepage: '../spend-note-index-main/',  // 项目页面
+        demo: '',  // 演示，暂未制作
     },
     {
         id: 3,
@@ -39,8 +39,8 @@ const projects = [
         icon: 'fas fa-code',
         // 项目按钮配置
         repo: 'https://github.com/Cong0925/nodejs_mysql_Sequelize',  // 开源仓库
-        homepage: '',  // 项目主页，暂无
-        demo: '',  // 演示，暂无
+        homepage: '',  // 项目页面，暂未导入
+        demo: '',  // 演示，暂未制作
     }
     // 后续添加新项目在这里
 ];
