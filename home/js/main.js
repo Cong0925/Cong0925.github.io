@@ -221,60 +221,7 @@ function initEventListeners() {
         }
     }, true);
 
-    // 添加项目卡片悬停效果
-    document.addEventListener('mouseover', (e) => {
-        const card = e.target.closest('.project-card');
-        if (card) {
-            card.style.transform = 'translateY(-6px)';
-            card.style.boxShadow = '0 16px 40px rgba(37, 99, 235, 0.12), 0 4px 12px rgba(0, 0, 0, 0.04)';
-            card.style.background = 'rgba(255, 255, 255, 0.72)';
-            card.style.borderColor = 'rgba(37, 99, 235, 0.3)';
-        }
-    });
-
-    document.addEventListener('mouseout', (e) => {
-        const card = e.target.closest('.project-card');
-        if (card) {
-            card.style.transform = 'translateY(0)';
-            card.style.boxShadow = '0 4px 24px rgba(0, 0, 0, 0.04)';
-            card.style.background = 'rgba(255, 255, 255, 0.5)';
-            card.style.borderColor = 'rgba(255, 255, 255, 0.6)';
-        }
-    });
-
-    // 移动端触摸支持
-    let activeCard = null;
-
-    document.addEventListener('touchstart', (e) => {
-        const card = e.target.closest('.project-card');
-        if (card) {
-            // 移除其他卡片的激活状态
-            if (activeCard && activeCard !== card) {
-                activeCard.style.transform = 'translateY(0)';
-                activeCard.style.boxShadow = '0 4px 24px rgba(0, 0, 0, 0.04)';
-                activeCard.style.background = 'rgba(255, 255, 255, 0.5)';
-                activeCard.style.borderColor = 'rgba(255, 255, 255, 0.6)';
-            }
-            // 激活当前卡片
-            card.style.transform = 'translateY(-4px)';
-            card.style.boxShadow = '0 12px 32px rgba(37, 99, 235, 0.1)';
-            card.style.background = 'rgba(255, 255, 255, 0.65)';
-            card.style.borderColor = 'rgba(37, 99, 235, 0.25)';
-            activeCard = card;
-        }
-    }, { passive: true });
-
-    document.addEventListener('touchend', () => {
-        if (activeCard) {
-            setTimeout(() => {
-                activeCard.style.transform = 'translateY(0)';
-                activeCard.style.boxShadow = '0 4px 24px rgba(0, 0, 0, 0.04)';
-                activeCard.style.background = 'rgba(255, 255, 255, 0.5)';
-                activeCard.style.borderColor = 'rgba(255, 255, 255, 0.6)';
-                activeCard = null;
-            }, 150);
-        }
-    }, { passive: true });
+    // 卡片悬停效果已通过 CSS :hover 实现，无需 JavaScript
 }
 
 // 初始化Gitalk留言系统
@@ -384,19 +331,24 @@ function scrollToTop() {
     });
 }
 
-// 添加滚动事件监听
+// 添加滚动事件监听（使用防抖优化性能）
+let scrollTimeout;
 window.addEventListener('scroll', () => {
-    const scrollToTopBtn = document.getElementById('scrollToTop');
-    if (scrollToTopBtn) {
-        if (window.pageYOffset > 300) {
-            scrollToTopBtn.style.opacity = '1';
-            scrollToTopBtn.style.visibility = 'visible';
-        } else {
-            scrollToTopBtn.style.opacity = '0';
-            scrollToTopBtn.style.visibility = 'hidden';
+    if (scrollTimeout) return;
+    scrollTimeout = setTimeout(() => {
+        const scrollToTopBtn = document.getElementById('scrollToTop');
+        if (scrollToTopBtn) {
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.style.opacity = '1';
+                scrollToTopBtn.style.visibility = 'visible';
+            } else {
+                scrollToTopBtn.style.opacity = '0';
+                scrollToTopBtn.style.visibility = 'hidden';
+            }
         }
-    }
-});
+        scrollTimeout = null;
+    }, 100);
+}, { passive: true });
 
 // 控制台输出欢迎信息
 console.log(`
@@ -413,14 +365,31 @@ console.log(`
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
 
+    // 检查设备性能，移动端减少粒子数量
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    const PARTICLE_COUNT = isMobile ? 15 : 25; // 减少粒子数量
+    const TARGET_FPS = isMobile ? 30 : 45; // 降低帧率目标
+    const FRAME_INTERVAL = 1000 / TARGET_FPS;
+
+    // 移动设备直接隐藏 Canvas，不运行动画
+    if (isMobile) {
+        canvas.style.display = 'none';
+        return;
+    }
+
     function resize() {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
     }
     resize();
-    window.addEventListener('resize', resize);
 
-    const PARTICLE_COUNT = 40;
+    // 使用防抖处理 resize 事件
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(resize, 100);
+    });
+
     const particles = [];
 
     // 粒子颜色调色板 - 与背景光球协调
@@ -442,7 +411,6 @@ console.log(`
             opacity: Math.random() * 0.5 + 0.2,
             color: colors[Math.floor(Math.random() * colors.length)],
             wobbleSpeed: Math.random() * 0.01 + 0.005,
-            wobbleAmplitude: Math.random() * 25 + 10,
             wobbleOffset: Math.random() * Math.PI * 2,
             age: 0,
         };
@@ -455,7 +423,19 @@ console.log(`
         particles.push(p);
     }
 
-    function animate() {
+    let lastFrameTime = 0;
+    let animationId = null;
+    let isRunning = true;
+
+    function animate(currentTime) {
+        if (!isRunning) return;
+        animationId = requestAnimationFrame(animate);
+
+        // 帧率控制
+        const deltaTime = currentTime - lastFrameTime;
+        if (deltaTime < FRAME_INTERVAL) return;
+        lastFrameTime = currentTime - (deltaTime % FRAME_INTERVAL);
+
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
         for (const p of particles) {
@@ -479,10 +459,24 @@ console.log(`
             ctx.fillStyle = p.color.replace(/[\d.]+\)$/, `${alpha})`);
             ctx.fill();
         }
-
-        requestAnimationFrame(animate);
     }
-    animate();
+
+    // 页面可见性检测 - 页面不可见时停止动画
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+            isRunning = false;
+            if (animationId) {
+                cancelAnimationFrame(animationId);
+                animationId = null;
+            }
+        } else {
+            isRunning = true;
+            lastFrameTime = 0;
+            animationId = requestAnimationFrame(animate);
+        }
+    });
+
+    animationId = requestAnimationFrame(animate);
 })();
 
 // ========== 鼠标跟随光晕 ==========
@@ -490,26 +484,60 @@ console.log(`
     const glow = document.querySelector('.mouse-glow');
     if (!glow) return;
 
+    // 检查是否为移动设备，移动设备禁用光晕效果
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    if (isMobile) {
+        glow.style.display = 'none';
+        return;
+    }
+
     let mouseX = -500, mouseY = -500;
     let glowX = -500, glowY = -500;
+    let isAnimating = false;
+    let isPageVisible = true;
 
     document.addEventListener('mousemove', (e) => {
         mouseX = e.clientX;
         mouseY = e.clientY;
         glow.classList.add('active');
+
+        // 使用 CSS transform 替代 left/top 性能更好
+        if (!isAnimating && isPageVisible) {
+            isAnimating = true;
+            requestAnimationFrame(updateGlow);
+        }
     });
 
     document.addEventListener('mouseleave', () => {
         glow.classList.remove('active');
+        isAnimating = false;
+    });
+
+    // 页面可见性检测 - 页面不可见时停止动画
+    document.addEventListener('visibilitychange', () => {
+        isPageVisible = !document.hidden;
+        if (!isPageVisible) {
+            glow.classList.remove('active');
+            isAnimating = false;
+        }
     });
 
     function updateGlow() {
-        // 平滑插值跟随
+        if (!isPageVisible) {
+            isAnimating = false;
+            return;
+        }
+
+        // 使用 CSS transform 性能更好
         glowX += (mouseX - glowX) * 0.08;
         glowY += (mouseY - glowY) * 0.08;
-        glow.style.left = glowX + 'px';
-        glow.style.top = glowY + 'px';
-        requestAnimationFrame(updateGlow);
+        glow.style.transform = `translate(calc(${glowX}px - 50%), calc(${glowY}px - 50%))`;
+
+        // 当接近目标时停止动画
+        if (Math.abs(mouseX - glowX) > 0.5 || Math.abs(mouseY - glowY) > 0.5) {
+            requestAnimationFrame(updateGlow);
+        } else {
+            isAnimating = false;
+        }
     }
-    updateGlow();
 })();
