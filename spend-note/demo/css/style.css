@@ -199,12 +199,25 @@ a {
 
 .hero-container {
   display: flex;
-  justify-content: center;
+  align-items: center;
+  gap: 40px;
 }
 
 .hero-content {
-  text-align: center;
-  max-width: 700px;
+  flex: 1;
+  min-width: 0;
+}
+
+.hero-video {
+  flex-shrink: 0;
+}
+
+.hero-video video {
+  width: 250px;
+  height: auto;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  display: block;
 }
 
 .hero-badge {
@@ -571,11 +584,25 @@ a {
     display: flex;
   }
 
+  .hero-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-content {
+    text-align: center;
+  }
+
   .hero h1 {
     font-size: 2.5rem;
   }
 
+  .hero-video video {
+    width: 180px;
+  }
+
   .hero-stats {
+    justify-content: center;
     flex-direction: column;
     gap: 16px;
   }

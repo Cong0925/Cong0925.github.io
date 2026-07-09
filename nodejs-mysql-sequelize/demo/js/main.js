@@ -73,4 +73,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
   window.addEventListener('scroll', updateActiveNav);
   updateActiveNav();
+
+  // 视频播放控制
+  const videoOverlay = document.getElementById('videoOverlay');
+  const playButton = document.getElementById('playButton');
+  const demoVideo = document.getElementById('demoVideo');
+
+  if (videoOverlay && playButton && demoVideo) {
+    playButton.addEventListener('click', (e) => {
+      e.stopPropagation();
+      // 隐藏遮罩层
+      videoOverlay.classList.add('hidden');
+      // 修改 iframe src 添加 autoplay 参数开始播放
+      const currentSrc = demoVideo.src;
+      if (!currentSrc.includes('autoplay=1')) {
+        demoVideo.src = currentSrc.replace('autoplay=0', 'autoplay=1');
+      }
+    });
+
+    videoOverlay.addEventListener('click', () => {
+      // 隐藏遮罩层
+      videoOverlay.classList.add('hidden');
+      // 修改 iframe src 添加 autoplay 参数开始播放
+      const currentSrc = demoVideo.src;
+      if (!currentSrc.includes('autoplay=1')) {
+        demoVideo.src = currentSrc.replace('autoplay=0', 'autoplay=1');
+      }
+    });
+  }
 });
