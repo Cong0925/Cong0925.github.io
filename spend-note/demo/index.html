@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>开销随手记 SpendNote - 完整使用演示</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- 导航栏 -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <div class="nav-logo">
+        <span class="logo-icon">💰</span>
+        <span class="logo-text">SpendNote 演示</span>
+      </div>
+      <button class="nav-toggle" aria-label="切换菜单">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <div class="nav-links">
+        <a href="#login">登录</a>
+        <a href="#account">账户管理</a>
+        <a href="#record">记账</a>
+        <a href="#transfer">转账</a>
+        <a href="#borrow">借款</a>
+        <a href="#bills">账单搜索</a>
+        <a href="#stats">统计报表</a>
+        <a href="#settings">个人设置</a>
+        <a class="nav-btn" href="../">返回官网</a>
+      </div>
+    </div>
+  </nav>
+  <div class="nav-overlay"></div>
+
+  <!-- 英雄区域 -->
+  <section class="hero">
+    <div class="hero-decoration">
+      <div class="deco-circle deco-circle-1"></div>
+      <div class="deco-circle deco-circle-2"></div>
+    </div>
+    <div class="container hero-container">
+      <div class="hero-content">
+        <div class="hero-badge">📱 完整教程 · 27 张手机截图详解</div>
+        <h1>开销随手记<br><span class="hero-subtitle">SpendNote</span></h1>
+        <p class="hero-desc">
+          一款简洁高效的微信记账小程序，帮你轻松管理日常收支。
+          <br><span class="hero-highlight">本教程将带你从登录到精通的完整流程</span>
+        </p>
+        <div class="hero-actions">
+          <a class="btn-primary" href="#login">
+            <span class="btn-icon">🚀</span>
+            开始学习
+          </a>
+          <a class="btn-secondary" href="#stats">
+            跳到统计报表
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-value">8</span>
+            <span class="stat-label">主要章节</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-value">27</span>
+            <span class="stat-label">手机截图</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-value">100%</span>
+            <span class="stat-label">图文详解</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 第一章：登录 ==================== -->
+  <section class="step-section" id="login">
+    <div class="container">
+      <div class="section-header">
+        <h2>第一章：登录</h2>
+        <p>微信授权登录，快速开始</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h3>微信授权登录</h3>
+          <p>打开小程序后，使用微信一键授权登录。可以自定义昵称和头像，登录即同意用户协议和隐私政策。</p>
+          <div class="phone-grid phone-grid--single">
+            <div class="phone-item">
+              <div class="phone-frame">
+                <div class="phone-notch"></div>
+                <img src="step imgs/登录界面.jpg" alt="登录页面" class="phone-screenshot">
+              </div>
+              <div class="screenshot-caption">微信授权登录页面，支持自定义昵称</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 第二章：账户管理 ==================== -->
+  <section class="step-section alt" id="account">
+    <div class="container">
+      <div class="section-header">
+        <h2>第二章：账户管理</h2>
+        <p>添加和管理你的资产与负债账户</p>
+      </div>
+
+      <!-- 步骤1：账户总览 + 选择账户类型 -->
+      <div class="step-card">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h3>账户总览</h3>
+          <p>首次进入账户页面，净资产为 ¥0.00。支持添加资产类（微信、支付宝、现金等）和负债类（信用卡、花呗等）账户。</p>
+          <div class="phone-grid">
+            <div class="phone-item">
+              <div class="phone-frame">
+                <div class="phone-notch"></div>
+                <img src="step imgs/账户初始无数据.jpg" alt="账户页面-空" class="phone-screenshot">
+              </div>
+              <div class="screenshot-caption">初始账户页面，净资产为零</div>
+            </div>
+            <div class="phone-item">
+              <div class="phone-frame">
+                <div class="phone-notch"></div>
+                <img src="step imgs/添加账户选择账户界面.jpg" alt="选择账户类型" class="phone-screenshot">
+              </div>
+              <div class="screenshot-caption">资产类和负债类账户一目了然</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 步骤2：添加资产账户 + 添加信用卡 -->
+      <div class="step-card">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h3>添加账户</h3>
+          <p>资产类账户设置初始余额；负债类账户可设置信用额度、账单日和还款日。添加银行卡时支持搜索选择银行。</p>
+          <div class="phone-grid">
+            <div class="phone-item">
+              <div class="phone-frame">
+                <div class="phone-notch"></div>
+                <img src="step imgs/微信账户添加.jpg" alt="微信账户详情" class="phone-screenshot">
+              </div>
+              <div class="screenshot-caption">资产账户详情页，设置初始余额</div>
+            </div>
+            <div class="phone-item">
+              <div class="phone-frame">
+                <div class="phone-notch"></div>
+                <img src="step imgs/添加信用卡账户.jpg" alt="信用卡账户详情" class="phone-screenshot">
+              </div>
+              <div class="screenshot-caption">信用卡账户详情，设置额度和还款日</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 步骤3：选择银行 + 账户有数据 -->
+      <div class="step-card">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <h3>选择银行与账户总览</h3>
+          <p>添加银行卡时，支持搜索选择银行（国有银行、股份制银行、城市商业银行等）。添加完成后，账户页面自动汇总显示。</p>
+          <div class="phone-grid">
+            <div class="phone-item">
+              <div class="phone-frame">
+                <div class="phone-notch"></div>
+                <img src="step imgs/银行类账户添加选择银行.jpg" alt="选择银行" class="phone-screenshot">
+              </div>
+              <div class="screenshot-caption">支持搜索选择银行，覆盖全国银行</div>
+            </div>
+            <div class="phone-item">
+              <div class="phone-frame">
+                <div class="phone-notch"></div>
+                <img src="step imgs/账户界面 添加数据后.jpg" alt="账户页面-有数据" class="phone-screenshot">
+              </div>
+              <div class="screenshot-caption">账户总览：微信 ¥17,900 + 建设银行信用卡</div>
+            </div>
+          </div>
+          <div class="tip-box">
+            <span class="tip-icon">💡</span>
+            <span>提示：净资产 = 总资产 - 总负债，自动计算无需手动</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 步骤4：账户详情（初始+有记录） -->
+      <div class="step-card">
+        <div class="step-number">4</div>
+        <div class="step-content">
+          <h3>账户详情</h3>
+          <p>点击账户可查看详情，支持删除账户、转账、记一笔等操作。账单记录和转账记录分类展示。</p>
+          <div class="phone-grid">
+            <div class="phone-item">
+              <div class="phone-frame">
+                <div class="phone-notch"></div>
+                <img src="step imgs/账户详情初始无数据.jpg" alt="账户详情-初始" class="phone-screenshot">
+              </div>
+              <div class="screenshot-caption">账户详情页，暂无账单记录</div>
+            </div>
+            <div class="phone-item">
+              <div class="phone-frame">
+                <div class="phone-notch"></div>
+                <img src="step imgs/账户详情页.jpg" alt="账户详情-有记录" class="phone-screenshot">
+              </div>
+              <div class="screenshot-caption">有转账记录后，查看转账明细</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 步骤5：账户操作后（单独展示） -->
+      <div class="step-card">
+        <div class="step-number">5</div>
+        <div class="step-content">
+          <h3>账户操作后</h3>
+          <p>完成转账和记账后，账户余额自动更新，净资产实时计算。</p>
+          <div class="phone-grid phone-grid--single">
+            <div class="phone-item">
+              <div class="phone-frame">
+                <div class="phone-notch"></div>
+                <img src="step imgs/账户数据操作后.jpg" alt="账户操作后" class="phone-screenshot">
+              </div>
+              <div class="screenshot-caption">操作后账户余额自动更新</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 第三章：记账 ==================== -->
+  <section class="step-section" id="record">
+    <div class="container">
+      <div class="section-header">
+        <h2>第三章：记账</h2>
+        <p>快速记录每一笔收支</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h3>支出与收入</h3>
+          <p>点击底部 "+" 按钮，选择支出或收入。输入金额、选择分类、账户、日期，添加备注后保存。支出支持 14 种分类，收入支持 6 种分类。</p>
+          <div class="phone-grid">
+            <div class="phone-item">
+              <div class="phone-frame">
+                <div class="phone-notch"></div>
+                <img src="step imgs/支出记账.jpg" alt="记支出" class="phone-screenshot">
+              </div>
+              <div class="screenshot-caption">支出记账，支持 14 种分类</div>
+            </div>
+            <div class="phone-item">
+              <div class="phone-frame">
+                <div class="phone-notch"></div>
+                <img src="step imgs/收入记账.jpg" alt="记收入" class="phone-screenshot">
+              </div>
+              <div class="screenshot-caption">收入记账，支持 6 种分类</div>
+            </div>
+          </div>
+          <div class="tip-box">
+            <span class="tip-icon">⚠️</span>
+            <span>重要：记账后会自动更新账户余额和统计报表</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 第四章：转账 ==================== -->
+  <section class="step-section alt" id="transfer">
+    <div class="container">
+      <div class="section-header">
+        <h2>第四章：转账</h2>
+        <p>账户之间轻松划转资金</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h3>发起转账</h3>
+          <p>选择转出账户和转入账户，输入金额、日期和备注，保存即可完成转账。转账记录会同步更新到两个账户的详情页。</p>
+          <div class="phone-grid phone-grid--single">
+            <div class="phone-item">
+              <div class="phone-frame">
+                <div class="phone-notch"></div>
+                <img src="step imgs/账户间的转账.jpg" alt="转账页面" class="phone-screenshot">
+              </div>
+              <div class="screenshot-caption">转账页面，微信 → 建设银行 ¥1,000</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 第五章：借款管理 ==================== -->
+  <section class="step-section" id="borrow">
+    <div class="container">
+      <div class="section-header">
+        <h2>第五章：借款管理</h2>
+        <p>借出借入，一目了然</p>
+      </div>
+
+      <!-- 步骤1：借款总览（初始） -->
+      <div class="step-card">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h3>借款记账总览</h3>
+          <p>首次进入借款记账页面，借出和借入均为零。支持借出（应收）和借入（应还）两种类型。</p>
+          <div class="phone-grid phone-grid--single">
+            <div class="phone-item">
+              <div class="phone-frame">
+                <div class="phone-notch"></div>
+                <img src="step imgs/借款记录初始无数据.jpg" alt="借款记账-初始" class="phone-screenshot">
+              </div>
+              <div class="screenshot-caption">借款记账初始页面，暂无记录</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 步骤2：新建借出 + 新建借入 -->
+      <div class="step-card">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h3>新建借款记录</h3>
+          <p>填写金额、对方姓名、时间和账户，支持添加图片凭证（最多4张）。保存后自动更新应收/应还金额。</p>
+          <div class="phone-grid">
+            <div class="phone-item">
+              <div class="phone-frame">
+                <div class="phone-notch"></div>
+                <img src="step imgs/新建借款 借出.jpg" alt="新建借出" class="phone-screenshot">
+              </div>
+              <div class="screenshot-caption">新建借出记录，填写金额和借给谁</div>
+            </div>
+            <div class="phone-item">
+              <div class="phone-frame">
+                <div class="phone-notch"></div>
+                <img src="step imgs/新建借款 借入.jpg" alt="新建借入" class="phone-screenshot">
+              </div>
+              <div class="screenshot-caption">新建借入记录，保存成功提示</div>
+            </div>
+          </div>
+          <div class="tip-box">
+            <span class="tip-icon">💡</span>
+            <span>提示：借出记为资产（应收），借入记为负债（应还），自动计入净资产</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 第六章：账单搜索 ==================== -->
+  <section class="step-section alt" id="bills">
+    <div class="container">
+      <div class="section-header">
+        <h2>第六章：账单与搜索</h2>
+        <p>查看账单明细，快速搜索</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h3>我的账本与搜索</h3>
+          <p>账单页面按时间线展示所有收支记录，支持按日/月/季/年筛选。输入金额、类别名或备注即可快速搜索，搜索结果汇总收支。</p>
+          <div class="phone-grid">
+            <div class="phone-item">
+              <div class="phone-frame">
+                <div class="phone-notch"></div>
+                <img src="step imgs/账单界面当月记录.jpg" alt="我的账本" class="phone-screenshot">
+              </div>
+              <div class="screenshot-caption">我的账本，按日期分组展示收支</div>
+            </div>
+            <div class="phone-item">
+              <div class="phone-frame">
+                <div class="phone-notch"></div>
+                <img src="step imgs/账单-搜索.jpg" alt="搜索页面" class="phone-screenshot">
+              </div>
+              <div class="screenshot-caption">搜索 "100" 后的结果，汇总显示</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 第七章：统计报表 ==================== -->
+  <section class="step-section" id="stats">
+    <div class="container">
+      <div class="section-header">
+        <h2>第七章：统计报表</h2>
+        <p>可视化图表，财务状况一目了然</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h3>统计分析与年度总结</h3>
+          <p>支持按日/月/季/年查看支出和收入的饼图分布，以及分类明细排行。年度总结自动生成，包含日均消费、储蓄率、记账频率等关键指标。</p>
+          <div class="phone-grid">
+            <div class="phone-item">
+              <div class="phone-frame">
+                <div class="phone-notch"></div>
+                <img src="step imgs/支出统计分析.jpg" alt="统计分析" class="phone-screenshot">
+              </div>
+              <div class="screenshot-caption">统计分析页面，饼图+分类明细排行</div>
+            </div>
+            <div class="phone-item">
+              <div class="phone-frame">
+                <div class="phone-notch"></div>
+                <img src="step imgs/年度总结.jpg" alt="年度总结" class="phone-screenshot">
+              </div>
+              <div class="screenshot-caption">年度报告，全面回顾你的财务状况</div>
+            </div>
+          </div>
+          <div class="tip-box">
+            <span class="tip-icon">📊</span>
+            <span>年度总结包含：日均消费、日均收入、储蓄率、记账频率、支出分类排行等</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 第八章：个人设置 ==================== -->
+  <section class="step-section alt" id="settings">
+    <div class="container">
+      <div class="section-header">
+        <h2>第八章：个人设置</h2>
+        <p>个性化配置与数据管理</p>
+      </div>
+
+      <!-- 步骤1：我的页面 + 修改昵称 -->
+      <div class="step-card">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h3>我的页面</h3>
+          <p>个人中心包含年度总结概览、分类管理、导出数据、问题反馈、使用帮助等功能。点击头像可修改昵称。</p>
+          <div class="phone-grid">
+            <div class="phone-item">
+              <div class="phone-frame">
+                <div class="phone-notch"></div>
+                <img src="step imgs/我的界面.jpg" alt="我的页面" class="phone-screenshot">
+              </div>
+              <div class="screenshot-caption">我的页面，功能入口一览</div>
+            </div>
+            <div class="phone-item">
+              <div class="phone-frame">
+                <div class="phone-notch"></div>
+                <img src="step imgs/我的 修改名称和头像.jpg" alt="修改昵称" class="phone-screenshot">
+              </div>
+              <div class="screenshot-caption">点击头像可修改昵称</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 步骤2：分类管理支出 + 收入 -->
+      <div class="step-card">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h3>分类管理</h3>
+          <p>在分类管理中，可以查看和编辑支出/收入分类，支持拖拽排序、编辑和删除。</p>
+          <div class="phone-grid">
+            <div class="phone-item">
+              <div class="phone-frame">
+                <div class="phone-notch"></div>
+                <img src="step imgs/分类管理支出分类.jpg" alt="支出分类" class="phone-screenshot">
+              </div>
+              <div class="screenshot-caption">支出分类管理，支持编辑和删除</div>
+            </div>
+            <div class="phone-item">
+              <div class="phone-frame">
+                <div class="phone-notch"></div>
+                <img src="step imgs/分类管理 收入分类.jpg" alt="收入分类" class="phone-screenshot">
+              </div>
+              <div class="screenshot-caption">收入分类管理，6 种预设分类</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 步骤3：新增分类 -->
+      <div class="step-card">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <h3>新增自定义分类</h3>
+          <p>点击 "+" 按钮，输入分类名称（最多4个字），选择图标后确定即可。</p>
+          <div class="phone-grid phone-grid--single">
+            <div class="phone-item">
+              <div class="phone-frame">
+                <div class="phone-notch"></div>
+                <img src="step imgs/分类管理 添加新的分类.jpg" alt="新增分类弹窗" class="phone-screenshot">
+              </div>
+              <div class="screenshot-caption">新增收入分类弹窗，选择图标</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 步骤4：评分 + 问题反馈 -->
+      <div class="step-card">
+        <div class="step-number">4</div>
+        <div class="step-content">
+          <h3>评分与反馈</h3>
+          <p>支持在线评分和问题反馈，反馈会定时上报至管理员邮箱。问题反馈支持文字和图片。</p>
+          <div class="phone-grid">
+            <div class="phone-item">
+              <div class="phone-frame">
+                <div class="phone-notch"></div>
+                <img src="step imgs/评分界面.jpg" alt="评分页面" class="phone-screenshot">
+              </div>
+              <div class="screenshot-caption">评分页面，支持带图评价</div>
+            </div>
+            <div class="phone-item">
+              <div class="phone-frame">
+                <div class="phone-notch"></div>
+                <img src="step imgs/问题反馈界面.jpg" alt="问题反馈" class="phone-screenshot">
+              </div>
+              <div class="screenshot-caption">问题反馈页面，支持图片上传</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 结语 -->
+  <section class="cta">
+    <div class="container">
+      <h2>开始你的记账之旅</h2>
+      <p>开销随手记，让每一笔账都清清楚楚</p>
+      <div class="cta-actions">
+        <a href="../" class="btn-primary">
+          <span class="btn-icon">🌐</span>
+          访问官网体验
+        </a>
+        <a href="https://github.com/Cong0925/SpendNote" target="_blank" class="btn-secondary">
+          <span class="btn-icon">⭐</span>
+          GitHub 开源
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <footer class="footer">
+    <div class="container footer-container">
+      <div class="footer-left">
+        <div class="footer-logo">
+          <span class="logo-icon">💰</span>
+          <span class="logo-text">SpendNote</span>
+        </div>
+        <p class="footer-desc">开销随手记 - 完整使用演示</p>
+      </div>
+      <div class="footer-links">
+        <a href="#login">登录</a>
+        <a href="#account">账户管理</a>
+        <a href="#record">记账</a>
+        <a href="#stats">统计报表</a>
+      </div>
+      <div class="footer-right">
+        <p>© 2026 开销随手记 SpendNote. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
