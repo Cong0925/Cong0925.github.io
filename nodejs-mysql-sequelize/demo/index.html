@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Node.js MySQL Sequelize 代码生成器 - 完整演示</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- 导航栏 -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <div class="nav-logo">
+        <span class="logo-icon">⚡</span>
+        <span class="logo-text">代码生成器演示</span>
+      </div>
+      <button class="nav-toggle" aria-label="切换菜单">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-links">
+        <a href="#intro">项目介绍</a>
+        <a href="#setup">环境搭建</a>
+        <a href="#config">配置</a>
+        <a href="#generate">生成</a>
+        <a href="#run">运行</a>
+        <a class="nav-btn" href="../">返回官网</a>
+      </div>
+    </div>
+  </nav>
+  <div class="nav-overlay"></div>
+
+  <!-- 英雄区域 -->
+  <section class="hero">
+    <div class="hero-decoration">
+      <div class="deco-circle deco-circle-1"></div>
+      <div class="deco-circle deco-circle-2"></div>
+      <div class="deco-code deco-code-1">&lt;/&gt;</div>
+      <div class="deco-code deco-code-2">{ }</div>
+    </div>
+    <div class="container hero-container">
+      <div class="hero-content">
+        <div class="hero-badge">🛠️ 完整教程 · 10 张截图详解生成流程</div>
+        <h1>Node.js MySQL<br><span class="hero-subtitle">Sequelize 代码生成器</span></h1>
+        <p class="hero-desc">
+          使用 Vue3 前端 + Node + WebSocket 自动生成 Node.js + MySQL + Sequelize 后端接口项目。
+          <br><span class="hero-highlight">从数据库配置到生成完整 RESTful API，全程可视化操作</span>
+        </p>
+        <div class="hero-actions">
+          <a class="btn-primary" href="#intro">
+            <span class="btn-icon">🚀</span>
+            开始学习
+          </a>
+          <a class="btn-secondary" href="#generate">
+            跳到生成演示
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-value">4</span>
+            <span class="stat-label">主要阶段</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-value">10</span>
+            <span class="stat-label">步骤截图</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-value">100%</span>
+            <span class="stat-label">图文详解</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 第一章：项目介绍 ==================== -->
+  <section class="step-section" id="intro">
+    <div class="container">
+      <div class="section-header">
+        <h2>第一章：项目介绍</h2>
+        <p>了解项目架构与运行原理</p>
+      </div>
+
+      <!-- 架构说明 -->
+      <div class="step-card">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h3>项目架构</h3>
+          <p>本项目由两个子模块组成：<strong>前端可视化界面</strong>（Vue3）和 <strong>后端服务</strong>（Node + WebSocket）。前端提供图形化配置界面，用户在浏览器中完成数据库连接、表结构设计、视图设置等操作后，后端通过 WebSocket 实时通信，自动生成完整的 Sequelize 后端接口项目。</p>
+          <div class="feature-grid">
+            <div class="feature-item">
+              <span class="feature-icon">🖥️</span>
+              <div class="feature-info">
+                <h4>Vue3 前端</h4>
+                <p>可视化配置界面，拖拽式表结构设计</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <span class="feature-icon">⚙️</span>
+              <div class="feature-info">
+                <h4>Node 后端</h4>
+                <p>WebSocket 实时通信，自动生成代码</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <span class="feature-icon">🗄️</span>
+              <div class="feature-info">
+                <h4>MySQL 数据库</h4>
+                <p>连接已有数据库，读取表结构信息</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <span class="feature-icon">📦</span>
+              <div class="feature-info">
+                <h4>Sequelize ORM</h4>
+                <p>生成标准化的 Model、Router、Controller</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 第二章：环境搭建 ==================== -->
+  <section class="step-section alt" id="setup">
+    <div class="container">
+      <div class="section-header">
+        <h2>第二章：环境搭建</h2>
+        <p>启动前端和后端开发服务器</p>
+      </div>
+
+      <!-- 步骤1：前端运行 -->
+      <div class="step-card">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h3>启动前端项目</h3>
+          <p>克隆代码后，进入 <code>creat_api_pro_front</code> 目录，执行 <code>npm i</code> 安装依赖，然后 <code>npm run dev</code> 启动开发服务器。</p>
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-dot red"></span>
+              <span class="code-dot yellow"></span>
+              <span class="code-dot green"></span>
+              <span class="code-title">终端</span>
+            </div>
+            <pre><code>cd ./creat_api_pro_front
+npm i
+npm run dev</code></pre>
+          </div>
+          <div class="phone-grid phone-grid--single">
+            <div class="phone-item">
+              <div class="browser-frame">
+                <div class="browser-bar">
+                  <span class="browser-dot"></span>
+                  <span class="browser-dot"></span>
+                  <span class="browser-dot"></span>
+                  <span class="browser-url">localhost:5173</span>
+                </div>
+                <img src="https://github.com/Cong0925/nodejs_mysql_Sequelize/assets/77568025/adde8999-25e6-4afc-b017-e9c15cb7f38d" alt="前端启动" class="phone-screenshot">
+              </div>
+              <div class="screenshot-caption">前端开发服务器启动成功</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 步骤2：后端运行 -->
+      <div class="step-card">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h3>启动后端服务</h3>
+          <p>在另一个终端窗口中，进入 <code>creat_api_pro_server</code> 目录，同样执行 <code>npm i</code> 安装依赖，然后 <code>node ./server.js</code> 启动后端服务。</p>
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-dot red"></span>
+              <span class="code-dot yellow"></span>
+              <span class="code-dot green"></span>
+              <span class="code-title">终端</span>
+            </div>
+            <pre><code>cd ./creat_api_pro_server
+npm i
+node ./server.js</code></pre>
+          </div>
+          <div class="phone-grid phone-grid--single">
+            <div class="phone-item">
+              <div class="browser-frame">
+                <div class="browser-bar">
+                  <span class="browser-dot"></span>
+                  <span class="browser-dot"></span>
+                  <span class="browser-dot"></span>
+                  <span class="browser-url">终端 - node server.js</span>
+                </div>
+                <img src="https://github.com/Cong0925/nodejs_mysql_Sequelize/assets/77568025/0b48109d-a54a-4906-850c-015a6225dcc9" alt="后端启动" class="phone-screenshot">
+              </div>
+              <div class="screenshot-caption">后端服务启动成功</div>
+            </div>
+          </div>
+          <div class="tip-box">
+            <span class="tip-icon">💡</span>
+            <span>提示：需要同时运行两个终端窗口，一个跑前端，一个跑后端</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 第三章：配置 ==================== -->
+  <section class="step-section" id="config">
+    <div class="container">
+      <div class="section-header">
+        <h2>第三章：配置</h2>
+        <p>数据库连接与参数设置</p>
+      </div>
+
+      <!-- 数据库连接 -->
+      <div class="step-card">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h3>数据库连接</h3>
+          <p>在前端界面中配置 MySQL 数据库连接信息，包括主机地址、端口、用户名、密码和数据库名。点击测试连接确认配置正确。</p>
+          <div class="phone-grid phone-grid--single">
+            <div class="phone-item">
+              <div class="browser-frame">
+                <div class="browser-bar">
+                  <span class="browser-dot"></span>
+                  <span class="browser-dot"></span>
+                  <span class="browser-dot"></span>
+                  <span class="browser-url">数据库连接配置</span>
+                </div>
+                <img src="https://github.com/Cong0925/nodejs_mysql_Sequelize/assets/77568025/cdda8626-641c-428f-8fd1-863a2f545e4f" alt="数据库连接" class="phone-screenshot">
+              </div>
+              <div class="screenshot-caption">填写 MySQL 数据库连接信息</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 表参数设置 -->
+      <div class="step-card">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h3>表参数相关设置</h3>
+          <p>选择要生成接口的数据表，配置每张表的参数：字段类型映射、接口路由前缀、分页参数等。支持批量设置和单独微调。</p>
+          <div class="phone-grid phone-grid--single">
+            <div class="phone-item">
+              <div class="browser-frame">
+                <div class="browser-bar">
+                  <span class="browser-dot"></span>
+                  <span class="browser-dot"></span>
+                  <span class="browser-dot"></span>
+                  <span class="browser-url">表参数设置</span>
+                </div>
+                <img src="https://github.com/Cong0925/nodejs_mysql_Sequelize/assets/77568025/f0a686fe-3529-4df6-8ed2-330a8326c6d4" alt="表参数设置" class="phone-screenshot">
+              </div>
+              <div class="screenshot-caption">配置表的字段映射和接口参数</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 视图设置 -->
+      <div class="step-card">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <h3>视图相关设置</h3>
+          <p>配置生成项目的视图层参数：接口返回的数据格式、是否包含时间戳字段、软删除策略等。可以根据项目需求灵活调整。</p>
+          <div class="phone-grid phone-grid--single">
+            <div class="phone-item">
+              <div class="browser-frame">
+                <div class="browser-bar">
+                  <span class="browser-dot"></span>
+                  <span class="browser-dot"></span>
+                  <span class="browser-dot"></span>
+                  <span class="browser-url">视图设置</span>
+                </div>
+                <img src="https://github.com/Cong0925/nodejs_mysql_Sequelize/assets/77568025/105a0241-ff64-4131-9964-ad6869105253" alt="视图设置" class="phone-screenshot">
+              </div>
+              <div class="screenshot-caption">配置返回格式和时间戳等参数</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 检查配置 -->
+      <div class="step-card">
+        <div class="step-number">4</div>
+        <div class="step-content">
+          <h3>检查配置</h3>
+          <p>在生成前，系统会展示完整的配置预览，包括数据库连接、表映射、路由规则等。确认无误后再执行生成。</p>
+          <div class="phone-grid phone-grid--single">
+            <div class="phone-item">
+              <div class="browser-frame">
+                <div class="browser-bar">
+                  <span class="browser-dot"></span>
+                  <span class="browser-dot"></span>
+                  <span class="browser-dot"></span>
+                  <span class="browser-url">检查配置</span>
+                </div>
+                <img src="https://github.com/Cong0925/nodejs_mysql_Sequelize/assets/77568025/453a75b4-2f15-45c9-8f9a-d792f3aba107" alt="检查配置" class="phone-screenshot">
+              </div>
+              <div class="screenshot-caption">确认配置信息，准备生成</div>
+            </div>
+          </div>
+          <div class="tip-box">
+            <span class="tip-icon">⚠️</span>
+            <span>重要：请仔细检查数据库连接信息，错误的配置会导致生成失败</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 第四章：生成 ==================== -->
+  <section class="step-section alt" id="generate">
+    <div class="container">
+      <div class="section-header">
+        <h2>第四章：生成项目</h2>
+        <p>一键生成完整的后端接口项目</p>
+      </div>
+
+      <!-- 保存并生成 -->
+      <div class="step-card">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h3>保存配置并生成</h3>
+          <p>填写要生成的项目名称（可以直接使用默认名称），然后点击 <strong>保存</strong>，再点击 <strong>生成</strong> 按钮。系统会通过 WebSocket 将配置发送到后端，自动创建项目文件。</p>
+          <div class="phone-grid phone-grid--single">
+            <div class="phone-item">
+              <div class="browser-frame">
+                <div class="browser-bar">
+                  <span class="browser-dot"></span>
+                  <span class="browser-dot"></span>
+                  <span class="browser-dot"></span>
+                  <span class="browser-url">生成项目</span>
+                </div>
+                <img src="https://github.com/Cong0925/nodejs_mysql_Sequelize/assets/77568025/24f58b4e-7d00-44fd-bd7e-e5de626790b9" alt="保存并生成" class="phone-screenshot">
+              </div>
+              <div class="screenshot-caption">填写项目名称，点击保存后生成</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 查看生成的项目 -->
+      <div class="step-card">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h3>查看生成结果</h3>
+          <p>生成完成后，回到编辑器中可以看到完整的项目结构。自动生成的代码包括：Model 层（数据模型）、Router 层（路由定义）、Controller 层（业务逻辑）、配置文件、入口文件等。</p>
+          <div class="phone-grid phone-grid--single">
+            <div class="phone-item">
+              <div class="browser-frame">
+                <div class="browser-bar">
+                  <span class="browser-dot"></span>
+                  <span class="browser-dot"></span>
+                  <span class="browser-dot"></span>
+                  <span class="browser-url">VS Code - 生成的项目</span>
+                </div>
+                <img src="https://github.com/Cong0925/nodejs_mysql_Sequelize/assets/77568025/75fb4dd5-34a0-4ef6-8ae8-c4531f6a2223" alt="生成的项目结构" class="phone-screenshot">
+              </div>
+              <div class="screenshot-caption">编辑器中查看生成的完整项目结构</div>
+            </div>
+          </div>
+          <div class="tip-box">
+            <span class="tip-icon">✅</span>
+            <span>生成的项目包含：Model、Router、Controller、中间件、配置文件等完整结构</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 第五章：运行 ==================== -->
+  <section class="step-section" id="run">
+    <div class="container">
+      <div class="section-header">
+        <h2>第五章：运行生成的项目</h2>
+        <p>安装依赖并启动接口服务</p>
+      </div>
+
+      <!-- 移动并安装依赖 -->
+      <div class="step-card">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h3>移动项目并安装依赖</h3>
+          <p>将生成的项目文件夹移动到你期望的位置，然后通过终端进入项目目录，执行 <code>npm i</code> 安装所需的依赖包。</p>
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-dot red"></span>
+              <span class="code-dot yellow"></span>
+              <span class="code-dot green"></span>
+              <span class="code-title">终端</span>
+            </div>
+            <pre><code>cd ./生成的项目目录
+npm i</code></pre>
+          </div>
+          <div class="phone-grid phone-grid--single">
+            <div class="phone-item">
+              <div class="browser-frame">
+                <div class="browser-bar">
+                  <span class="browser-dot"></span>
+                  <span class="browser-dot"></span>
+                  <span class="browser-dot"></span>
+                  <span class="browser-url">终端 - npm i</span>
+                </div>
+                <img src="https://github.com/Cong0925/nodejs_mysql_Sequelize/assets/77568025/d175b28f-9410-4c12-99e0-f990a685fd79" alt="安装依赖" class="phone-screenshot">
+              </div>
+              <div class="screenshot-caption">执行 npm i 安装项目依赖</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 启动接口项目 -->
+      <div class="step-card">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h3>启动接口项目</h3>
+          <p>依赖安装完成后，通过 <code>node ./app.js</code> 启动生成的后端接口项目。此时可以通过接口测试工具（如 Postman、Apifox）进行 API 调试。</p>
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-dot red"></span>
+              <span class="code-dot yellow"></span>
+              <span class="code-dot green"></span>
+              <span class="code-title">终端</span>
+            </div>
+            <pre><code>node ./app.js</code></pre>
+          </div>
+          <div class="phone-grid phone-grid--single">
+            <div class="phone-item">
+              <div class="browser-frame">
+                <div class="browser-bar">
+                  <span class="browser-dot"></span>
+                  <span class="browser-dot"></span>
+                  <span class="browser-dot"></span>
+                  <span class="browser-url">终端 - node app.js</span>
+                </div>
+                <img src="https://github.com/Cong0925/nodejs_mysql_Sequelize/assets/77568025/de897875-4985-411d-81f4-c46be3e5ee2b" alt="启动接口项目" class="phone-screenshot">
+              </div>
+              <div class="screenshot-caption">启动成功，可通过 API 工具调试接口</div>
+            </div>
+          </div>
+          <div class="tip-box">
+            <span class="tip-icon">🎉</span>
+            <span>恭喜！生成的后端接口项目已成功运行，可以开始使用了</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 结语 -->
+  <section class="cta">
+    <div class="container">
+      <h2>快速搭建 RESTful API</h2>
+      <p>告别手写样板代码，专注于业务逻辑开发</p>
+      <div class="cta-actions">
+        <a href="https://github.com/Cong0925/nodejs_mysql_Sequelize" target="_blank" class="btn-primary">
+          <span class="btn-icon">⭐</span>
+          GitHub 开源
+        </a>
+        <a href="../" class="btn-secondary">
+          <span class="btn-icon">🌐</span>
+          返回官网
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <footer class="footer">
+    <div class="container footer-container">
+      <div class="footer-left">
+        <div class="footer-logo">
+          <span class="logo-icon">⚡</span>
+          <span class="logo-text">Node.js MySQL Sequelize</span>
+        </div>
+        <p class="footer-desc">代码生成器 - 完整演示教程</p>
+      </div>
+      <div class="footer-links">
+        <a href="#intro">项目介绍</a>
+        <a href="#setup">环境搭建</a>
+        <a href="#config">配置</a>
+        <a href="#generate">生成</a>
+      </div>
+      <div class="footer-right">
+        <p>&copy; 2026 Node.js MySQL Sequelize 代码生成器. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -41,7 +41,7 @@ const projects = [
         // 项目按钮配置
         repo: 'https://github.com/Cong0925/nodejs_mysql_Sequelize',  // 开源仓库
         homepage: '../nodejs-mysql-sequelize/',  // 项目页面
-        demo: '',  // 演示，暂未制作
+        demo: '../nodejs-mysql-sequelize/demo/',  // 使用演示
     }
     // 后续添加新项目在这里
 ];
