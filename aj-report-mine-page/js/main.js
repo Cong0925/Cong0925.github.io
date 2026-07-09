@@ -1,167 +1,154 @@
 /**
- * AJ-Report 数据大屏 - 项目展示页面脚本
+ * AJ-Report 数据大屏 — Dark Observatory Theme Script
  */
 
-document.addEventListener('DOMContentLoaded', function() {
-  // 移动端菜单切换
+document.addEventListener('DOMContentLoaded', function () {
+
+  // ── Mobile menu ──
   const navToggle = document.querySelector('.nav-toggle');
   const navLinks = document.querySelector('.nav-links');
   const navOverlay = document.querySelector('.nav-overlay');
 
   if (navToggle && navLinks) {
-    navToggle.addEventListener('click', function() {
+    navToggle.addEventListener('click', function () {
       navLinks.classList.toggle('active');
       navOverlay.classList.toggle('active');
     });
-
     if (navOverlay) {
-      navOverlay.addEventListener('click', function() {
+      navOverlay.addEventListener('click', function () {
         navLinks.classList.remove('active');
         navOverlay.classList.remove('active');
       });
     }
   }
 
-  // 平滑滚动
+  // ── Smooth scroll ──
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
+    anchor.addEventListener('click', function (e) {
       e.preventDefault();
       const target = document.querySelector(this.getAttribute('href'));
       if (target) {
-        target.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
-        });
-        // 关闭移动菜单
-        if (navLinks) {
-          navLinks.classList.remove('active');
-        }
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if (navLinks) navLinks.classList.remove('active');
       }
     });
   });
 
-  // 滚动时导航栏效果
+  // ── Navbar scroll effect ──
   const navbar = document.querySelector('.navbar');
-  let lastScroll = 0;
-
-  window.addEventListener('scroll', function() {
-    const currentScroll = window.pageYOffset;
-
-    if (currentScroll > 100) {
-      navbar.style.background = 'rgba(255, 255, 255, 0.98)';
-      navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+  window.addEventListener('scroll', function () {
+    if (window.pageYOffset > 60) {
+      navbar.classList.add('scrolled');
     } else {
-      navbar.style.background = 'rgba(255, 255, 255, 0.95)';
-      navbar.style.boxShadow = 'none';
+      navbar.classList.remove('scrolled');
     }
+  }, { passive: true });
 
-    lastScroll = currentScroll;
-  });
+  // ── Scroll reveal (IntersectionObserver) ──
+  const revealElements = document.querySelectorAll(
+    '.feature-card, .screenshot-card, .arch-card, .step, .section-header, .step-connector, .download-actions'
+  );
+  revealElements.forEach(el => el.classList.add('reveal'));
 
-  // 元素进入视口动画
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-  };
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
       if (entry.isIntersecting) {
-        entry.target.style.opacity = '1';
-        entry.target.style.transform = 'translateY(0)';
+        // Stagger by sibling index
+        const siblings = entry.target.parentElement.querySelectorAll('.reveal');
+        let idx = 0;
+        siblings.forEach((s, j) => { if (s === entry.target) idx = j; });
+        entry.target.style.transitionDelay = (idx * 0.08) + 's';
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
       }
     });
-  }, observerOptions);
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
-  // 观察需要动画的元素
-  document.querySelectorAll('.feature-card, .screenshot-card, .arch-card, .step').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(30px)';
-    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    observer.observe(el);
-  });
+  revealElements.forEach(el => revealObserver.observe(el));
 
-  // 大屏模型动画
-  const screenMockup = document.querySelector('.screen-mockup');
-  if (screenMockup) {
-    // 模拟数据更新
+  // ── Hero particles ──
+  const particleContainer = document.getElementById('heroParticles');
+  if (particleContainer) {
+    for (let i = 0; i < 30; i++) {
+      const p = document.createElement('div');
+      p.className = 'hero-particle';
+      p.style.left = Math.random() * 100 + '%';
+      p.style.top = Math.random() * 100 + '%';
+      p.style.animationDuration = (Math.random() * 12 + 8) + 's';
+      p.style.animationDelay = (Math.random() * 10) + 's';
+      p.style.width = p.style.height = (Math.random() * 2 + 1) + 'px';
+      p.style.opacity = Math.random() * 0.5 + 0.2;
+      particleContainer.appendChild(p);
+    }
+  }
+
+  // ── Screen mockup: live clock ──
+  const screenTime = document.getElementById('screenTime');
+  function updateClock() {
+    const now = new Date();
+    const h = String(now.getHours()).padStart(2, '0');
+    const m = String(now.getMinutes()).padStart(2, '0');
+    const s = String(now.getSeconds()).padStart(2, '0');
+    if (screenTime) screenTime.textContent = h + ':' + m + ':' + s;
+  }
+  updateClock();
+  setInterval(updateClock, 1000);
+
+  // ── Screen mockup: simulated data updates ──
+  const mockup = document.querySelector('.screen-mockup');
+  if (mockup) {
+    // Animate bar heights
     setInterval(() => {
-      const bars = screenMockup.querySelectorAll('.bar');
-      bars.forEach(bar => {
-        const newHeight = Math.random() * 50 + 30;
-        bar.style.height = newHeight + '%';
+      mockup.querySelectorAll('.bar').forEach(bar => {
+        bar.style.height = (Math.random() * 50 + 30) + '%';
       });
     }, 3000);
 
-    // 模拟实时数据
-    const dataValues = screenMockup.querySelectorAll('.data-value');
+    // Animate KPI values
+    const kpiRevenue = document.getElementById('kpiRevenue');
+    const kpiOrders = document.getElementById('kpiOrders');
+    const kpiUsers = document.getElementById('kpiUsers');
+
     setInterval(() => {
-      dataValues.forEach(value => {
-        const baseValue = Math.floor(Math.random() * 100000) + 50000;
-        value.textContent = '¥ ' + baseValue.toLocaleString();
-      });
+      if (kpiRevenue) kpiRevenue.textContent = '¥ ' + (Math.floor(Math.random() * 80000) + 80000).toLocaleString();
+      if (kpiOrders) kpiOrders.textContent = (Math.floor(Math.random() * 2000) + 2000).toLocaleString();
+      if (kpiUsers) kpiUsers.textContent = (Math.floor(Math.random() * 10000) + 12000).toLocaleString();
+    }, 4000);
+
+    // Animate table data
+    const dataEast = document.getElementById('dataEast');
+    const dataNorth = document.getElementById('dataNorth');
+    const dataSouth = document.getElementById('dataSouth');
+
+    setInterval(() => {
+      if (dataEast) dataEast.textContent = '¥ ' + (Math.floor(Math.random() * 50000) + 100000).toLocaleString();
+      if (dataNorth) dataNorth.textContent = '¥ ' + (Math.floor(Math.random() * 40000) + 80000).toLocaleString();
+      if (dataSouth) dataSouth.textContent = '¥ ' + (Math.floor(Math.random() * 40000) + 90000).toLocaleString();
     }, 5000);
   }
 
-  // 特性卡片悬停效果
+  // ── Feature card tilt on hover ──
   document.querySelectorAll('.feature-card').forEach(card => {
-    card.addEventListener('mouseenter', function() {
-      this.style.transform = 'translateY(-8px)';
-      this.style.boxShadow = '0 20px 40px rgba(59, 130, 246, 0.15)';
+    card.addEventListener('mousemove', function (e) {
+      const rect = this.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const rotateX = (y - centerY) / centerY * -3;
+      const rotateY = (x - centerX) / centerX * 3;
+      this.style.transform = `perspective(600px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
     });
 
-    card.addEventListener('mouseleave', function() {
-      this.style.transform = 'translateY(0)';
-      this.style.boxShadow = '';
-    });
-  });
-
-  // 截图卡片悬停效果
-  document.querySelectorAll('.screenshot-card').forEach(card => {
-    card.addEventListener('mouseenter', function() {
-      this.style.transform = 'translateY(-8px)';
-      const preview = this.querySelector('.screenshot-preview');
-      if (preview) {
-        preview.style.background = 'linear-gradient(145deg, #1e293b 0%, #0f172a 100%)';
-        preview.style.transform = 'scale(1.02)';
-      }
-    });
-
-    card.addEventListener('mouseleave', function() {
-      this.style.transform = 'translateY(0)';
-      const preview = this.querySelector('.screenshot-preview');
-      if (preview) {
-        preview.style.transform = 'scale(1)';
-      }
+    card.addEventListener('mouseleave', function () {
+      this.style.transform = 'perspective(600px) rotateX(0) rotateY(0) translateY(0)';
     });
   });
 
-  // 按钮点击效果
-  document.querySelectorAll('.btn-primary, .btn-secondary').forEach(btn => {
-    btn.addEventListener('mousedown', function() {
-      this.style.transform = 'scale(0.98)';
-    });
-
-    btn.addEventListener('mouseup', function() {
-      this.style.transform = 'scale(1)';
-    });
-
-    btn.addEventListener('mouseleave', function() {
-      this.style.transform = 'scale(1)';
-    });
-  });
-
-  // 控制台输出
-  console.log(`
-    %c📊 AJ-Report 数据大屏
-    %c项目展示页面已加载
-
-    技术栈：Java + Vue + MySQL
-    仓库地址：https://github.com/Cong0925/aj-report-mine
-
-    Made with ❤️ by Cong0925
-  `,
-    'color: #3b82f6; font-size: 20px; font-weight: bold;',
-    'color: #6b7280; font-size: 12px;'
+  // ── Console branding ──
+  console.log(
+    '%c📊 AJ-Report 数据大屏 %c— Dark Observatory Theme',
+    'color: #00f0ff; font-size: 18px; font-weight: bold;',
+    'color: #64748b; font-size: 12px;'
   );
 });

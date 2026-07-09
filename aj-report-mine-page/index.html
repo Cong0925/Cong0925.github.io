@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AJ-Report 数据大屏 — 企业级数据可视化平台</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -14,7 +14,15 @@
   <nav class="navbar">
     <div class="container nav-container">
       <div class="nav-logo">
-        <span class="logo-icon">📊</span>
+        <div class="logo-pulse">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+            <rect x="2" y="18" width="5" height="12" rx="1" fill="#00f0ff"/>
+            <rect x="9" y="12" width="5" height="18" rx="1" fill="#00d4ff"/>
+            <rect x="16" y="6" width="5" height="24" rx="1" fill="#00b8ff"/>
+            <rect x="23" y="2" width="5" height="28" rx="1" fill="#009cff"/>
+            <line x1="4" y1="16" x2="26" y2="4" stroke="#00f0ff" stroke-width="1.5" stroke-dasharray="3 2" opacity="0.6"/>
+          </svg>
+        </div>
         <span class="logo-text">AJ-Report</span>
       </div>
       <button class="nav-toggle" aria-label="切换菜单">
@@ -26,7 +34,10 @@
         <a href="#features">功能特点</a>
         <a href="#architecture">技术架构</a>
         <a href="#screenshots">效果展示</a>
-        <a class="nav-btn" href="#download">快速开始</a>
+        <a class="nav-btn" href="https://github.com/Cong0925/aj-report-mine" target="_blank">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          GitHub
+        </a>
       </div>
     </div>
   </nav>
@@ -34,100 +45,173 @@
 
   <!-- 英雄区域 -->
   <section class="hero">
-    <div class="hero-decoration">
-      <div class="deco-circle deco-circle-1"></div>
-      <div class="deco-circle deco-circle-2"></div>
-      <div class="deco-circle deco-circle-3"></div>
-    </div>
+    <div class="hero-grid-bg"></div>
+    <div class="hero-glow hero-glow-1"></div>
+    <div class="hero-glow hero-glow-2"></div>
+    <div class="hero-particles" id="heroParticles"></div>
     <div class="container hero-container">
       <div class="hero-content">
-        <div class="hero-badge">🚀 开源项目 · 企业级</div>
-        <h1>AJ-Report 数据大屏<br><span class="hero-subtitle">企业级数据可视化平台</span></h1>
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          开源 · 企业级
+        </div>
+        <h1>
+          <span class="hero-title-line">AJ-Report</span>
+          <span class="hero-title-accent">数据大屏</span>
+        </h1>
+        <p class="hero-subtitle">企业级数据可视化平台</p>
         <p class="hero-desc">
-          基于 aj-report v1.4 版本进行二次开发的数据可视化大屏项目。
-          <br>支持多种数据源接入，提供丰富的图表组件和拖拽式设计。
-          <br><span class="hero-highlight">前后端分离，开箱即用</span>
+          基于 aj-report v1.4 深度二次开发，支持多种数据源接入，
+          <br>提供丰富的图表组件与拖拽式可视化设计器。
+          <br><span class="hero-highlight">前后端分离 · 开箱即用 · 大屏投放</span>
         </p>
         <div class="hero-actions">
           <a class="btn-primary" href="https://github.com/Cong0925/aj-report-mine" target="_blank">
-            <span class="btn-icon">⭐</span>
-            GitHub 仓库
+            <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            查看源码
           </a>
           <a class="btn-secondary" href="#features">
-            了解更多
+            探索功能
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
           </a>
         </div>
-        <div class="hero-stats">
-          <div class="stat-item">
-            <span class="stat-value">Java</span>
-            <span class="stat-label">后端技术</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-value">Vue</span>
-            <span class="stat-label">前端框架</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-value">MySQL</span>
-            <span class="stat-label">数据存储</span>
-          </div>
+        <div class="hero-tech-stack">
+          <div class="tech-chip"><span class="chip-dot" style="--chip-color: #00f0ff"></span>Vue.js</div>
+          <div class="tech-chip"><span class="chip-dot" style="--chip-color: #10b981"></span>Spring Boot</div>
+          <div class="tech-chip"><span class="chip-dot" style="--chip-color: #f59e0b"></span>MySQL</div>
+          <div class="tech-chip"><span class="chip-dot" style="--chip-color: #ef4444"></span>ECharts</div>
         </div>
       </div>
       <div class="hero-visual">
         <div class="screen-mockup">
+          <div class="screen-glow"></div>
           <div class="screen-header">
             <div class="screen-dots">
               <span class="dot dot-red"></span>
               <span class="dot dot-yellow"></span>
               <span class="dot dot-green"></span>
             </div>
-            <div class="screen-title">数据大屏监控中心</div>
+            <div class="screen-title">
+              <span class="screen-status"></span>
+              数据大屏监控中心
+            </div>
+            <div class="screen-time" id="screenTime">--:--:--</div>
           </div>
           <div class="screen-content">
-            <div class="chart-card chart-line">
-              <div class="chart-title">销售趋势</div>
-              <div class="chart-visual">
-                <svg viewBox="0 0 100 40" preserveAspectRatio="none">
-                  <polyline points="0,35 15,25 30,30 45,15 60,20 75,10 90,18 100,5" fill="none" stroke="#3b82f6" stroke-width="2"/>
-                  <polyline points="0,38 15,32 30,35 45,25 60,28 75,18 90,22 100,15" fill="none" stroke="#10b981" stroke-width="2" stroke-dasharray="4"/>
-                </svg>
+            <!-- KPI 行 -->
+            <div class="screen-kpi-row">
+              <div class="kpi-card">
+                <div class="kpi-label">今日营收</div>
+                <div class="kpi-value" id="kpiRevenue">¥ 128,500</div>
+                <div class="kpi-change up">↑ 12.5%</div>
+              </div>
+              <div class="kpi-card">
+                <div class="kpi-label">订单数</div>
+                <div class="kpi-value" id="kpiOrders">2,847</div>
+                <div class="kpi-change up">↑ 8.3%</div>
+              </div>
+              <div class="kpi-card">
+                <div class="kpi-label">活跃用户</div>
+                <div class="kpi-value" id="kpiUsers">15,230</div>
+                <div class="kpi-change down">↓ 2.1%</div>
               </div>
             </div>
-            <div class="chart-card chart-bar">
-              <div class="chart-title">月度对比</div>
-              <div class="chart-visual">
-                <div class="bar-group">
-                  <div class="bar" style="height: 60%;"></div>
-                  <div class="bar" style="height: 45%;"></div>
-                  <div class="bar" style="height: 75%;"></div>
-                  <div class="bar" style="height: 50%;"></div>
-                  <div class="bar" style="height: 85%;"></div>
+            <!-- 图表行 -->
+            <div class="screen-charts-row">
+              <div class="chart-card chart-area">
+                <div class="chart-card-header">
+                  <span class="chart-title">销售趋势</span>
+                  <span class="chart-badge">实时</span>
+                </div>
+                <div class="chart-visual">
+                  <svg viewBox="0 0 200 60" preserveAspectRatio="none" class="chart-svg">
+                    <defs>
+                      <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="#00f0ff" stop-opacity="0.3"/>
+                        <stop offset="100%" stop-color="#00f0ff" stop-opacity="0"/>
+                      </linearGradient>
+                      <linearGradient id="lineGrad" x1="0" y1="0" x2="1" y2="0">
+                        <stop offset="0%" stop-color="#00f0ff"/>
+                        <stop offset="100%" stop-color="#0080ff"/>
+                      </linearGradient>
+                    </defs>
+                    <path d="M0,50 L10,45 25,48 40,30 55,35 70,20 85,25 100,15 120,22 140,10 160,18 180,8 200,5" fill="url(#areaGrad)" stroke="none"/>
+                    <polyline class="chart-line-anim" points="0,50 10,45 25,48 40,30 55,35 70,20 85,25 100,15 120,22 140,10 160,18 180,8 200,5" fill="none" stroke="url(#lineGrad)" stroke-width="2"/>
+                    <polyline points="0,55 10,52 25,54 40,42 55,45 70,35 85,38 100,30 120,34 140,25 160,30 180,20 200,15" fill="none" stroke="#10b981" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.6"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="chart-card chart-bar-card">
+                <div class="chart-card-header">
+                  <span class="chart-title">月度对比</span>
+                  <span class="chart-badge">Q4</span>
+                </div>
+                <div class="chart-visual">
+                  <div class="bar-group">
+                    <div class="bar-col"><div class="bar" style="height: 55%;"><span class="bar-val">128</span></div><span class="bar-label">7月</span></div>
+                    <div class="bar-col"><div class="bar" style="height: 40%;"><span class="bar-val">95</span></div><span class="bar-label">8月</span></div>
+                    <div class="bar-col"><div class="bar" style="height: 72%;"><span class="bar-val">168</span></div><span class="bar-label">9月</span></div>
+                    <div class="bar-col"><div class="bar" style="height: 48%;"><span class="bar-val">112</span></div><span class="bar-label">10月</span></div>
+                    <div class="bar-col"><div class="bar" style="height: 85%;"><span class="bar-val">196</span></div><span class="bar-label">11月</span></div>
+                    <div class="bar-col"><div class="bar" style="height: 65%;"><span class="bar-val">152</span></div><span class="bar-label">12月</span></div>
+                  </div>
                 </div>
               </div>
             </div>
-            <div class="chart-card chart-pie">
-              <div class="chart-title">占比分析</div>
-              <div class="chart-visual">
-                <div class="pie-chart">
-                  <div class="pie-segment" style="--percentage: 45; --color: #3b82f6;"></div>
-                  <div class="pie-segment" style="--percentage: 30; --color: #10b981;"></div>
-                  <div class="pie-segment" style="--percentage: 25; --color: #f59e0b;"></div>
+            <!-- 底部行 -->
+            <div class="screen-bottom-row">
+              <div class="chart-card chart-pie-card">
+                <div class="chart-card-header">
+                  <span class="chart-title">区域占比</span>
+                </div>
+                <div class="chart-visual pie-visual">
+                  <div class="donut-chart">
+                    <svg viewBox="0 0 80 80">
+                      <circle cx="40" cy="40" r="32" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="10"/>
+                      <circle cx="40" cy="40" r="32" fill="none" stroke="#00f0ff" stroke-width="10" stroke-dasharray="90.5 110.5" stroke-dashoffset="0" class="donut-seg"/>
+                      <circle cx="40" cy="40" r="32" fill="none" stroke="#10b981" stroke-width="10" stroke-dasharray="60.3 140.7" stroke-dashoffset="-90.5" class="donut-seg"/>
+                      <circle cx="40" cy="40" r="32" fill="none" stroke="#f59e0b" stroke-width="10" stroke-dasharray="40.2 160.8" stroke-dashoffset="-150.8" class="donut-seg"/>
+                      <circle cx="40" cy="40" r="22" fill="rgba(15,23,42,0.9)"/>
+                      <text x="40" y="38" text-anchor="middle" fill="rgba(255,255,255,0.9)" font-size="8" font-weight="600">78%</text>
+                      <text x="40" y="48" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="5">完成率</text>
+                    </svg>
+                  </div>
+                  <div class="pie-legend">
+                    <div class="legend-item"><span class="legend-dot" style="background:#00f0ff"></span>华东 45%</div>
+                    <div class="legend-item"><span class="legend-dot" style="background:#10b981"></span>华北 30%</div>
+                    <div class="legend-item"><span class="legend-dot" style="background:#f59e0b"></span>华南 25%</div>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="chart-card chart-table">
-              <div class="chart-title">实时数据</div>
-              <div class="chart-visual">
-                <div class="data-row">
-                  <span class="data-label">华东区</span>
-                  <span class="data-value">¥ 128,500</span>
+              <div class="chart-card chart-table-card">
+                <div class="chart-card-header">
+                  <span class="chart-title">实时数据</span>
+                  <span class="chart-badge live-badge">
+                    <span class="live-dot"></span>
+                    LIVE
+                  </span>
                 </div>
-                <div class="data-row">
-                  <span class="data-label">华北区</span>
-                  <span class="data-value">¥ 95,200</span>
-                </div>
-                <div class="data-row">
-                  <span class="data-label">华南区</span>
-                  <span class="data-value">¥ 112,800</span>
+                <div class="chart-visual table-visual">
+                  <div class="data-row data-header">
+                    <span>区域</span>
+                    <span>销售额</span>
+                    <span>增长率</span>
+                  </div>
+                  <div class="data-row">
+                    <span class="data-label">华东区</span>
+                    <span class="data-value" id="dataEast">¥ 128,500</span>
+                    <span class="data-rate up">+12.5%</span>
+                  </div>
+                  <div class="data-row">
+                    <span class="data-label">华北区</span>
+                    <span class="data-value" id="dataNorth">¥ 95,200</span>
+                    <span class="data-rate up">+8.3%</span>
+                  </div>
+                  <div class="data-row">
+                    <span class="data-label">华南区</span>
+                    <span class="data-value" id="dataSouth">¥ 112,800</span>
+                    <span class="data-rate down">-2.1%</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -141,37 +225,50 @@
   <section class="features" id="features">
     <div class="container">
       <div class="section-header">
+        <span class="section-tag">CAPABILITIES</span>
         <h2>功能特点</h2>
         <p>强大的数据可视化能力，满足企业级需求</p>
       </div>
       <div class="features-grid">
-        <div class="feature-card">
-          <div class="feature-icon">📈</div>
+        <div class="feature-card" data-tilt>
+          <div class="feature-icon-wrap" style="--icon-color: #00f0ff">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3v18h18"/><path d="M7 16l4-8 4 4 5-9"/></svg>
+          </div>
           <h3>丰富图表组件</h3>
           <p>支持折线图、柱状图、饼图、地图等数十种可视化图表，满足各种数据展示场景</p>
         </div>
-        <div class="feature-card">
-          <div class="feature-icon">🎨</div>
+        <div class="feature-card" data-tilt>
+          <div class="feature-icon-wrap" style="--icon-color: #a855f7">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+          </div>
           <h3>拖拽式设计</h3>
           <p>可视化设计器，通过拖拽即可完成大屏布局，无需编写代码，快速搭建数据大屏</p>
         </div>
-        <div class="feature-card">
-          <div class="feature-icon">🔗</div>
+        <div class="feature-card" data-tilt>
+          <div class="feature-icon-wrap" style="--icon-color: #10b981">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+          </div>
           <h3>多数据源支持</h3>
           <p>支持 MySQL、Oracle、PostgreSQL 等主流数据库，以及 RESTful API 数据接入</p>
         </div>
-        <div class="feature-card">
-          <div class="feature-icon">📱</div>
+        <div class="feature-card" data-tilt>
+          <div class="feature-icon-wrap" style="--icon-color: #f59e0b">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          </div>
           <h3>响应式布局</h3>
           <p>自适应不同屏幕尺寸，支持大屏投放、PC端、移动端等多种展示场景</p>
         </div>
-        <div class="feature-card">
-          <div class="feature-icon">⚡</div>
+        <div class="feature-card" data-tilt>
+          <div class="feature-icon-wrap" style="--icon-color: #ef4444">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          </div>
           <h3>实时数据更新</h3>
           <p>支持数据定时刷新和 WebSocket 实时推送，确保数据展示的及时性</p>
         </div>
-        <div class="feature-card">
-          <div class="feature-icon">🛡️</div>
+        <div class="feature-card" data-tilt>
+          <div class="feature-icon-wrap" style="--icon-color: #06b6d4">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
           <h3>权限管理</h3>
           <p>完善的用户权限体系，支持多角色管理，保障数据安全</p>
         </div>
@@ -183,13 +280,17 @@
   <section class="architecture" id="architecture">
     <div class="container">
       <div class="section-header">
+        <span class="section-tag">ARCHITECTURE</span>
         <h2>技术架构</h2>
         <p>前后端分离，技术栈成熟稳定</p>
       </div>
       <div class="arch-container">
         <div class="arch-card arch-frontend">
+          <div class="arch-card-glow"></div>
           <div class="arch-header">
-            <span class="arch-icon">🎨</span>
+            <div class="arch-icon-wrap" style="--arch-color: #00f0ff">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            </div>
             <h3>前端技术栈</h3>
           </div>
           <ul class="arch-list">
@@ -200,12 +301,17 @@
           </ul>
         </div>
         <div class="arch-connector">
-          <div class="connector-line"></div>
+          <div class="connector-line">
+            <div class="connector-pulse"></div>
+          </div>
           <span class="connector-label">RESTful API</span>
         </div>
         <div class="arch-card arch-backend">
+          <div class="arch-card-glow"></div>
           <div class="arch-header">
-            <span class="arch-icon">⚙️</span>
+            <div class="arch-icon-wrap" style="--arch-color: #10b981">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+            </div>
             <h3>后端技术栈</h3>
           </div>
           <ul class="arch-list">
@@ -223,19 +329,37 @@
   <section class="screenshots" id="screenshots">
     <div class="container">
       <div class="section-header">
+        <span class="section-tag">GALLERY</span>
         <h2>效果展示</h2>
         <p>直观感受数据可视化大屏的魅力</p>
       </div>
       <div class="screenshot-cards">
         <div class="screenshot-card">
           <div class="screenshot-preview">
-            <div class="preview-header">
+            <div class="preview-chrome">
+              <span class="preview-dot"></span>
+              <span class="preview-dot"></span>
               <span class="preview-dot"></span>
               <span class="preview-title">销售数据分析</span>
             </div>
             <div class="preview-content">
-              <div class="preview-chart preview-line"></div>
-              <div class="preview-chart preview-bar"></div>
+              <svg viewBox="0 0 160 80" preserveAspectRatio="none" class="preview-svg">
+                <defs>
+                  <linearGradient id="prevGrad1" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#00f0ff" stop-opacity="0.4"/>
+                    <stop offset="100%" stop-color="#00f0ff" stop-opacity="0"/>
+                  </linearGradient>
+                </defs>
+                <path d="M0,70 L20,55 40,60 60,35 80,42 100,20 120,28 140,12 160,8" fill="url(#prevGrad1)"/>
+                <polyline points="0,70 20,55 40,60 60,35 80,42 100,20 120,28 140,12 160,8" fill="none" stroke="#00f0ff" stroke-width="1.5"/>
+              </svg>
+              <div class="preview-bars">
+                <div class="mini-bar" style="height:60%"></div>
+                <div class="mini-bar" style="height:40%"></div>
+                <div class="mini-bar" style="height:80%"></div>
+                <div class="mini-bar" style="height:55%"></div>
+                <div class="mini-bar" style="height:90%"></div>
+              </div>
             </div>
           </div>
           <div class="screenshot-info">
@@ -245,13 +369,25 @@
         </div>
         <div class="screenshot-card">
           <div class="screenshot-preview">
-            <div class="preview-header">
+            <div class="preview-chrome">
+              <span class="preview-dot"></span>
+              <span class="preview-dot"></span>
               <span class="preview-dot"></span>
               <span class="preview-title">生产监控中心</span>
             </div>
             <div class="preview-content">
-              <div class="preview-chart preview-gauge"></div>
-              <div class="preview-chart preview-table"></div>
+              <div class="preview-gauge-wrap">
+                <svg viewBox="0 0 100 60" class="preview-svg">
+                  <path d="M10,55 A40,40 0 0,1 90,55" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="6" stroke-linecap="round"/>
+                  <path d="M10,55 A40,40 0 0,1 90,55" fill="none" stroke="#10b981" stroke-width="6" stroke-linecap="round" stroke-dasharray="110" stroke-dashoffset="25"/>
+                  <text x="50" y="50" text-anchor="middle" fill="white" font-size="10" font-weight="600">78%</text>
+                </svg>
+              </div>
+              <div class="preview-table-mock">
+                <div class="mock-row"><span></span><span></span></div>
+                <div class="mock-row"><span></span><span></span></div>
+                <div class="mock-row"><span></span><span></span></div>
+              </div>
             </div>
           </div>
           <div class="screenshot-info">
@@ -261,13 +397,30 @@
         </div>
         <div class="screenshot-card">
           <div class="screenshot-preview">
-            <div class="preview-header">
+            <div class="preview-chrome">
+              <span class="preview-dot"></span>
+              <span class="preview-dot"></span>
               <span class="preview-dot"></span>
               <span class="preview-title">运营数据概览</span>
             </div>
             <div class="preview-content">
-              <div class="preview-chart preview-pie"></div>
-              <div class="preview-chart preview-map"></div>
+              <svg viewBox="0 0 80 80" class="preview-svg preview-donut-svg">
+                <circle cx="40" cy="40" r="28" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="8"/>
+                <circle cx="40" cy="40" r="28" fill="none" stroke="#a855f7" stroke-width="8" stroke-dasharray="70 106.4" stroke-dashoffset="0"/>
+                <circle cx="40" cy="40" r="28" fill="none" stroke="#00f0ff" stroke-width="8" stroke-dasharray="44 132.4" stroke-dashoffset="-70"/>
+                <circle cx="40" cy="40" r="28" fill="none" stroke="#f59e0b" stroke-width="8" stroke-dasharray="32 144.4" stroke-dashoffset="-114"/>
+              </svg>
+              <div class="preview-map-mock">
+                <svg viewBox="0 0 80 60" class="preview-svg">
+                  <circle cx="25" cy="20" r="4" fill="#00f0ff" opacity="0.6"/>
+                  <circle cx="50" cy="35" r="6" fill="#10b981" opacity="0.6"/>
+                  <circle cx="65" cy="15" r="3" fill="#f59e0b" opacity="0.6"/>
+                  <circle cx="35" cy="45" r="5" fill="#a855f7" opacity="0.6"/>
+                  <line x1="25" y1="20" x2="50" y2="35" stroke="rgba(0,240,255,0.3)" stroke-width="0.5"/>
+                  <line x1="50" y1="35" x2="65" y2="15" stroke="rgba(0,240,255,0.3)" stroke-width="0.5"/>
+                  <line x1="35" y1="45" x2="50" y2="35" stroke="rgba(0,240,255,0.3)" stroke-width="0.5"/>
+                </svg>
+              </div>
             </div>
           </div>
           <div class="screenshot-info">
@@ -280,45 +433,61 @@
   </section>
 
   <!-- 快速开始 -->
-  <section class="download" id="download">
+  <section class="quickstart" id="download">
     <div class="container">
       <div class="section-header">
+        <span class="section-tag">QUICKSTART</span>
         <h2>快速开始</h2>
         <p>简单几步，快速部署数据大屏</p>
       </div>
-      <div class="download-steps">
+      <div class="steps-timeline">
         <div class="step">
-          <div class="step-number">1</div>
-          <div class="step-content">
+          <div class="step-num">
+            <span>01</span>
+          </div>
+          <div class="step-body">
             <h4>克隆项目</h4>
-            <code>git clone https://github.com/Cong0925/aj-report-mine.git</code>
+            <div class="step-code">
+              <code>git clone https://github.com/Cong0925/aj-report-mine.git</code>
+              <button class="copy-btn" onclick="navigator.clipboard.writeText('git clone https://github.com/Cong0925/aj-report-mine.git').then(()=>{this.textContent='已复制';setTimeout(()=>this.textContent='复制',1500)})">复制</button>
+            </div>
           </div>
         </div>
-        <div class="step-arrow">→</div>
+        <div class="step-connector"></div>
         <div class="step">
-          <div class="step-number">2</div>
-          <div class="step-content">
+          <div class="step-num">
+            <span>02</span>
+          </div>
+          <div class="step-body">
             <h4>环境准备</h4>
-            <p>JDK 1.8 + MySQL 8.0 + Node.js 14</p>
+            <p>JDK 1.8 + MySQL 8.0 + Node.js 14 + Maven 3.x</p>
           </div>
         </div>
-        <div class="step-arrow">→</div>
+        <div class="step-connector"></div>
         <div class="step">
-          <div class="step-number">3</div>
-          <div class="step-content">
+          <div class="step-num">
+            <span>03</span>
+          </div>
+          <div class="step-body">
             <h4>启动项目</h4>
-            <p>后端：mvn clean package</p>
-            <p>前端：npm run dev</p>
+            <div class="step-code">
+              <code>mvn clean package && npm run dev</code>
+              <button class="copy-btn" onclick="navigator.clipboard.writeText('mvn clean package && npm run dev').then(()=>{this.textContent='已复制';setTimeout(()=>this.textContent='复制',1500)})">复制</button>
+            </div>
           </div>
         </div>
       </div>
       <div class="download-actions">
         <a class="btn-primary btn-large" href="https://github.com/Cong0925/aj-report-mine" target="_blank">
-          <span class="btn-icon">📦</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
           下载源码
         </a>
-        <a class="btn-secondary btn-large" href="https://github.com/anji-plus/report" target="_blank">
-          <span class="btn-icon">📖</span>
+        <a class="btn-ghost btn-large" href="demo/index.html">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2zM22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+          部署指南
+        </a>
+        <a class="btn-ghost btn-large" href="https://github.com/anji-plus/report" target="_blank">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/></svg>
           官方文档
         </a>
       </div>
@@ -328,17 +497,28 @@
   <!-- 页脚 -->
   <footer class="footer">
     <div class="container footer-container">
-      <div class="footer-logo">
-        <span>📊</span>
-        <span>AJ-Report 数据大屏</span>
+      <div class="footer-left">
+        <div class="footer-logo">
+          <svg width="24" height="24" viewBox="0 0 32 32" fill="none">
+            <rect x="2" y="18" width="5" height="12" rx="1" fill="#00f0ff"/>
+            <rect x="9" y="12" width="5" height="18" rx="1" fill="#00d4ff"/>
+            <rect x="16" y="6" width="5" height="24" rx="1" fill="#00b8ff"/>
+            <rect x="23" y="2" width="5" height="28" rx="1" fill="#009cff"/>
+          </svg>
+          <span>AJ-Report 数据大屏</span>
+        </div>
+        <p class="footer-desc">企业级数据可视化平台 · 基于 aj-report 二次开发</p>
       </div>
-      <div class="footer-links">
-        <a href="https://github.com/Cong0925/aj-report-mine" target="_blank">GitHub</a>
-        <a href="https://github.com/anji-plus/report" target="_blank">官方仓库</a>
-        <a href="../">返回首页</a>
-      </div>
-      <div class="footer-copyright">
-        <p>Made with ❤️ by Cong0925</p>
+      <div class="footer-right">
+        <div class="footer-links">
+          <a href="https://github.com/Cong0925/aj-report-mine" target="_blank">GitHub</a>
+          <a href="https://github.com/anji-plus/report" target="_blank">官方仓库</a>
+          <a href="demo/index.html">部署指南</a>
+          <a href="../">返回首页</a>
+        </div>
+        <div class="footer-copyright">
+          <p>Made with ❤️ by Cong0925</p>
+        </div>
       </div>
     </div>
   </footer>
