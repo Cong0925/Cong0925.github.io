@@ -18,6 +18,41 @@
 
 html { scroll-behavior: smooth; }
 
+/* Chrome 兼容性：gap 在 flexbox/grid 中的回退 */
+@supports not (gap: 1px) {
+  /* Flexbox 间距回退 */
+  nav > * + * { margin-left: auto; }
+  .nav-links > * + * { margin-left: 32px; }
+  .hero-badge > * + * { margin-left: 8px; }
+  .hero-actions > * + * { margin-left: 16px; }
+  .btn-primary > * + * { margin-left: 0; }
+  .btn-secondary > * + * { margin-left: 0; }
+  .pet-card > * + * { margin-top: 4px; }
+  .pet-card .en { margin-bottom: 16px; }
+  .wf-item > * + * { margin-top: 4px; }
+  .wf-item .en { margin-bottom: 10px; }
+  .theme-chip > * + * { margin-left: 10px; }
+  .theme-chip .en { margin-left: 4px; }
+  .cta-actions > * + * { margin-left: 16px; }
+  .btn-download > * + * { margin-left: 10px; }
+  footer > * + * { margin-left: auto; }
+  footer .right > * + * { margin-left: 24px; }
+  /* Grid 间距回退 */
+  .pet-showcase { gap: 0; }
+  .pet-showcase > * { margin-bottom: 0; }
+  .pet-showcase > * + * { margin-left: 40px; }
+  .writing-features { gap: 0; }
+  .writing-features > * { margin-bottom: 20px; }
+  .writing-features > *:nth-child(4n+2),
+  .writing-features > *:nth-child(4n+3),
+  .writing-features > *:nth-child(4n) { margin-left: 20px; }
+  .theme-grid { gap: 0; }
+  .theme-grid > * { margin-bottom: 16px; margin-right: 16px; }
+  .stats-row { gap: 0; }
+  .stats-row > * { margin-bottom: 24px; }
+  .stats-row > *:nth-child(n+2) { margin-left: 24px; }
+}
+
 body {
   font-family: 'Outfit', sans-serif;
   background: var(--bg);
@@ -86,7 +121,6 @@ nav {
   background: rgba(250, 249, 247, 0.85);
   border-bottom: 1px solid var(--border);
   transition: all 0.3s;
-  will-change: transform;
 }
 
 .nav-logo {

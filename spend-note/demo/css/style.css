@@ -34,6 +34,37 @@ body {
   overflow-x: hidden;
 }
 
+/* Chrome 兼容性：gap 在 flexbox/grid 中的回退 */
+@supports not (gap: 1px) {
+  /* Flexbox 间距回退 */
+  .nav-logo > * + * { margin-left: 10px; }
+  .nav-links > * + * { margin-left: 20px; }
+  .nav-toggle > * + * { margin-top: 5px; }
+  .nav-toggle span + span { margin-top: 5px; }
+  .hero-actions > * + * { margin-left: 16px; }
+  .btn-primary > * + * { margin-left: 8px; }
+  .btn-secondary > * + * { margin-left: 8px; }
+  .hero-stats > * + * { margin-left: 32px; }
+  .tip-box > * + * { margin-left: 8px; }
+  .cta-actions > * + * { margin-left: 16px; }
+  .footer-container > * + * { margin-left: auto; }
+  .footer-logo > * + * { margin-left: 8px; }
+  .footer-links > * + * { margin-left: 24px; }
+  .qr-placeholder > * + * { margin-left: 0; margin-top: 16px; }
+  /* Grid 间距回退 */
+  .hero-container { gap: 0; }
+  .hero-container > * + * { margin-left: 40px; }
+  .feature-grid { gap: 0; }
+  .feature-grid > * { margin-bottom: 16px; }
+  .feature-grid > *:nth-child(3n+2),
+  .feature-grid > *:nth-child(3n) { margin-left: 16px; }
+  .phone-features { gap: 0; }
+  .phone-features > * { margin-bottom: 16px; margin-right: 16px; }
+  .about-container { gap: 0; }
+  .about-container > * + * { margin-left: 40px; }
+  .footer-container { gap: 0; }
+}
+
 .container {
   max-width: 1100px;
   margin: 0 auto;
@@ -53,6 +84,7 @@ a {
   right: 0;
   z-index: 1000;
   background: rgba(240, 246, 255, 0.9);
+  -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
   padding: 16px 0;
@@ -136,7 +168,10 @@ a {
 
 .hero-decoration {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   pointer-events: none;
 }
 

@@ -47,7 +47,10 @@ body {
 /* ========== 动态背景层 ========== */
 .bg-layer {
     position: fixed;
-    inset: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     overflow: hidden;
     z-index: -1;
     pointer-events: none;
@@ -138,7 +141,10 @@ body {
 
 #particleCanvas {
     position: fixed;
-    inset: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     width: 100%;
     height: 100%;
     pointer-events: none;
@@ -156,7 +162,6 @@ body {
     transform: translate(-50%, -50%);
     transition: opacity 0.4s ease;
     opacity: 0;
-    will-change: left, top;
 }
 
 .mouse-glow.active {
@@ -182,6 +187,34 @@ body {
     display: flex;
     align-items: center;
     gap: 20px;
+}
+
+/* Chrome 兼容性：gap 在 flexbox 中的回退 */
+@supports not (gap: 1px) {
+    /* 头部区域 */
+    .header-top > * + * { margin-left: 20px; }
+    .header-stats > * + * { margin-left: 12px; }
+    .stat-item > * + * { margin-left: 6px; }
+    .github-link > * + * { margin-left: 8px; }
+    /* 标题和搜索 */
+    .title-section > * + * { margin-left: 24px; }
+    /* 卡片内部 */
+    .project-header > * + * { margin-left: 12px; }
+    .project-title > * + * { margin-left: 8px; }
+    .project-tags > .tag + .tag { margin-left: 6px; }
+    .project-buttons > * + * { margin-left: 8px; }
+    .section-title > * + * { margin-left: 10px; }
+    .stat-divider { margin: 0; }
+    /* Toast 提示 */
+    .toast-notice > * + * { margin-left: 8px; }
+    /* Gitalk 评论区 */
+    #gitalk-container .gt-comment-header > * + * { margin-left: 8px; }
+    #gitalk-container .gt-comment-actions > * + * { margin-left: 4px; }
+    /* Grid 卡片间距 - 所有卡片都有间距 */
+    .projects-grid { gap: 0; }
+    .projects-grid > .project-card { margin-bottom: 20px; }
+    .projects-grid > .project-card:nth-child(3n+2),
+    .projects-grid > .project-card:nth-child(3n) { margin-left: 20px; }
 }
 
 .avatar-wrapper {
@@ -281,7 +314,10 @@ body {
 /* 头像发光环 */
 .avatar-glow {
     position: absolute;
-    inset: -4px;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
     border-radius: 50%;
     background: conic-gradient(from 0deg, var(--primary), var(--accent), #8b5cf6, var(--primary));
     opacity: 0;
