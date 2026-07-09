@@ -53,7 +53,6 @@ body {
     pointer-events: none;
 }
 
-/* 渐变光球 */
 .bg-orb {
     position: absolute;
     border-radius: 50%;
@@ -137,7 +136,6 @@ body {
     66% { transform: translate(-60px, -30px) scale(0.93); }
 }
 
-/* 粒子画布 */
 #particleCanvas {
     position: fixed;
     inset: 0;
@@ -174,7 +172,7 @@ body {
     z-index: 1;
 }
 
-/* 头部区域 */
+/* ========== 头部区域 ========== */
 .header {
     padding: 48px 0 32px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.5);
@@ -186,7 +184,6 @@ body {
     gap: 20px;
 }
 
-/* 头像 */
 .avatar-wrapper {
     width: 68px;
     height: 68px;
@@ -210,7 +207,6 @@ body {
     transform: scale(1.05);
 }
 
-/* 中间信息 */
 .header-info {
     flex: 1;
     min-width: 0;
@@ -231,7 +227,6 @@ body {
     margin-bottom: 10px;
 }
 
-/* 统计信息 */
 .header-stats {
     display: flex;
     align-items: center;
@@ -255,7 +250,6 @@ body {
     color: var(--border);
 }
 
-/* GitHub链接 */
 .github-link {
     display: inline-flex;
     align-items: center;
@@ -284,7 +278,32 @@ body {
     font-size: 1rem;
 }
 
-/* 标题和搜索区域 */
+/* 头像发光环 */
+.avatar-glow {
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    background: conic-gradient(from 0deg, var(--primary), var(--accent), #8b5cf6, var(--primary));
+    opacity: 0;
+    z-index: 0;
+    animation: glowSpin 4s linear infinite, glowPulse 3s ease-in-out infinite;
+    transition: opacity 0.3s ease;
+}
+
+.avatar-wrapper:hover .avatar-glow {
+    opacity: 0.65;
+}
+
+@keyframes glowSpin {
+    to { transform: rotate(360deg); }
+}
+
+@keyframes glowPulse {
+    0%, 100% { filter: blur(6px); }
+    50% { filter: blur(10px); }
+}
+
+/* ========== 标题和搜索区域 ========== */
 .title-section {
     display: flex;
     justify-content: space-between;
@@ -310,7 +329,6 @@ body {
     color: var(--text-muted);
 }
 
-/* 搜索区域 */
 .search-box {
     position: relative;
     width: 300px;
@@ -329,7 +347,7 @@ body {
 
 .search-input {
     width: 100%;
-    padding: 12px 40px 12px 40px;
+    padding: 12px 40px;
     font-size: 0.9rem;
     border: 1px solid rgba(255, 255, 255, 0.5);
     border-radius: var(--radius-sm);
@@ -369,7 +387,7 @@ body {
     color: var(--text);
 }
 
-/* 项目网格 */
+/* ========== 项目网格 ========== */
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -377,7 +395,6 @@ body {
     margin-bottom: 48px;
 }
 
-/* 项目卡片 */
 .project-card {
     background: rgba(255, 255, 255, 0.5);
     backdrop-filter: blur(20px);
@@ -401,45 +418,8 @@ body {
 }
 
 @keyframes cardEnter {
-    from {
-        opacity: 0;
-        transform: translateY(24px) scale(0.97);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-}
-
-/* 头像发光环 */
-.avatar-glow {
-    position: absolute;
-    inset: -4px;
-    border-radius: 50%;
-    background: conic-gradient(
-        from 0deg,
-        var(--primary),
-        var(--accent),
-        #8b5cf6,
-        var(--primary)
-    );
-    opacity: 0;
-    z-index: 0;
-    animation: glowSpin 4s linear infinite, glowPulse 3s ease-in-out infinite;
-    transition: opacity 0.3s ease;
-}
-
-.avatar-wrapper:hover .avatar-glow {
-    opacity: 0.65;
-}
-
-@keyframes glowSpin {
-    to { transform: rotate(360deg); }
-}
-
-@keyframes glowPulse {
-    0%, 100% { filter: blur(6px); }
-    50% { filter: blur(10px); }
+    from { opacity: 0; transform: translateY(24px) scale(0.97); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 .project-header {
@@ -540,6 +520,9 @@ body {
     background: var(--bg-card);
     color: var(--text-secondary);
     white-space: nowrap;
+    min-height: 32px;
+    min-width: 32px;
+    justify-content: center;
 }
 
 .card-btn i {
@@ -570,14 +553,24 @@ body {
     border-color: var(--success);
 }
 
-/* 禁用状态 */
 .card-btn.disabled {
     opacity: 0.35;
     cursor: not-allowed;
     pointer-events: none;
 }
 
-/* 留言区域 */
+.btn-private {
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.btn-private:hover {
+    border-color: var(--warning);
+    color: #d97706;
+    background: rgba(245, 158, 11, 0.04);
+}
+
+/* ========== 留言区域 ========== */
 .message-section {
     padding: 32px;
     background: rgba(255, 255, 255, 0.5);
@@ -603,7 +596,7 @@ body {
     color: var(--primary);
 }
 
-/* Gitalk样式覆盖 */
+/* ========== Gitalk 样式覆盖 ========== */
 #gitalk-container .gt-container {
     font-family: inherit;
 }
@@ -622,6 +615,8 @@ body {
 
 #gitalk-container .gt-comment-content {
     color: var(--text);
+    word-break: break-word;
+    overflow-wrap: break-word;
 }
 
 #gitalk-container .gt-comment-body {
@@ -640,7 +635,215 @@ body {
     background: var(--primary-dark);
 }
 
-/* 无结果提示 */
+/* Gitalk 评论头区域 */
+#gitalk-container .gt-comment-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Gitalk 评论头部点赞按钮 - 防止浮动导致布局错乱 */
+#gitalk-container .gt-comment-header .gt-comment-like {
+    margin-left: auto;
+    flex-shrink: 0;
+    float: none !important;
+    position: static !important;
+}
+
+/* Gitalk 评论操作按钮基础样式 */
+#gitalk-container .gt-comment-actions {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px solid var(--border-light);
+}
+
+#gitalk-container .gt-comment-actions .gt-comment-reply,
+#gitalk-container .gt-comment-actions .gt-comment-like {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 6px 12px;
+    font-size: 12px;
+    color: var(--text-muted);
+    border-radius: var(--radius-sm);
+    min-height: 32px;
+    cursor: pointer;
+    transition: color 0.2s ease, background 0.2s ease;
+    text-decoration: none;
+    /* 重置 Gitalk 默认定位 */
+    position: static !important;
+    float: none !important;
+    margin: 0 !important;
+    white-space: nowrap;
+}
+
+#gitalk-container .gt-comment-actions .gt-comment-reply:hover,
+#gitalk-container .gt-comment-actions .gt-comment-like:hover {
+    color: var(--primary);
+    background: rgba(37, 99, 235, 0.06);
+}
+
+#gitalk-container .gt-comment-actions .gt-comment-reply svg,
+#gitalk-container .gt-comment-actions .gt-comment-like svg {
+    width: 14px;
+    height: 14px;
+    fill: currentColor;
+    flex-shrink: 0;
+}
+
+#gitalk-container .gt-comment-actions .gt-comment-like-count {
+    font-size: 11px;
+    margin-left: 2px;
+}
+
+/* Gitalk Markdown 内容样式 */
+#gitalk-container .gt-comment-content a {
+    color: var(--primary);
+    text-decoration: none;
+    word-break: break-all;
+}
+
+#gitalk-container .gt-comment-content a:hover {
+    text-decoration: underline;
+}
+
+#gitalk-container .gt-comment-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--radius-sm);
+}
+
+#gitalk-container .gt-comment-content blockquote {
+    border-left: 3px solid var(--primary);
+    padding-left: 12px;
+    margin: 8px 0;
+    color: var(--text-secondary);
+    font-style: italic;
+    background: var(--border-light);
+    padding: 8px 12px;
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+#gitalk-container .gt-comment-content ul,
+#gitalk-container .gt-comment-content ol {
+    padding-left: 20px;
+    margin: 6px 0;
+}
+
+#gitalk-container .gt-comment-content li {
+    margin: 4px 0;
+}
+
+#gitalk-container .gt-comment-content code {
+    font-family: 'SF Mono', 'Fira Code', 'Roboto Mono', monospace;
+    font-size: 12px;
+    padding: 2px 4px;
+    background: var(--border-light);
+    border-radius: 3px;
+    color: #e11d48;
+}
+
+#gitalk-container .gt-comment-content pre {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 10px;
+    background: var(--border-light);
+    border-radius: var(--radius-sm);
+    font-size: 12px;
+}
+
+#gitalk-container .gt-comment-content pre code {
+    padding: 0;
+    background: transparent;
+    color: inherit;
+}
+
+#gitalk-container .gt-comment-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0;
+    font-size: 13px;
+    overflow-x: auto;
+    display: block;
+}
+
+#gitalk-container .gt-comment-content th,
+#gitalk-container .gt-comment-content td {
+    border: 1px solid var(--border);
+    padding: 6px 10px;
+    text-align: left;
+}
+
+#gitalk-container .gt-comment-content th {
+    background: var(--border-light);
+    font-weight: 600;
+}
+
+/* Gitalk 回复引用 */
+#gitalk-container .gt-comment-reply {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px dashed var(--border);
+}
+
+#gitalk-container .gt-comment-reply .gt-comment {
+    background: var(--border-light);
+    border: none;
+    border-radius: var(--radius-sm);
+    padding: 10px;
+    margin-bottom: 0;
+}
+
+/* Gitalk 滚动条 */
+#gitalk-container {
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+}
+
+#gitalk-container::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+#gitalk-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+#gitalk-container::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 3px;
+}
+
+/* Gitalk 提示信息 */
+#gitalk-container .gt-error {
+    color: #ef4444;
+    font-size: 13px;
+    padding: 8px 12px;
+    background: rgba(239, 68, 68, 0.1);
+    border-radius: var(--radius-sm);
+    margin: 8px 0;
+}
+
+#gitalk-container .gt-tip {
+    color: var(--text-muted);
+    font-size: 12px;
+    margin-top: 8px;
+}
+
+/* Gitalk 评论动画 */
+#gitalk-container .gt-comment {
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+#gitalk-container .gt-comment:hover {
+    border-color: rgba(37, 99, 235, 0.3);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+/* ========== 其他 ========== */
 .no-results {
     text-align: center;
     padding: 48px 20px;
@@ -664,112 +867,12 @@ body {
     font-size: 0.85rem;
 }
 
-/* 响应式设计 */
-@media (max-width: 900px) {
-    .projects-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 768px) {
-    .container {
-        padding: 0 16px;
-    }
-
-    .header {
-        padding: 32px 0 24px;
-    }
-
-    .header-top {
-        gap: 14px;
-    }
-
-    .avatar-wrapper {
-        width: 56px;
-        height: 56px;
-    }
-
-    .name {
-        font-size: 1.25rem;
-    }
-
-    .bio {
-        font-size: 0.82rem;
-        margin-bottom: 8px;
-    }
-
-    .header-stats {
-        font-size: 0.78rem;
-    }
-
-    .github-link {
-        padding: 8px 16px;
-        font-size: 0.85rem;
-    }
-
-    .title-section {
-        flex-direction: column;
-        gap: 16px;
-        align-items: stretch;
-        padding: 24px 0 20px;
-    }
-
-    .main-title {
-        font-size: 1.35rem;
-    }
-
-    .subtitle {
-        font-size: 0.88rem;
-    }
-
-    .search-box {
-        width: 100%;
-    }
-
-    .projects-grid {
-        grid-template-columns: 1fr;
-        gap: 16px;
-    }
-
-    .project-card {
-        padding: 20px;
-    }
-
-    .message-section {
-        padding: 24px 16px;
-    }
-}
-
-@media (max-width: 480px) {
-    .header {
-        padding: 24px 0 20px;
-    }
-
-    .avatar-wrapper {
-        width: 48px;
-        height: 48px;
-    }
-
-    .github-link {
-        width: 100%;
-        justify-content: center;
-    }
-
-    .header-stats {
-        flex-wrap: wrap;
-    }
-
-    .project-card {
-        padding: 16px;
-    }
-
-    .project-buttons {
-        flex-direction: column;
-    }
-
-    .card-btn {
-        justify-content: center;
-    }
+.footer {
+    text-align: center;
+    padding: 24px 0;
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.4);
 }
 
 /* 加载动画 */
@@ -791,24 +894,10 @@ body {
 }
 
 @keyframes spin {
-    to {
-        transform: rotate(360deg);
-    }
+    to { transform: rotate(360deg); }
 }
 
-/* 私有仓库按钮 */
-.btn-private {
-    cursor: pointer;
-    font-family: inherit;
-}
-
-.btn-private:hover {
-    border-color: var(--warning);
-    color: #d97706;
-    background: rgba(245, 158, 11, 0.04);
-}
-
-/* Toast提示 */
+/* Toast 提示 */
 .toast-notice {
     position: fixed;
     top: 24px;
@@ -849,11 +938,378 @@ body {
 .project-card:nth-child(5) { animation-delay: 0.55s; }
 .project-card:nth-child(6) { animation-delay: 0.65s; }
 
-/* 页脚玻璃效果 */
-.footer {
-    text-align: center;
-    padding: 24px 0;
-    color: var(--text-muted);
-    font-size: 0.82rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.4);
+/* ===================================================================
+   响应式设计
+   =================================================================== */
+
+/* ---- 平板 (≤900px) ---- */
+@media (max-width: 900px) {
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ---- 手机 (≤768px) ---- */
+@media (max-width: 768px) {
+    /* 容器 */
+    .container {
+        padding: 0 16px;
+    }
+
+    /* 头部 */
+    .header {
+        padding: 32px 0 24px;
+    }
+
+    .header-top {
+        gap: 14px;
+        flex-wrap: wrap;
+    }
+
+    .avatar-wrapper {
+        width: 56px;
+        height: 56px;
+    }
+
+    .name {
+        font-size: 1.25rem;
+    }
+
+    .bio {
+        font-size: 0.82rem;
+        margin-bottom: 8px;
+    }
+
+    .header-stats {
+        font-size: 0.78rem;
+        flex-wrap: wrap;
+    }
+
+    .github-link {
+        padding: 8px 16px;
+        font-size: 0.85rem;
+        order: -1;
+        width: 100%;
+        justify-content: center;
+        margin-bottom: 8px;
+    }
+
+    /* 标题和搜索 */
+    .title-section {
+        flex-direction: column;
+        gap: 16px;
+        align-items: stretch;
+        padding: 24px 0 20px;
+    }
+
+    .main-title {
+        font-size: 1.35rem;
+    }
+
+    .subtitle {
+        font-size: 0.88rem;
+    }
+
+    .search-box {
+        width: 100%;
+    }
+
+    .search-input {
+        padding: 14px 44px;
+        font-size: 1rem;
+        border-radius: var(--radius-md);
+    }
+
+    .search-icon {
+        left: 16px;
+        font-size: 1rem;
+    }
+
+    .clear-btn {
+        right: 12px;
+        padding: 8px;
+    }
+
+    /* 项目网格 */
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .project-card {
+        padding: 20px;
+    }
+
+    .project-header {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .project-status {
+        align-self: flex-start;
+    }
+
+    .card-btn {
+        padding: 8px 12px;
+        font-size: 0.8rem;
+        min-height: 36px;
+    }
+
+    /* 留言区域 */
+    .message-section {
+        padding: 24px 16px;
+    }
+
+    /* 背景动画优化 */
+    .bg-orb {
+        opacity: 0.2;
+    }
+
+    .mouse-glow {
+        display: none;
+    }
+
+    /* ---- Gitalk 移动端 ---- */
+    #gitalk-container .gt-container {
+        font-size: 14px;
+    }
+
+    #gitalk-container .gt-header {
+        padding: 12px 0;
+    }
+
+    #gitalk-container .gt-header-controls {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        width: 100%;
+    }
+
+    #gitalk-container .gt-header-controls .gt-btn {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+        padding: 12px 16px;
+    }
+
+    #gitalk-container .gt-comments {
+        padding: 0;
+    }
+
+    #gitalk-container .gt-comments .gt-comment {
+        padding: 12px;
+        margin-bottom: 10px;
+    }
+
+    #gitalk-container .gt-comment-header {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 8px;
+        flex-wrap: wrap;
+    }
+
+    #gitalk-container .gt-comment-avatar,
+    #gitalk-container .gt-comment-avatar img {
+        width: 28px;
+        height: 28px;
+    }
+
+    #gitalk-container .gt-comment-author {
+        font-size: 13px;
+        font-weight: 600;
+    }
+
+    #gitalk-container .gt-comment-date {
+        font-size: 11px;
+        color: var(--text-muted);
+    }
+
+    #gitalk-container .gt-comment-content {
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    #gitalk-container .gt-comment-body p {
+        margin: 6px 0;
+    }
+
+    #gitalk-container .gt-comment-actions {
+        display: flex;
+        gap: 4px;
+        margin-top: 8px;
+        padding-top: 8px;
+        border-top: 1px solid var(--border-light);
+    }
+
+    #gitalk-container .gt-login {
+        padding: 16px 0;
+    }
+
+    #gitalk-container .gt-login-text {
+        font-size: 14px;
+        margin-bottom: 12px;
+    }
+
+    #gitalk-container .gt-login-btn {
+        width: 100%;
+        padding: 12px 16px;
+        font-size: 14px;
+        min-height: 48px;
+    }
+
+    #gitalk-container .gt-pagination {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 16px;
+        padding-top: 16px;
+        border-top: 1px solid var(--border);
+        flex-wrap: wrap;
+    }
+
+    #gitalk-container .gt-pagination .gt-btn {
+        padding: 8px 16px;
+        font-size: 13px;
+        min-height: 40px;
+    }
+
+    #gitalk-container .gt-editor textarea {
+        padding: 12px;
+        font-size: 14px;
+        min-height: 100px;
+    }
+
+    #gitalk-container .gt-preview {
+        padding: 12px;
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    #gitalk-container .gt-no-comments {
+        padding: 24px;
+        text-align: center;
+        color: var(--text-muted);
+        font-size: 14px;
+    }
+
+    #gitalk-container .gt-comment-reply .gt-comment {
+        padding: 10px;
+    }
+}
+
+/* ---- 小屏手机 (≤480px) ---- */
+@media (max-width: 480px) {
+    .header {
+        padding: 24px 0 20px;
+    }
+
+    .avatar-wrapper {
+        width: 48px;
+        height: 48px;
+    }
+
+    .github-link {
+        padding: 10px 16px;
+        font-size: 0.88rem;
+    }
+
+    .header-stats {
+        gap: 8px;
+    }
+
+    .stat-divider {
+        display: none;
+    }
+
+    .project-card {
+        padding: 16px;
+    }
+
+    .project-title {
+        font-size: 0.95rem;
+    }
+
+    .project-description {
+        font-size: 0.85rem;
+        -webkit-line-clamp: 2;
+    }
+
+    .project-buttons {
+        flex-direction: column;
+    }
+
+    .card-btn {
+        justify-content: center;
+        padding: 10px 16px;
+    }
+
+    .tag {
+        font-size: 0.68rem;
+        padding: 2px 6px;
+    }
+
+    .section-title {
+        font-size: 1rem;
+    }
+
+    /* 禁用移动端动画 */
+    .project-card {
+        animation: none;
+        opacity: 1;
+    }
+
+    .bg-orb {
+        animation: none;
+    }
+
+    /* ---- Gitalk 小屏 ---- */
+    #gitalk-container .gt-comments .gt-comment {
+        padding: 10px;
+        margin-bottom: 8px;
+    }
+
+    #gitalk-container .gt-comment-header {
+        gap: 6px;
+    }
+
+    #gitalk-container .gt-comment-avatar,
+    #gitalk-container .gt-comment-avatar img {
+        width: 24px;
+        height: 24px;
+    }
+
+    #gitalk-container .gt-comment-author {
+        font-size: 12px;
+    }
+
+    #gitalk-container .gt-comment-date {
+        font-size: 10px;
+    }
+
+    #gitalk-container .gt-comment-content {
+        font-size: 13px;
+    }
+
+    #gitalk-container .gt-comment-actions {
+        gap: 2px;
+    }
+
+    #gitalk-container .gt-comment-actions .gt-comment-reply,
+    #gitalk-container .gt-comment-actions .gt-comment-like {
+        font-size: 11px;
+        padding: 5px 10px;
+        min-height: 28px;
+        gap: 3px;
+    }
+
+    #gitalk-container .gt-comment-actions .gt-comment-reply svg,
+    #gitalk-container .gt-comment-actions .gt-comment-like svg {
+        width: 12px;
+        height: 12px;
+    }
+
+    #gitalk-container .gt-editor textarea {
+        font-size: 16px; /* 防止 iOS 缩放 */
+    }
 }
