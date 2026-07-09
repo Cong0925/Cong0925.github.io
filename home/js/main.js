@@ -14,6 +14,7 @@ const projects = [
         repoPrivate: true,  // 标记为私有仓库
         homepage: '../write-helper/',  // 项目页面
         demo: '../write-helper/demo/',  // 使用演示
+        lastUpdated: '2026-07-09',  // 最后修改时间（私有仓库，无法自动获取）
     },
     {
         id: 2,
@@ -28,6 +29,7 @@ const projects = [
         repo: 'https://github.com/Cong0925/SpendNote',  // 开源仓库
         homepage: '../spend-note/',  // 项目页面
         demo: '../spend-note/demo/',  // 使用演示
+        lastUpdated: '2026-07-08',  // GitHub 仓库最后修改时间
     },
     {
         id: 3,
@@ -42,6 +44,7 @@ const projects = [
         repo: 'https://github.com/Cong0925/nodejs_mysql_Sequelize',  // 开源仓库
         homepage: '../nodejs-mysql-sequelize/',  // 项目页面
         demo: '../nodejs-mysql-sequelize/demo/',  // 使用演示
+        lastUpdated: '2026-05-06',  // GitHub 仓库最后修改时间
     },
     {
         id: 4,
@@ -56,6 +59,7 @@ const projects = [
         repo: 'https://github.com/Cong0925/aj-report-mine',  // 开源仓库
         homepage: '../aj-report-mine-page/',  // 项目页面
         demo: '../aj-report-mine-page/demo/',  // 使用演示
+        lastUpdated: '2024-12-27',  // GitHub 仓库最后修改时间
     }
     // 后续添加新项目在这里
 ];
@@ -137,6 +141,21 @@ function createProjectCard(project, index) {
         buttonsHtml += `<span class="card-btn btn-demo disabled"><i class="fas fa-desktop"></i> 演示</span>`;
     }
 
+    // 格式化最后修改时间
+    let lastUpdatedHtml = '';
+    if (project.lastUpdated) {
+        const date = new Date(project.lastUpdated);
+        const formattedDate = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+        lastUpdatedHtml = `
+            <div class="project-meta">
+                <span class="last-updated">
+                    <i class="fas fa-clock"></i>
+                    最后更新: ${formattedDate}
+                </span>
+            </div>
+        `;
+    }
+
     card.innerHTML = `
         <div class="project-header">
             <h3 class="project-title">
@@ -149,6 +168,7 @@ function createProjectCard(project, index) {
         <div class="project-tags">
             ${project.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
         </div>
+        ${lastUpdatedHtml}
         <div class="project-buttons">
             ${buttonsHtml}
         </div>

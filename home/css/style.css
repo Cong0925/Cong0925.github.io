@@ -508,12 +508,34 @@ body {
     color: var(--text-secondary);
     font-size: 0.88rem;
     line-height: 1.65;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
     flex: 1;
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
+}
+
+/* 项目元信息 */
+.project-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-left:10px;
+    margin-bottom: 12px;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+}
+
+.last-updated {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.last-updated i {
+    font-size: 0.72rem;
+    color: var(--primary);
 }
 
 .project-tags {
@@ -537,8 +559,6 @@ body {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-    margin-top: 16px;
-    padding-top: 16px;
     border-top: 1px solid var(--border-light);
 }
 
