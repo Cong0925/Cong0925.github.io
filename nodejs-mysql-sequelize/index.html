@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Node.js MySQL Sequelize 代码生成器 | 快速搭建 RESTful API</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- 导航栏 -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <div class="nav-logo">
+        <span class="logo-icon">⚡</span>
+        <span class="logo-text">API 代码生成器</span>
+      </div>
+      <button class="nav-toggle" aria-label="切换菜单">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <div class="nav-links">
+        <a href="#features">功能特点</a>
+        <a href="#workflow">使用流程</a>
+        <a href="#about">关于我们</a>
+        <a class="nav-btn" href="#download">立即使用</a>
+      </div>
+    </div>
+  </nav>
+  <div class="nav-overlay"></div>
+
+  <!-- 英雄区域 -->
+  <section class="hero">
+    <div class="hero-decoration">
+      <div class="deco-circle deco-circle-1"></div>
+      <div class="deco-circle deco-circle-2"></div>
+      <div class="deco-circle deco-circle-3"></div>
+    </div>
+    <div class="container hero-container">
+      <div class="hero-content">
+        <div class="hero-badge">🚀 开源工具 · 代码生成器</div>
+        <h1>Node.js MySQL Sequelize<br><span class="hero-subtitle">代码生成器</span></h1>
+        <p class="hero-desc">
+          使用 Vue3 前端界面，通过 WebSocket 自动生成<br>
+          Node.js + MySQL + Sequelize 的后端接口项目。<br>
+          <span class="hero-highlight">告别重复编码，快速搭建 RESTful API</span>
+        </p>
+        <div class="hero-actions">
+          <a class="btn-primary" href="#download">
+            <span class="btn-icon">📦</span>
+            立即使用
+          </a>
+          <a class="btn-secondary" href="#features">
+            了解更多
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-value">Vue3</span>
+            <span class="stat-label">前端界面</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-value">Node.js</span>
+            <span class="stat-label">后端服务</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-value">MySQL</span>
+            <span class="stat-label">数据库支持</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="code-mockup">
+          <div class="mockup-header">
+            <span class="dot dot-red"></span>
+            <span class="dot dot-yellow"></span>
+            <span class="dot dot-green"></span>
+            <span class="mockup-title">API 生成器</span>
+          </div>
+          <div class="mockup-body">
+            <div class="code-line">
+              <span class="code-keyword">const</span> <span class="code-var">app</span> = <span class="code-func">require</span>(<span class="code-string">'express'</span>)();
+            </div>
+            <div class="code-line">
+              <span class="code-keyword">const</span> <span class="code-var">router</span> = <span class="code-func">require</span>(<span class="code-string">'./routes'</span>);
+            </div>
+            <div class="code-line"></div>
+            <div class="code-line">
+              <span class="code-comment">// 自动生成的 API 路由</span>
+            </div>
+            <div class="code-line">
+              <span class="code-var">app</span>.<span class="code-func">use</span>(<span class="code-string">'/api'</span>, <span class="code-var">router</span>);
+            </div>
+            <div class="code-line"></div>
+            <div class="code-line">
+              <span class="code-var">app</span>.<span class="code-func">listen</span>(<span class="code-number">3000</span>);
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 功能特点 -->
+  <section class="features" id="features">
+    <div class="bg-animated">
+      <div class="bg-orb bg-orb-1"></div>
+      <div class="bg-orb bg-orb-2"></div>
+      <div class="bg-orb bg-orb-3"></div>
+      <div class="deco-dots deco-dots-1"></div>
+      <div class="deco-dots deco-dots-2"></div>
+      <div class="deco-line deco-line-1"></div>
+      <div class="deco-line deco-line-2"></div>
+    </div>
+    <div class="container">
+      <div class="section-header">
+        <h2>为什么选择 API 代码生成器</h2>
+        <p>高效开发，告别重复劳动，专注于业务逻辑</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🎨</div>
+          <h3>可视化配置</h3>
+          <p>通过 Vue3 界面轻松配置数据库连接、表结构和视图</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h3>实时生成</h3>
+          <p>WebSocket 实时通信，配置完成即刻生成完整项目代码</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔧</div>
+          <h3>模块化设计</h3>
+          <p>生成的代码结构清晰，便于后续维护和扩展</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🚀</div>
+          <h3>快速上手</h3>
+          <p>无需手动搭建项目框架，几分钟即可启动 API 服务</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🛡️</div>
+          <h3>标准规范</h3>
+          <p>遵循 RESTful API 设计规范，生成高质量的接口代码</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔓</div>
+          <h3>开源免费</h3>
+          <p>完全开源，欢迎社区贡献和定制化开发</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 使用流程 -->
+  <section class="workflow" id="workflow">
+    <div class="bg-animated">
+      <div class="bg-orb bg-orb-4"></div>
+      <div class="bg-orb bg-orb-5"></div>
+      <div class="deco-dots deco-dots-3"></div>
+      <div class="deco-circle-outline deco-circle-outline-1"></div>
+      <div class="deco-circle-outline deco-circle-outline-2"></div>
+    </div>
+    <div class="container">
+      <div class="section-header">
+        <h2>简单四步，快速生成</h2>
+        <p>从配置到部署，轻松完成 API 开发</p>
+      </div>
+      <div class="workflow-steps">
+        <div class="workflow-step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h3>配置数据库</h3>
+            <p>填写 MySQL 数据库连接信息，测试连接成功</p>
+          </div>
+          <div class="step-icon">🗄️</div>
+        </div>
+        <div class="workflow-step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h3>设置表参数</h3>
+            <p>选择需要生成接口的数据表，配置字段属性</p>
+          </div>
+          <div class="step-icon">📋</div>
+        </div>
+        <div class="workflow-step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h3>配置视图</h3>
+            <p>设置视图相关参数，自定义查询条件</p>
+          </div>
+          <div class="step-icon">👁️</div>
+        </div>
+        <div class="workflow-step">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <h3>生成项目</h3>
+            <p>点击生成按钮，即刻获得完整的 API 项目</p>
+          </div>
+          <div class="step-icon">🎉</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 关于我们 -->
+  <section class="about" id="about">
+    <div class="bg-animated">
+      <div class="bg-orb bg-orb-6"></div>
+      <div class="bg-orb bg-orb-7"></div>
+      <div class="deco-dots deco-dots-4"></div>
+      <div class="deco-dots deco-dots-5"></div>
+    </div>
+    <div class="container about-container">
+      <div class="about-content">
+        <h2>关于 API 代码生成器</h2>
+        <p>
+          这是一个旨在提高后端开发效率的工具。通过可视化界面配置，
+          自动生成 Node.js + MySQL + Sequelize 的完整后端项目。
+        </p>
+        <p>
+          无论是快速原型开发，还是标准化项目搭建，
+          这个工具都能帮你节省大量重复编码的时间。
+        </p>
+        <div class="about-values">
+          <div class="value-item">
+            <span class="value-icon">✨</span>
+            <span>高效开发</span>
+          </div>
+          <div class="value-item">
+            <span class="value-icon">🔓</span>
+            <span>开源透明</span>
+          </div>
+          <div class="value-item">
+            <span class="value-icon">🤝</span>
+            <span>社区共建</span>
+          </div>
+        </div>
+      </div>
+      <div class="about-visual">
+        <div class="tech-stack">
+          <div class="tech-item">Vue3</div>
+          <div class="tech-item">Node.js</div>
+          <div class="tech-item">WebSocket</div>
+          <div class="tech-item">MySQL</div>
+          <div class="tech-item">Sequelize</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 下载/使用 -->
+  <section class="download" id="download">
+    <div class="bg-animated">
+      <div class="bg-orb bg-orb-8"></div>
+      <div class="bg-orb bg-orb-9"></div>
+    </div>
+    <div class="container download-container">
+      <div class="download-content">
+        <h2>开始使用</h2>
+        <p>克隆项目，安装依赖，即可启动代码生成器</p>
+        <div class="download-steps">
+          <div class="step">
+            <span class="step-num">1</span>
+            <span class="step-text">克隆仓库</span>
+          </div>
+          <div class="step-arrow">→</div>
+          <div class="step">
+            <span class="step-num">2</span>
+            <span class="step-text">安装依赖</span>
+          </div>
+          <div class="step-arrow">→</div>
+          <div class="step">
+            <span class="step-num">3</span>
+            <span class="step-text">启动服务</span>
+          </div>
+        </div>
+        <div class="code-block">
+          <div class="code-header">
+            <span class="code-lang">Terminal</span>
+            <button class="copy-btn" onclick="copyCode()">复制</button>
+          </div>
+          <pre><code># 克隆项目
+git clone https://github.com/Cong0925/nodejs_mysql_Sequelize.git
+cd nodejs_mysql_Sequelize
+
+# 启动前端 (新终端)
+cd creat_api_pro_front
+npm install
+npm run dev
+
+# 启动后端 (新终端)
+cd creat_api_pro_server
+npm install
+node ./server.js</code></pre>
+        </div>
+        <div class="github-link">
+          <a href="https://github.com/Cong0925/nodejs_mysql_Sequelize" target="_blank" class="btn-github">
+            ⭐ GitHub 开源项目
+          </a>
+          <p class="github-tip">欢迎 Star、Fork 和贡献代码</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <footer class="footer">
+    <div class="container footer-container">
+      <div class="footer-left">
+        <div class="footer-logo">
+          <span class="logo-icon">⚡</span>
+          <span class="logo-text">API 代码生成器</span>
+        </div>
+        <p class="footer-desc">快速搭建 RESTful API | Node.js MySQL Sequelize</p>
+      </div>
+      <div class="footer-links">
+        <a href="#features">功能特点</a>
+        <a href="#about">关于我们</a>
+        <a href="#download">立即使用</a>
+      </div>
+      <div class="footer-right">
+        <p>© 2026 API 代码生成器. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -40,7 +40,7 @@ const projects = [
         icon: 'fas fa-code',
         // 项目按钮配置
         repo: 'https://github.com/Cong0925/nodejs_mysql_Sequelize',  // 开源仓库
-        homepage: '',  // 项目页面，暂未导入
+        homepage: '../nodejs-mysql-sequelize/',  // 项目页面
         demo: '',  // 演示，暂未制作
     }
     // 后续添加新项目在这里
@@ -207,6 +207,40 @@ function initEventListeners() {
             card.style.borderColor = 'rgba(255, 255, 255, 0.6)';
         }
     });
+
+    // 移动端触摸支持
+    let activeCard = null;
+
+    document.addEventListener('touchstart', (e) => {
+        const card = e.target.closest('.project-card');
+        if (card) {
+            // 移除其他卡片的激活状态
+            if (activeCard && activeCard !== card) {
+                activeCard.style.transform = 'translateY(0)';
+                activeCard.style.boxShadow = '0 4px 24px rgba(0, 0, 0, 0.04)';
+                activeCard.style.background = 'rgba(255, 255, 255, 0.5)';
+                activeCard.style.borderColor = 'rgba(255, 255, 255, 0.6)';
+            }
+            // 激活当前卡片
+            card.style.transform = 'translateY(-4px)';
+            card.style.boxShadow = '0 12px 32px rgba(37, 99, 235, 0.1)';
+            card.style.background = 'rgba(255, 255, 255, 0.65)';
+            card.style.borderColor = 'rgba(37, 99, 235, 0.25)';
+            activeCard = card;
+        }
+    }, { passive: true });
+
+    document.addEventListener('touchend', () => {
+        if (activeCard) {
+            setTimeout(() => {
+                activeCard.style.transform = 'translateY(0)';
+                activeCard.style.boxShadow = '0 4px 24px rgba(0, 0, 0, 0.04)';
+                activeCard.style.background = 'rgba(255, 255, 255, 0.5)';
+                activeCard.style.borderColor = 'rgba(255, 255, 255, 0.6)';
+                activeCard = null;
+            }, 150);
+        }
+    }, { passive: true });
 }
 
 // 初始化Gitalk留言系统
