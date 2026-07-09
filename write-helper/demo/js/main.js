@@ -61,13 +61,31 @@ document.addEventListener('DOMContentLoaded', () => {
     img.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
     imageObserver.observe(img);
   });
+
+  // 步骤卡片动画
+  const cards = document.querySelectorAll('.step-card');
+  const cardObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  cards.forEach(card => {
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(30px)';
+    card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    cardObserver.observe(card);
+  });
 });
 
 // 控制台输出欢迎信息
 console.log(`
-%c ✍️ Write Helper 写作助手 - 使用演示
+%c ✍️ Write Helper 写作助手 - 完整使用演示
 
-%c 图文教程，助你快速上手
+%c 29 张截图，详解所有功能
 %c 感谢使用写作助手
 
 `, 'color: #eab308; font-size: 18px; font-weight: bold;', 'color: #57534e;', 'color: #a8a29e;');
