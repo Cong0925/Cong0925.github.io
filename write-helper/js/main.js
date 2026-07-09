@@ -1,13 +1,23 @@
-// Scroll reveal
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.classList.add('visible');
-    }
-  });
-}, { threshold: 0.1 });
+// Scroll reveal with robust fallback
+const revealEls = document.querySelectorAll('.reveal');
 
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+if ('IntersectionObserver' in window) {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '50px' });
+
+  revealEls.forEach(el => observer.observe(el));
+}
+
+// Fallback: force visible after 1.5s (matches CSS animation delay)
+setTimeout(() => {
+  revealEls.forEach(el => el.classList.add('visible'));
+}, 1600);
 
 // Animate stats number
 function animateNum(el, target) {

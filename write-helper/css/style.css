@@ -25,6 +25,8 @@ body {
   line-height: 1.6;
   overflow-x: hidden;
   position: relative;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* ── Pet Background Decorations ── */
@@ -35,13 +37,14 @@ body {
   width: 100%;
   height: 100%;
   pointer-events: none;
-  z-index: 1;
+  z-index: 0;
   overflow: hidden;
 }
 
 .pet-bg-item {
   position: absolute;
   border-radius: 50%;
+  -webkit-filter: grayscale(0.3);
   filter: grayscale(0.3);
   transition: opacity 0.4s;
   user-select: none;
@@ -51,10 +54,16 @@ body {
 body::before {
   content: '';
   position: fixed;
-  inset: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.02'/%3E%3C/svg%3E");
   pointer-events: none;
-  z-index: 9999;
+  z-index: 1;
+  will-change: transform;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 
 /* ── Scrollbar ── */
@@ -72,10 +81,12 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  -webkit-backdrop-filter: blur(20px);
   backdrop-filter: blur(20px);
   background: rgba(250, 249, 247, 0.85);
   border-bottom: 1px solid var(--border);
   transition: all 0.3s;
+  will-change: transform;
 }
 
 .nav-logo {
@@ -142,6 +153,7 @@ nav {
   width: 600px;
   height: 600px;
   background: radial-gradient(circle, rgba(212, 138, 44, 0.08) 0%, transparent 70%);
+  -webkit-filter: blur(80px);
   filter: blur(80px);
   pointer-events: none;
 }
@@ -275,6 +287,7 @@ nav {
   width: 180px;
   height: 180px;
   animation: float 4s ease-in-out infinite;
+  -webkit-filter: drop-shadow(0 8px 20px rgba(244, 162, 97, 0.2));
   filter: drop-shadow(0 8px 20px rgba(244, 162, 97, 0.2));
 }
 
@@ -687,6 +700,7 @@ section { padding: 60px 40px; position: relative; }
   width: 500px;
   height: 500px;
   background: radial-gradient(circle, rgba(212, 138, 44, 0.06) 0%, transparent 70%);
+  -webkit-filter: blur(60px);
   filter: blur(60px);
   pointer-events: none;
 }
@@ -806,9 +820,21 @@ footer a:hover { color: var(--accent); }
   opacity: 0;
   transform: translateY(30px);
   transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  -webkit-animation: revealFallback 0s 1.5s forwards;
+  animation: revealFallback 0s 1.5s forwards;
 }
 
 .reveal.visible {
   opacity: 1;
   transform: translateY(0);
+  -webkit-animation: none;
+  animation: none;
+}
+
+@-webkit-keyframes revealFallback {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes revealFallback {
+  to { opacity: 1; transform: translateY(0); }
 }
