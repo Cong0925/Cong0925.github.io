@@ -27,7 +27,7 @@ const projects = [
         // 项目按钮配置
         repo: 'https://github.com/Cong0925/SpendNote',  // 开源仓库
         homepage: '../spend-note/',  // 项目页面
-        demo: '',  // 演示，暂未制作
+        demo: '../spend-note/demo/',  // 使用演示
     },
     {
         id: 3,
