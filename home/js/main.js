@@ -13,7 +13,7 @@ const projects = [
         repo: '',  // 私有仓库，不公开
         repoPrivate: true,  // 标记为私有仓库
         homepage: '../write-helper/',  // 项目页面
-        demo: '',  // 演示，暂未制作
+        demo: '../write-helper/demo/',  // 使用演示
     },
     {
         id: 2,
