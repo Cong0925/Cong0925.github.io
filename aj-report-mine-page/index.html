@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AJ-Report 数据大屏 — 企业级数据可视化平台</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- 导航栏 -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <div class="nav-logo">
+        <span class="logo-icon">📊</span>
+        <span class="logo-text">AJ-Report</span>
+      </div>
+      <button class="nav-toggle" aria-label="切换菜单">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <div class="nav-links">
+        <a href="#features">功能特点</a>
+        <a href="#architecture">技术架构</a>
+        <a href="#screenshots">效果展示</a>
+        <a class="nav-btn" href="#download">快速开始</a>
+      </div>
+    </div>
+  </nav>
+  <div class="nav-overlay"></div>
+
+  <!-- 英雄区域 -->
+  <section class="hero">
+    <div class="hero-decoration">
+      <div class="deco-circle deco-circle-1"></div>
+      <div class="deco-circle deco-circle-2"></div>
+      <div class="deco-circle deco-circle-3"></div>
+    </div>
+    <div class="container hero-container">
+      <div class="hero-content">
+        <div class="hero-badge">🚀 开源项目 · 企业级</div>
+        <h1>AJ-Report 数据大屏<br><span class="hero-subtitle">企业级数据可视化平台</span></h1>
+        <p class="hero-desc">
+          基于 aj-report v1.4 版本进行二次开发的数据可视化大屏项目。
+          <br>支持多种数据源接入，提供丰富的图表组件和拖拽式设计。
+          <br><span class="hero-highlight">前后端分离，开箱即用</span>
+        </p>
+        <div class="hero-actions">
+          <a class="btn-primary" href="https://github.com/Cong0925/aj-report-mine" target="_blank">
+            <span class="btn-icon">⭐</span>
+            GitHub 仓库
+          </a>
+          <a class="btn-secondary" href="#features">
+            了解更多
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-value">Java</span>
+            <span class="stat-label">后端技术</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-value">Vue</span>
+            <span class="stat-label">前端框架</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-value">MySQL</span>
+            <span class="stat-label">数据存储</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="screen-mockup">
+          <div class="screen-header">
+            <div class="screen-dots">
+              <span class="dot dot-red"></span>
+              <span class="dot dot-yellow"></span>
+              <span class="dot dot-green"></span>
+            </div>
+            <div class="screen-title">数据大屏监控中心</div>
+          </div>
+          <div class="screen-content">
+            <div class="chart-card chart-line">
+              <div class="chart-title">销售趋势</div>
+              <div class="chart-visual">
+                <svg viewBox="0 0 100 40" preserveAspectRatio="none">
+                  <polyline points="0,35 15,25 30,30 45,15 60,20 75,10 90,18 100,5" fill="none" stroke="#3b82f6" stroke-width="2"/>
+                  <polyline points="0,38 15,32 30,35 45,25 60,28 75,18 90,22 100,15" fill="none" stroke="#10b981" stroke-width="2" stroke-dasharray="4"/>
+                </svg>
+              </div>
+            </div>
+            <div class="chart-card chart-bar">
+              <div class="chart-title">月度对比</div>
+              <div class="chart-visual">
+                <div class="bar-group">
+                  <div class="bar" style="height: 60%;"></div>
+                  <div class="bar" style="height: 45%;"></div>
+                  <div class="bar" style="height: 75%;"></div>
+                  <div class="bar" style="height: 50%;"></div>
+                  <div class="bar" style="height: 85%;"></div>
+                </div>
+              </div>
+            </div>
+            <div class="chart-card chart-pie">
+              <div class="chart-title">占比分析</div>
+              <div class="chart-visual">
+                <div class="pie-chart">
+                  <div class="pie-segment" style="--percentage: 45; --color: #3b82f6;"></div>
+                  <div class="pie-segment" style="--percentage: 30; --color: #10b981;"></div>
+                  <div class="pie-segment" style="--percentage: 25; --color: #f59e0b;"></div>
+                </div>
+              </div>
+            </div>
+            <div class="chart-card chart-table">
+              <div class="chart-title">实时数据</div>
+              <div class="chart-visual">
+                <div class="data-row">
+                  <span class="data-label">华东区</span>
+                  <span class="data-value">¥ 128,500</span>
+                </div>
+                <div class="data-row">
+                  <span class="data-label">华北区</span>
+                  <span class="data-value">¥ 95,200</span>
+                </div>
+                <div class="data-row">
+                  <span class="data-label">华南区</span>
+                  <span class="data-value">¥ 112,800</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 功能特点 -->
+  <section class="features" id="features">
+    <div class="container">
+      <div class="section-header">
+        <h2>功能特点</h2>
+        <p>强大的数据可视化能力，满足企业级需求</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">📈</div>
+          <h3>丰富图表组件</h3>
+          <p>支持折线图、柱状图、饼图、地图等数十种可视化图表，满足各种数据展示场景</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🎨</div>
+          <h3>拖拽式设计</h3>
+          <p>可视化设计器，通过拖拽即可完成大屏布局，无需编写代码，快速搭建数据大屏</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔗</div>
+          <h3>多数据源支持</h3>
+          <p>支持 MySQL、Oracle、PostgreSQL 等主流数据库，以及 RESTful API 数据接入</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📱</div>
+          <h3>响应式布局</h3>
+          <p>自适应不同屏幕尺寸，支持大屏投放、PC端、移动端等多种展示场景</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h3>实时数据更新</h3>
+          <p>支持数据定时刷新和 WebSocket 实时推送，确保数据展示的及时性</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🛡️</div>
+          <h3>权限管理</h3>
+          <p>完善的用户权限体系，支持多角色管理，保障数据安全</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 技术架构 -->
+  <section class="architecture" id="architecture">
+    <div class="container">
+      <div class="section-header">
+        <h2>技术架构</h2>
+        <p>前后端分离，技术栈成熟稳定</p>
+      </div>
+      <div class="arch-container">
+        <div class="arch-card arch-frontend">
+          <div class="arch-header">
+            <span class="arch-icon">🎨</span>
+            <h3>前端技术栈</h3>
+          </div>
+          <ul class="arch-list">
+            <li><span class="tech-tag">Vue.js</span> 渐进式框架</li>
+            <li><span class="tech-tag">Element UI</span> 组件库</li>
+            <li><span class="tech-tag">ECharts</span> 图表可视化</li>
+            <li><span class="tech-tag">Webpack</span> 模块打包</li>
+          </ul>
+        </div>
+        <div class="arch-connector">
+          <div class="connector-line"></div>
+          <span class="connector-label">RESTful API</span>
+        </div>
+        <div class="arch-card arch-backend">
+          <div class="arch-header">
+            <span class="arch-icon">⚙️</span>
+            <h3>后端技术栈</h3>
+          </div>
+          <ul class="arch-list">
+            <li><span class="tech-tag">Spring Boot</span> 应用框架</li>
+            <li><span class="tech-tag">MyBatis</span> ORM 框架</li>
+            <li><span class="tech-tag">MySQL</span> 数据存储</li>
+            <li><span class="tech-tag">Redis</span> 缓存中间件</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 效果展示 -->
+  <section class="screenshots" id="screenshots">
+    <div class="container">
+      <div class="section-header">
+        <h2>效果展示</h2>
+        <p>直观感受数据可视化大屏的魅力</p>
+      </div>
+      <div class="screenshot-cards">
+        <div class="screenshot-card">
+          <div class="screenshot-preview">
+            <div class="preview-header">
+              <span class="preview-dot"></span>
+              <span class="preview-title">销售数据分析</span>
+            </div>
+            <div class="preview-content">
+              <div class="preview-chart preview-line"></div>
+              <div class="preview-chart preview-bar"></div>
+            </div>
+          </div>
+          <div class="screenshot-info">
+            <h4>销售数据大屏</h4>
+            <p>实时监控销售业绩，多维度数据分析</p>
+          </div>
+        </div>
+        <div class="screenshot-card">
+          <div class="screenshot-preview">
+            <div class="preview-header">
+              <span class="preview-dot"></span>
+              <span class="preview-title">生产监控中心</span>
+            </div>
+            <div class="preview-content">
+              <div class="preview-chart preview-gauge"></div>
+              <div class="preview-chart preview-table"></div>
+            </div>
+          </div>
+          <div class="screenshot-info">
+            <h4>生产监控大屏</h4>
+            <p>设备运行状态，生产效率分析</p>
+          </div>
+        </div>
+        <div class="screenshot-card">
+          <div class="screenshot-preview">
+            <div class="preview-header">
+              <span class="preview-dot"></span>
+              <span class="preview-title">运营数据概览</span>
+            </div>
+            <div class="preview-content">
+              <div class="preview-chart preview-pie"></div>
+              <div class="preview-chart preview-map"></div>
+            </div>
+          </div>
+          <div class="screenshot-info">
+            <h4>运营数据大屏</h4>
+            <p>用户行为分析，业务指标监控</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 快速开始 -->
+  <section class="download" id="download">
+    <div class="container">
+      <div class="section-header">
+        <h2>快速开始</h2>
+        <p>简单几步，快速部署数据大屏</p>
+      </div>
+      <div class="download-steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h4>克隆项目</h4>
+            <code>git clone https://github.com/Cong0925/aj-report-mine.git</code>
+          </div>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h4>环境准备</h4>
+            <p>JDK 1.8 + MySQL 8.0 + Node.js 14</p>
+          </div>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h4>启动项目</h4>
+            <p>后端：mvn clean package</p>
+            <p>前端：npm run dev</p>
+          </div>
+        </div>
+      </div>
+      <div class="download-actions">
+        <a class="btn-primary btn-large" href="https://github.com/Cong0925/aj-report-mine" target="_blank">
+          <span class="btn-icon">📦</span>
+          下载源码
+        </a>
+        <a class="btn-secondary btn-large" href="https://github.com/anji-plus/report" target="_blank">
+          <span class="btn-icon">📖</span>
+          官方文档
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <footer class="footer">
+    <div class="container footer-container">
+      <div class="footer-logo">
+        <span>📊</span>
+        <span>AJ-Report 数据大屏</span>
+      </div>
+      <div class="footer-links">
+        <a href="https://github.com/Cong0925/aj-report-mine" target="_blank">GitHub</a>
+        <a href="https://github.com/anji-plus/report" target="_blank">官方仓库</a>
+        <a href="../">返回首页</a>
+      </div>
+      <div class="footer-copyright">
+        <p>Made with ❤️ by Cong0925</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

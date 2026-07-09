@@ -42,6 +42,20 @@ const projects = [
         repo: 'https://github.com/Cong0925/nodejs_mysql_Sequelize',  // 开源仓库
         homepage: '../nodejs-mysql-sequelize/',  // 项目页面
         demo: '../nodejs-mysql-sequelize/demo/',  // 使用演示
+    },
+    {
+        id: 4,
+        name: 'aj-report-mine',
+        title: 'AJ-Report 数据大屏',
+        description: '基于 aj-report v1.4 版本进行二次开发的数据可视化大屏项目，支持前后端分离部署。集成多种数据源，提供丰富的图表组件和拖拽式设计。',
+        status: 'completed',
+        statusText: '已完成',
+        tags: ['数据可视化', 'Java', 'Vue', '大数据屏'],
+        icon: 'fas fa-chart-line',
+        // 项目按钮配置
+        repo: 'https://github.com/Cong0925/aj-report-mine',  // 开源仓库
+        homepage: '../aj-report-mine-page/',  // 项目页面
+        demo: '../aj-report-mine-page/demo/',  // 使用演示
     }
     // 后续添加新项目在这里
 ];
