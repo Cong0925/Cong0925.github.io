@@ -2,10 +2,179 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="0; url=./home/">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="3; url=./home/">
     <title>Cong0925 - 项目导航</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #fafafa;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            color: #333;
+        }
+
+        .container {
+            text-align: center;
+            padding: 4rem;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 300;
+            letter-spacing: 0.3em;
+            color: #333;
+            margin-bottom: 3rem;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 200;
+            letter-spacing: 0.1em;
+            color: #000;
+            margin-bottom: 1rem;
+        }
+
+        .line {
+            width: 60px;
+            height: 1px;
+            background: #000;
+            margin: 2rem auto;
+        }
+
+        .subtitle {
+            color: #999;
+            font-size: 0.875rem;
+            font-weight: 300;
+            letter-spacing: 0.2em;
+            margin-bottom: 3rem;
+        }
+
+        .loader {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 4px;
+            margin-bottom: 3rem;
+        }
+
+        .loader span {
+            width: 2px;
+            height: 20px;
+            background: #000;
+            animation: loader 1.2s ease-in-out infinite;
+        }
+
+        .loader span:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .loader span:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+
+        .loader span:nth-child(4) {
+            animation-delay: 0.3s;
+        }
+
+        @keyframes loader {
+            0%, 100% {
+                opacity: 0.2;
+                transform: scaleY(0.5);
+            }
+            50% {
+                opacity: 1;
+                transform: scaleY(1);
+            }
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 40px;
+            border: 1px solid #000;
+            color: #000;
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 400;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #000;
+            color: #fff;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 2rem;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+                letter-spacing: 0.2em;
+                margin-bottom: 2rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .subtitle {
+                font-size: 0.75rem;
+            }
+
+            .btn {
+                padding: 12px 30px;
+                font-size: 0.75rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 1.5rem;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+                margin-bottom: 1.5rem;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            .line {
+                margin: 1.5rem auto;
+            }
+        }
+    </style>
 </head>
 <body>
-    <p>正在跳转...</p>
+    <div class="container">
+        <div class="logo">Cong0925</div>
+        <h1>LOADING</h1>
+        <div class="line"></div>
+        <p class="subtitle">正在加载中，请稍候</p>
+
+        <div class="loader">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <a href="./home/" class="btn">Enter</a>
+    </div>
 </body>
 </html>
