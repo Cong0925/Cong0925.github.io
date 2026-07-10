@@ -91,3 +91,29 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
    - 时间字段：使用 `stat -c %w`（创建时间）和 `stat -c %y`（修改时间）获取，格式 `YYYY-MM-DD`
 5. **执行时机**：每次创建新文件后，立即添加 frontmatter，不要等用户提醒
 6. **已有文件处理**：如果文件已有 frontmatter，保持不变；如果没有，需要补添加
+
+**新增项目目录初始化（强制执行，不可跳过）**：当用户要求添加新项目的目录时，必须在项目根目录下创建对应的项目文件夹，按以下标准目录结构初始化：
+1. **触发条件**：用户说「创建目录」、「新增目录文件」等类似指令时自动执行
+2. **目录命名**：使用项目名称的 kebab-case 格式（如 `vue3-ts-model`、`student-club`）
+3. **标准目录结构**：
+   ```
+   project-name/
+   ├── index.html          # 项目主页（必填）
+   ├── css/
+   │   └── style.css       # 主样式文件（必填）
+   ├── js/
+   │   └── main.js         # 主脚本文件（必填）
+   ├── imgs/               # 图片资源目录（可选，放截图等）
+   └── demo/               # 演示目录（可选）
+       ├── index.html
+       ├── css/
+       └── js/
+   ```
+4. **初始文件内容**：
+   - `index.html`：基础 HTML5 模板，包含项目标题和简单说明
+   - `css/style.css`：基础样式（参考 `home/css/style.css` 的设计风格）
+   - `js/main.js`：空文件或基础交互脚本
+5. **执行时机**：在 `home/js/main.js` 的 `projects` 数组中添加项目数据后，立即创建对应的项目目录
+6. **注意事项**：
+   - 若项目目录已存在，则跳过创建，仅更新主页项目数据
+   - 创建目录后，确保 `index.html` 中的链接路径与 `projects` 数组中的 `homepage`、`demo` 字段一致

@@ -6,7 +6,17 @@ const PROJECT_TYPES = {
     web: { name: '网页应用', icon: 'fas fa-globe' },
     cli: { name: '终端工具', icon: 'fas fa-terminal' },
     library: { name: '开源库', icon: 'fas fa-book' },
+    template: { name: '模版类', icon: 'fas fa-clone' },
+    article: { name: '文章管理', icon: 'fas fa-newspaper' },
     other: { name: '其他', icon: 'fas fa-ellipsis-h' }
+};
+
+// 项目状态配置
+const PROJECT_STATUS = {
+    completed: { name: '已完成', class: 'status-completed' },
+    development: { name: '进行中', class: 'status-development' },
+    stopped: { name: '停工', class: 'status-stopped' },
+    practice: { name: '练习项目', class: 'status-practice' }
 };
 
 // 项目数据
@@ -87,9 +97,54 @@ const projects = [
         icon: 'fas fa-project-diagram',
         type: 'web',
         repo: 'https://github.com/Cong0925/jquery-svg-d3-demo',
-        homepage: '',
+        homepage: '../jquery-svg-d3-demo/',
         demo: '',
         lastUpdated: '2025-01-15',
+    },
+    {
+        id: 6,
+        name: 'vue3-ts-model',
+        title: 'Vue3 TS Model',
+        description: 'Vue3 + TypeScript 项目模板，集成 Element Plus 组件库、Pinia 状态管理、富文本编辑器（TinyMCE/Vditor），包含登录系统、仪表盘、用户管理等基础模块，快速搭建中后台应用。',
+        status: 'practice',
+        statusText: '练习项目',
+        tags: ['Vue3', 'TypeScript', 'Element Plus', 'Pinia', '项目模板'],
+        icon: 'fas fa-cubes',
+        type: 'template',
+        repo: 'https://github.com/Cong0925/vue3-ts-model',
+        homepage: '../vue3-ts-model/',
+        demo: '',
+        lastUpdated: '2024-12-20',
+    },
+    {
+        id: 7,
+        name: 'hugoBasicExample',
+        title: 'Hugo Blog',
+        description: '基于 Hugo Clarity 主题的个人博客系统，支持中英文双语切换、用户登录（含验证码和RSA加密）、文章发布、深色模式、响应式设计，采用玻璃拟态风格登录弹窗。',
+        status: 'practice',
+        statusText: '练习项目',
+        tags: ['Hugo', '博客', '双语支持', 'Glassmorphism', '静态网站'],
+        icon: 'fas fa-blog',
+        type: 'web',
+        repo: 'https://github.com/Cong0925/hugoBasicExample',
+        homepage: '../hugoBasicExample/',
+        demo: '',
+        lastUpdated: '2024-11-15',
+    },
+    {
+        id: 8,
+        name: 'student_club',
+        title: 'Student Club',
+        description: '学生社团管理系统，包含前台展示和后台管理两大模块。前台支持社团列表、活动展示、新闻通知、成员风采；后台提供社团管理、成员审核、内容发布等功能。',
+        status: 'practice',
+        statusText: '练习项目',
+        tags: ['Vue3', 'Element Plus', '社团管理', '全栈应用', '内容管理'],
+        icon: 'fas fa-users',
+        type: 'web',
+        repo: 'https://github.com/Cong0925/student_club',
+        homepage: '../student_club/',
+        demo: '',
+        lastUpdated: '2024-10-25',
     }
     // 后续添加新项目在这里
 ];
