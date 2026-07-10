@@ -115,6 +115,17 @@ document.addEventListener('DOMContentLoaded', () => {
     initEventListeners();
     initGiscus();
     fetchAllStars();  // 异步获取所有项目的 stars
+
+    // 隐藏骨架屏，显示实际内容
+    setTimeout(() => {
+        const skeleton = document.getElementById('skeleton-screen');
+        const mainContent = document.getElementById('main-content');
+        if (skeleton && mainContent) {
+            skeleton.classList.add('skeleton-hidden');
+            mainContent.classList.remove('skeleton-hidden');
+            mainContent.classList.add('fade-in');
+        }
+    }, 300); // 短暂延迟确保渲染完成
 });
 
 // 渲染项目
