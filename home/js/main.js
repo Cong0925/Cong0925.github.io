@@ -113,7 +113,7 @@ const starsCache = {};
 document.addEventListener('DOMContentLoaded', () => {
     renderProjects();
     initEventListeners();
-    initGitalk();
+    initGiscus();
     fetchAllStars();  // 异步获取所有项目的 stars
 });
 
@@ -332,78 +332,16 @@ function initEventListeners() {
         });
     });
 
-    // 点赞按钮：未登录时自动触发登录流程
-    document.addEventListener('click', (e) => {
-        const likeBtn = e.target.closest('.gt-comment-like, .gt-btn-like, [class*="like"]');
-        if (!likeBtn) return;
-
-        // 检查是否已登录（Gitalk 登录后会移除登录按钮）
-        const loginBtn = document.querySelector('#gitalk-container .gt-btn-login');
-        if (loginBtn) {
-            e.preventDefault();
-            e.stopPropagation();
-            const gitalk = document.getElementById('gitalk-container').gitalk;
-            if (gitalk && typeof gitalk.login === 'function') {
-                gitalk.login();
-            }
-        }
-    }, true);
-
     // 卡片悬停效果已通过 CSS :hover 实现，无需 JavaScript
 }
 
-// 初始化Gitalk留言系统
-function initGitalk() {
-    // Gitalk配置
-    // 注意：你需要创建一个GitHub OAuth App来获取Client ID
-    // 1. 访问 https://github.com/settings/developers
-    // 2. 点击 "New OAuth App"
-    // 3. 填写应用信息
-    // 4. 获取 Client ID 和 Client Secret
-
-    const gitalkConfig = {
-        clientID: 'Ov23liOexhleMGPD9to6',
-        clientSecret: 'e9750c6504d42a31f94247b96c65522504ea7393',
-        repo: 'Cong0925.github.io',
-        owner: 'Cong0925',
-        admin: ['Cong0925'],
-        id: location.pathname,
-        distractionFreeMode: false,
-        language: 'zh-CN',
-        labels: ['留言'],
-        perPage: 20,
-        pagerDirection: 'last',
-        createIssueManually: false,
-        proxy: 'https://cong0925.2207156200.workers.dev', // Cloudflare Worker CORS代理
-        flipMovementUp: false
-    };
-
-    // 检查配置是否已设置
-    if (gitalkConfig.clientID === 'YOUR_CLIENT_ID') {
-        console.warn('请配置Gitalk的Client ID和Client Secret');
-        document.getElementById('gitalk-container').innerHTML = `
-            <div style="text-align: center; padding: 40px; color: #475569;">
-                <i class="fas fa-comments" style="font-size: 3rem; margin-bottom: 20px; color: #4a90e2;"></i>
-                <h3>留言功能配置中</h3>
-                <p>请配置GitHub OAuth App以启用留言功能</p>
-            </div>
-        `;
-        return;
-    }
-
-    try {
-        const gitalk = new Gitalk(gitalkConfig);
-        gitalk.render('gitalk-container');
-    } catch (error) {
-        console.error('Gitalk初始化失败:', error);
-        document.getElementById('gitalk-container').innerHTML = `
-            <div style="text-align: center; padding: 40px; color: #475569;">
-                <i class="fas fa-exclamation-triangle" style="font-size: 3rem; margin-bottom: 20px; color: #f59e0b;"></i>
-                <h3>留言功能暂时不可用</h3>
-                <p>请稍后再试或联系管理员</p>
-            </div>
-        `;
-    }
+// 初始化 Giscus 留言系统
+// Giscus 通过 HTML 中的 <script> 标签自动加载
+// 配置项在 index.html 的 giscus script 标签中
+function initGiscus() {
+    // Giscus 配置已移至 index.html 的 <script> 标签
+    // 无需额外的 JS 初始化代码
+    console.log('Giscus 留言系统已加载');
 }
 
 // 添加新项目的函数（供未来使用）
