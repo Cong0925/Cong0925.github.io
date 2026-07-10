@@ -1,3 +1,14 @@
+// 项目类型配置
+const PROJECT_TYPES = {
+    desktop: { name: '桌面软件', icon: 'fas fa-desktop' },
+    miniprogram: { name: '小程序', icon: 'fab fa-weixin' },
+    mobile: { name: '移动应用', icon: 'fas fa-mobile-alt' },
+    web: { name: '网页应用', icon: 'fas fa-globe' },
+    cli: { name: '终端工具', icon: 'fas fa-terminal' },
+    library: { name: '开源库', icon: 'fas fa-book' },
+    other: { name: '其他', icon: 'fas fa-ellipsis-h' }
+};
+
 // 项目数据
 const projects = [
     {
@@ -9,6 +20,7 @@ const projects = [
         statusText: '已完成',
         tags: ['桌面软件', '自主写作', '像素宠物', '本地留档'],
         icon: 'fas fa-pen-fancy',
+        type: 'desktop',  // 项目类型
         // 项目按钮配置
         repo: '',  // 私有仓库，不公开
         repoPrivate: true,  // 标记为私有仓库
@@ -25,6 +37,7 @@ const projects = [
         statusText: '已完成',
         tags: ['记账', '财务工具', '个人管理'],
         icon: 'fas fa-wallet',
+        type: 'miniprogram',  // 项目类型
         // 项目按钮配置
         repo: 'https://github.com/Cong0925/SpendNote',  // 开源仓库
         homepage: '../spend-note/',  // 项目页面
@@ -40,6 +53,7 @@ const projects = [
         statusText: '已完成',
         tags: ['代码生成', 'Node.js', 'MySQL', 'Vue3'],
         icon: 'fas fa-code',
+        type: 'web',  // 项目类型
         // 项目按钮配置
         repo: 'https://github.com/Cong0925/nodejs_mysql_Sequelize',  // 开源仓库
         homepage: '../nodejs-mysql-sequelize/',  // 项目页面
@@ -55,6 +69,7 @@ const projects = [
         statusText: '已完成',
         tags: ['数据可视化', 'Java', 'Vue', '大数据屏'],
         icon: 'fas fa-chart-line',
+        type: 'web',  // 项目类型
         // 项目按钮配置
         repo: 'https://github.com/Cong0925/aj-report-mine',  // 开源仓库
         homepage: '../aj-report-mine-page/',  // 项目页面
@@ -72,11 +87,15 @@ const clearSearch = document.getElementById('clearSearch');
 // 当前搜索状态
 let currentSearch = '';
 
+// GitHub Stars 缓存
+const starsCache = {};
+
 // 初始化
 document.addEventListener('DOMContentLoaded', () => {
     renderProjects();
     initEventListeners();
     initGitalk();
+    fetchAllStars();  // 异步获取所有项目的 stars
 });
 
 // 渲染项目
@@ -107,13 +126,74 @@ function renderProjects() {
     });
 }
 
+// 获取 GitHub Stars
+async function fetchAllStars() {
+    for (const project of projects) {
+        if (project.repo && !project.repoPrivate) {
+            // 从 repo URL 提取 owner/repo
+            const match = project.repo.match(/github\.com\/([^/]+\/[^/]+)/);
+            if (match) {
+                const repoPath = match[1];
+                // 检查缓存
+                if (starsCache[repoPath] !== undefined) {
+                    updateStarsDisplay(project.id, starsCache[repoPath]);
+                    continue;
+                }
+                try {
+                    const response = await fetch(`https://api.github.com/repos/${repoPath}`);
+                    if (response.ok) {
+                        const data = await response.json();
+                        starsCache[repoPath] = data.stargazers_count;
+                        updateStarsDisplay(project.id, data.stargazers_count);
+                    } else {
+                        starsCache[repoPath] = '***';
+                        updateStarsDisplay(project.id, '***');
+                    }
+                } catch (error) {
+                    console.error(`获取 ${repoPath} stars 失败:`, error);
+                    starsCache[repoPath] = '***';
+                    updateStarsDisplay(project.id, '***');
+                }
+            }
+        }
+    }
+}
+
+// 更新卡片上的 Stars 显示
+function updateStarsDisplay(projectId, stars) {
+    const starsEl = document.querySelector(`[data-project-id="${projectId}"] .stars-count`);
+    if (starsEl) {
+        starsEl.textContent = stars;
+    }
+}
+
+// 获取项目的 Stars 显示文本
+function getStarsText(project) {
+    // 私有仓库直接显示 ***
+    if (project.repoPrivate || !project.repo) {
+        return '***';
+    }
+    // 从 repo URL 提取 owner/repo
+    const match = project.repo.match(/github\.com\/([^/]+\/[^/]+)/);
+    if (match) {
+        const repoPath = match[1];
+        // 返回缓存的值，如果没有则显示加载中
+        return starsCache[repoPath] !== undefined ? starsCache[repoPath] : '--';
+    }
+    return '***';
+}
+
 // 创建项目卡片
 function createProjectCard(project, index) {
     const card = document.createElement('div');
     card.className = 'project-card';
+    card.dataset.projectId = project.id;
     card.style.animationDelay = `${index * 0.1}s`;
 
     const statusClass = `status-${project.status}`;
+
+    // 获取项目类型配置
+    const typeConfig = PROJECT_TYPES[project.type] || PROJECT_TYPES.other;
 
     // 生成按钮HTML - 三个按钮都显示
     let buttonsHtml = '';
@@ -146,15 +226,11 @@ function createProjectCard(project, index) {
     if (project.lastUpdated) {
         const date = new Date(project.lastUpdated);
         const formattedDate = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
-        lastUpdatedHtml = `
-            <div class="project-meta">
-                <span class="last-updated">
-                    <i class="fas fa-clock"></i>
-                    最后更新: ${formattedDate}
-                </span>
-            </div>
-        `;
+        lastUpdatedHtml = `<span class="last-updated"><i class="fas fa-clock"></i> ${formattedDate}</span>`;
     }
+
+    // 获取 Stars 文本
+    const starsText = getStarsText(project);
 
     card.innerHTML = `
         <div class="project-header">
@@ -164,11 +240,21 @@ function createProjectCard(project, index) {
             </h3>
             <span class="project-status ${statusClass}">${project.statusText}</span>
         </div>
+        <div class="project-type">
+            <i class="${typeConfig.icon}"></i>
+            ${typeConfig.name}
+        </div>
         <p class="project-description">${project.description}</p>
         <div class="project-tags">
             ${project.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
         </div>
-        ${lastUpdatedHtml}
+        <div class="project-meta">
+            <span class="stars-info">
+                <i class="fas fa-star"></i>
+                <span class="stars-count">${starsText}</span>
+            </span>
+            ${lastUpdatedHtml}
+        </div>
         <div class="project-buttons">
             ${buttonsHtml}
         </div>

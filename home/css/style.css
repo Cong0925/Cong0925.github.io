@@ -170,7 +170,7 @@ body {
 
 /* 主容器 */
 .container {
-    max-width: 1100px;
+    width: min(90%, 1400px);
     margin: 0 auto;
     padding: 0 24px;
     position: relative;
@@ -524,15 +524,48 @@ body {
     overflow: hidden;
 }
 
+/* 项目类型徽章 */
+.project-type {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    background: rgba(37, 99, 235, 0.08);
+    border-radius: var(--radius-sm);
+    font-size: 0.75rem;
+    color: var(--primary);
+    font-weight: 500;
+    margin-bottom: 12px;
+}
+
+.project-type i {
+    font-size: 0.72rem;
+}
+
 /* 项目元信息 */
 .project-meta {
     display: flex;
     align-items: center;
     gap: 12px;
-    margin-left:10px;
+    margin-left: 10px;
     margin-bottom: 12px;
     font-size: 0.78rem;
     color: var(--text-muted);
+}
+
+.stars-info {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.stars-info i {
+    font-size: 0.72rem;
+    color: #f59e0b;
+}
+
+.stars-count {
+    font-weight: 500;
 }
 
 .last-updated {
