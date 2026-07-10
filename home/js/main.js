@@ -75,6 +75,21 @@ const projects = [
         homepage: '../aj-report-mine-page/',  // 项目页面
         demo: '../aj-report-mine-page/demo/',  // 使用演示
         lastUpdated: '2024-12-27',  // GitHub 仓库最后修改时间
+    },
+    {
+        id: 5,
+        name: 'jquery-svg-d3-demo',
+        title: 'jQuery SVG D3 Demo',
+        description: '基于 jQuery、SVG 和 D3.js 力导向图实现的交互式节点画布编辑器，支持多种图形形状、节点拖拽、框选、网格吸附、连线样式配置等功能。',
+        status: 'stopped',
+        statusText: '停工',
+        tags: ['jQuery', 'SVG', 'D3.js', '力导向图', '图编辑器'],
+        icon: 'fas fa-project-diagram',
+        type: 'web',
+        repo: 'https://github.com/Cong0925/jquery-svg-d3-demo',
+        homepage: '',
+        demo: '',
+        lastUpdated: '2025-01-15',
     }
     // 后续添加新项目在这里
 ];
@@ -86,6 +101,10 @@ const clearSearch = document.getElementById('clearSearch');
 
 // 当前搜索状态
 let currentSearch = '';
+
+// 当前筛选状态
+let currentStatusFilter = 'all';
+let currentTypeFilter = 'all';
 
 // GitHub Stars 缓存
 const starsCache = {};
@@ -269,7 +288,9 @@ function filterProjects() {
         const matchesSearch = project.title.toLowerCase().includes(currentSearch.toLowerCase()) ||
                             project.description.toLowerCase().includes(currentSearch.toLowerCase()) ||
                             project.tags.some(tag => tag.toLowerCase().includes(currentSearch.toLowerCase()));
-        return matchesSearch;
+        const matchesStatus = currentStatusFilter === 'all' || project.status === currentStatusFilter;
+        const matchesType = currentTypeFilter === 'all' || project.type === currentTypeFilter;
+        return matchesSearch && matchesStatus && matchesType;
     });
 }
 
@@ -288,6 +309,27 @@ function initEventListeners() {
         currentSearch = '';
         clearSearch.style.display = 'none';
         renderProjects();
+    });
+
+    // 筛选按钮点击
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const filterType = btn.dataset.filter;
+            const value = btn.dataset.value;
+
+            // 更新同组按钮的 active 状态
+            btn.closest('.filter-group').querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            // 更新筛选状态
+            if (filterType === 'status') {
+                currentStatusFilter = value;
+            } else if (filterType === 'type') {
+                currentTypeFilter = value;
+            }
+
+            renderProjects();
+        });
     });
 
     // 点赞按钮：未登录时自动触发登录流程

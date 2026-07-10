@@ -54,16 +54,37 @@
 
         <!-- 标题和搜索区域 -->
         <div class="title-section">
-            <div class="title-content">
-                <h2 class="main-title">精选开源项目</h2>
-                <p class="subtitle">把想法变成可复用的代码作品</p>
+            <div class="title-row">
+                <div class="title-content">
+                    <h2 class="main-title">精选开源项目</h2>
+                    <p class="subtitle">把想法变成可复用的代码作品</p>
+                </div>
+                <div class="search-box">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" id="searchInput" placeholder="搜索项目、技术笔记、开源作品" class="search-input">
+                    <button id="clearSearch" class="clear-btn" style="display: none;">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
             </div>
-            <div class="search-box">
-                <i class="fas fa-search search-icon"></i>
-                <input type="text" id="searchInput" placeholder="搜索项目、技术笔记、开源作品" class="search-input">
-                <button id="clearSearch" class="clear-btn" style="display: none;">
-                    <i class="fas fa-times"></i>
-                </button>
+            <div class="filter-bar">
+                <div class="filter-group">
+                    <span class="filter-label"><i class="fas fa-flag"></i> 状态</span>
+                    <button class="filter-btn active" data-filter="status" data-value="all">全部</button>
+                    <button class="filter-btn" data-filter="status" data-value="completed">已完成</button>
+                    <button class="filter-btn" data-filter="status" data-value="development">进行中</button>
+                    <button class="filter-btn" data-filter="status" data-value="stopped">停工</button>
+                </div>
+                <div class="filter-group">
+                    <span class="filter-label"><i class="fas fa-th-large"></i> 类型</span>
+                    <button class="filter-btn active" data-filter="type" data-value="all">全部</button>
+                    <button class="filter-btn" data-filter="type" data-value="desktop">桌面软件</button>
+                    <button class="filter-btn" data-filter="type" data-value="miniprogram">小程序</button>
+                    <button class="filter-btn" data-filter="type" data-value="mobile">移动应用</button>
+                    <button class="filter-btn" data-filter="type" data-value="web">网页应用</button>
+                    <button class="filter-btn" data-filter="type" data-value="cli">终端工具</button>
+                    <button class="filter-btn" data-filter="type" data-value="library">开源库</button>
+                </div>
             </div>
         </div>
 
