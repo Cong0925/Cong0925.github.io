@@ -4,13 +4,13 @@ created: 2026-07-13
 last_modified: 2026-07-13
 ---
 
-# nodejs-mysql-sequelize
+# spend-note
 
 ## 项目基本信息
 
-| 项目名称 | nodejs-mysql-sequelize |
-|----------|------------------------|
-| 项目标题 | Node.js MySQL Sequelize 示例 |
+| 项目名称 | spend-note |
+|----------|------------|
+| 项目标题 | 记账本 |
 | 项目类型 | web |
 | 项目状态 | ✅ 已完成 |
 | 最后更新 | 2026-07-09 |
@@ -19,9 +19,9 @@ last_modified: 2026-07-13
 
 | 链接类型 | 地址 | 状态 |
 |----------|------|------|
-| 仓库地址 | `../nodejs-mysql-sequelize` | ✅ 已提供 |
-| 网址首页 | `../nodejs-mysql-sequelize/index.html` | ✅ 已完成 |
-| 演示界面 | `../nodejs-mysql-sequelize/demo/index.html` | ✅ 已完成 |
+| 仓库地址 | `../spend-note` | ✅ 已提供 |
+| 网址首页 | `../spend-note/index.html` | ✅ 已完成 |
+| 演示界面 | `../spend-note/demo/index.html` | ✅ 已完成 |
 
 ## 完成情况检查清单
 
@@ -48,10 +48,9 @@ last_modified: 2026-07-13
 
 ## 技术栈
 
-- Node.js
-- MySQL
-- Sequelize ORM
-- Express
+- HTML5
+- CSS3
+- JavaScript
 
 ## 待优化事项
 
