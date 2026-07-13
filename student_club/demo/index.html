@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>社团管理系统 - 演示与安装指南</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <!-- 侧边栏 -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <span class="emoji">&#127881;</span>
+            <span class="icon"><i class="fas fa-users"></i></span>
+            <span>社团管理系统</span>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="#overview" class="nav-item active">
+                <i class="fas fa-info-circle"></i>
+                <span>项目概览</span>
+            </a>
+            <a href="#requirements" class="nav-item">
+                <i class="fas fa-desktop"></i>
+                <span>环境要求</span>
+            </a>
+            <a href="#quickstart" class="nav-item">
+                <i class="fas fa-rocket"></i>
+                <span>快速开始</span>
+            </a>
+            <a href="#env-config" class="nav-item">
+                <i class="fas fa-cog"></i>
+                <span>环境变量配置</span>
+            </a>
+            <a href="#mock" class="nav-item">
+                <i class="fas fa-database"></i>
+                <span>Mock 数据配置</span>
+            </a>
+            <a href="#features" class="nav-item">
+                <i class="fas fa-star"></i>
+                <span>功能模块详解</span>
+            </a>
+            <a href="#faq" class="nav-item">
+                <i class="fas fa-question-circle"></i>
+                <span>常见问题 FAQ</span>
+            </a>
+        </nav>
+        <div class="sidebar-footer">
+            <a href="../index.html" class="back-link">
+                <i class="fas fa-arrow-left"></i>
+                <span>返回项目介绍</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- 移动端菜单按钮 -->
+    <button class="mobile-menu-btn" id="mobileMenuBtn">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- 主内容 -->
+    <main class="main-content">
+        <!-- 项目概览 -->
+        <section id="overview" class="section">
+            <h1><span class="emoji">&#127881;</span> <span class="icon"><i class="fas fa-users"></i></span> 社团管理系统</h1>
+            <p class="section-desc">基于 Vue3 + Vite + Element Plus + Pinia 构建的现代化高校社团管理平台</p>
+
+            <div class="overview-grid">
+                <div class="overview-card">
+                    <div class="card-icon admin-icon">
+                        <i class="fas fa-cog"></i>
+                    </div>
+                    <h3>管理后台</h3>
+                    <p class="card-tech">admin.student_club</p>
+                    <p class="card-port">端口：<strong>:2807</strong></p>
+                    <ul>
+                        <li>社团信息管理</li>
+                        <li>活动创建与审核</li>
+                        <li>成员权限管理</li>
+                        <li>内容发布管理</li>
+                        <li>数据统计分析</li>
+                    </ul>
+                </div>
+                <div class="overview-card">
+                    <div class="card-icon www-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>前台网站</h3>
+                    <p class="card-tech">www.student_club</p>
+                    <p class="card-port">端口：<strong>:5173</strong></p>
+                    <ul>
+                        <li>社团列表展示</li>
+                        <li>活动信息浏览</li>
+                        <li>新闻通知查看</li>
+                        <li>成员风采展示</li>
+                        <li>在线报名参与</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="tech-tags">
+                <span class="tag vue"><i class="fab fa-vuejs"></i> Vue 3</span>
+                <span class="tag vite"><i class="fas fa-bolt"></i> Vite</span>
+                <span class="tag element"><i class="fas fa-palette"></i> Element Plus</span>
+                <span class="tag pinia"><i class="fas fa-database"></i> Pinia</span>
+                <span class="tag router"><i class="fas fa-route"></i> Vue Router</span>
+                <span class="tag tinymce"><i class="fas fa-edit"></i> TinyMCE</span>
+            </div>
+        </section>
+
+        <!-- 环境要求 -->
+        <section id="requirements" class="section">
+            <h2><span class="emoji">&#128187;</span> <span class="icon"><i class="fas fa-desktop"></i></span> 环境要求</h2>
+            <p class="section-desc">请确保开发环境满足以下要求</p>
+
+            <div class="requirements-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>工具</th>
+                            <th>最低版本</th>
+                            <th>推荐版本</th>
+                            <th>说明</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><i class="fab fa-node-js"></i> Node.js</td>
+                            <td>>= 14.0.0</td>
+                            <td>18.x / 20.x</td>
+                            <td>JavaScript 运行时环境</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-box"></i> npm</td>
+                            <td>>= 6.0.0</td>
+                            <td>8.x / 9.x</td>
+                            <td>Node.js 包管理器</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fab fa-git-alt"></i> Git</td>
+                            <td>>= 2.0.0</td>
+                            <td>最新版本</td>
+                            <td>版本控制工具</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-code"></i> IDE</td>
+                            <td>-</td>
+                            <td>VS Code</td>
+                            <td>推荐安装 Vue - Official 扩展</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="check-cmd">
+                <h4>&#128270; 检查环境版本</h4>
+                <pre><code>node -v
+npm -v
+git --version</code></pre>
+            </div>
+        </section>
+
+        <!-- 快速开始 -->
+        <section id="quickstart" class="section">
+            <h2><span class="emoji">&#128640;</span> <span class="icon"><i class="fas fa-rocket"></i></span> 快速开始</h2>
+            <p class="section-desc">按照以下步骤快速启动项目</p>
+
+            <div class="steps-list">
+                <!-- 步骤1 -->
+                <div class="step-card">
+                    <div class="step-header">
+                        <span class="step-num">1</span>
+                        <h3>克隆项目</h3>
+                    </div>
+                    <div class="step-body">
+                        <p>从 GitHub 仓库克隆项目代码到本地：</p>
+                        <pre><code>git clone https://github.com/Cong0925/student_club.git
+cd student_club</code></pre>
+                    </div>
+                </div>
+
+                <!-- 步骤2 -->
+                <div class="step-card">
+                    <div class="step-header">
+                        <span class="step-num">2</span>
+                        <h3>安装管理后台依赖</h3>
+                    </div>
+                    <div class="step-body">
+                        <p>进入管理后台目录并安装依赖：</p>
+                        <pre><code>cd admin.student_club
+npm install</code></pre>
+                    </div>
+                </div>
+
+                <!-- 步骤3 -->
+                <div class="step-card">
+                    <div class="step-header">
+                        <span class="step-num">3</span>
+                        <h3>安装前台网站依赖</h3>
+                    </div>
+                    <div class="step-body">
+                        <p>进入前台网站目录并安装依赖：</p>
+                        <pre><code>cd ../www.student_club
+npm install</code></pre>
+                    </div>
+                </div>
+
+                <!-- 步骤4 -->
+                <div class="step-card">
+                    <div class="step-header">
+                        <span class="step-num">4</span>
+                        <h3>启动管理后台</h3>
+                    </div>
+                    <div class="step-body">
+                        <p>在管理后台目录下启动开发服务器：</p>
+                        <pre><code>cd admin.student_club
+npm run dev</code></pre>
+                        <p class="tip"><i class="fas fa-info-circle"></i> 启动后访问：<strong>http://localhost:2807</strong></p>
+                    </div>
+                </div>
+
+                <!-- 步骤5 -->
+                <div class="step-card">
+                    <div class="step-header">
+                        <span class="step-num">5</span>
+                        <h3>启动前台网站</h3>
+                    </div>
+                    <div class="step-body">
+                        <p>在前台网站目录下启动开发服务器：</p>
+                        <pre><code>cd www.student_club
+npm run dev</code></pre>
+                        <p class="tip"><i class="fas fa-info-circle"></i> 启动后访问：<strong>http://localhost:5173</strong></p>
+                    </div>
+                </div>
+
+                <!-- 步骤6 -->
+                <div class="step-card">
+                    <div class="step-header">
+                        <span class="step-num">6</span>
+                        <h3>快速启动脚本（可选）</h3>
+                    </div>
+                    <div class="step-body">
+                        <p>如果项目根目录提供了快速启动脚本，可以一键安装所有依赖：</p>
+                        <pre><code># 在项目根目录执行
+npm install
+
+# 分别启动管理后台和前台网站（可使用不同的终端窗口）
+npm run dev:admin    # 启动管理后台
+npm run dev:www      # 启动前台网站</code></pre>
+                        <p class="note"><i class="fas fa-lightbulb"></i> 提示：如果根目录没有 package.json，请按步骤 2-5 分别进入子目录操作。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 环境变量配置 -->
+        <section id="env-config" class="section">
+            <h2><span class="emoji">&#9881;&#65039;</span> <span class="icon"><i class="fas fa-cog"></i></span> 环境变量配置</h2>
+            <p class="section-desc">根据实际需求配置项目环境变量</p>
+
+            <div class="config-block">
+                <h4><span class="emoji">&#128196;</span> <span class="icon"><i class="fas fa-file-alt"></i></span> 管理后台 .env 文件</h4>
+                <p>在 <code>admin.student_club/</code> 目录下创建 <code>.env</code> 或 <code>.env.development</code> 文件：</p>
+                <pre><code># 开发环境配置
+VITE_API_BASE_URL=http://localhost:8080/api
+VITE_APP_TITLE=社团管理系统-管理后台
+
+# 生产环境配置（.env.production）
+VITE_API_BASE_URL=https://your-domain.com/api</code></pre>
+            </div>
+
+            <div class="config-block">
+                <h4><span class="emoji">&#128196;</span> <span class="icon"><i class="fas fa-file-alt"></i></span> 前台网站 .env 文件</h4>
+                <p>在 <code>www.student_club/</code> 目录下创建 <code>.env</code> 或 <code>.env.development</code> 文件：</p>
+                <pre><code># 开发环境配置
+VITE_API_BASE_URL=http://localhost:8080/api
+VITE_APP_TITLE=社团管理系统
+
+# 生产环境配置（.env.production）
+VITE_API_BASE_URL=https://your-domain.com/api</code></pre>
+            </div>
+
+            <div class="config-block">
+                <h4><span class="emoji">&#128203;</span> <span class="icon"><i class="fas fa-list"></i></span> 常用环境变量说明</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>变量名</th>
+                            <th>说明</th>
+                            <th>默认值</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>VITE_API_BASE_URL</code></td>
+                            <td>后端 API 基础地址</td>
+                            <td>http://localhost:8080/api</td>
+                        </tr>
+                        <tr>
+                            <td><code>VITE_APP_TITLE</code></td>
+                            <td>应用标题</td>
+                            <td>社团管理系统</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Mock 数据配置 -->
+        <section id="mock" class="section">
+            <h2><span class="emoji">&#128451;&#65039;</span> <span class="icon"><i class="fas fa-database"></i></span> Mock 数据配置</h2>
+            <p class="section-desc">在后端服务未就绪时，使用 Mock 数据进行前端开发调试</p>
+
+            <div class="config-block">
+                <h4><span class="emoji">&#128221;</span> <span class="icon"><i class="fas fa-info-circle"></i></span> Mock 数据说明</h4>
+                <p>本项目支持通过 Mock 数据进行前端独立开发。Mock 数据通常配置在以下位置：</p>
+                <ul>
+                    <li><code>src/mock/</code> - Mock 数据目录</li>
+                    <li><code>src/api/mock.js</code> - Mock 接口拦截配置</li>
+                </ul>
+            </div>
+
+            <div class="config-block">
+                <h4><span class="emoji">&#128268;</span> <span class="icon"><i class="fas fa-toggle-on"></i></span> 启用 Mock 数据</h4>
+                <pre><code>// 在 main.js 或专门的 mock 配置文件中
+// 开发环境启用 Mock
+if (import.meta.env.DEV) {
+    // 注册 Mock 服务
+    import('./mock/index.js');
+}
+
+// 或者通过环境变量控制
+// .env.development
+VITE_USE_MOCK=true</code></pre>
+            </div>
+
+            <div class="config-block">
+                <h4><span class="emoji">&#128187;</span> <span class="icon"><i class="fas fa-code"></i></span> Mock 数据示例</h4>
+                <pre><code>// mock/modules/club.js
+export default {
+    // 获取社团列表
+    'GET /api/clubs': {
+        code: 200,
+        data: [
+            { id: 1, name: '计算机协会', category: '科技类', memberCount: 120 },
+            { id: 2, name: '摄影社', category: '艺术类', memberCount: 85 },
+        ]
+    },
+    // 获取活动列表
+    'GET /api/activities': {
+        code: 200,
+        data: [
+            { id: 1, title: '编程马拉松', date: '2026-07-20', status: '报名中' },
+        ]
+    }
+};</code></pre>
+            </div>
+        </section>
+
+        <!-- 功能模块详解 -->
+        <section id="features" class="section">
+            <h2><span class="emoji">&#11088;</span> <span class="icon"><i class="fas fa-star"></i></span> 功能模块详解</h2>
+            <p class="section-desc">全面覆盖社团管理的核心功能模块</p>
+
+            <!-- 用户注册与登录 -->
+            <div class="func-module-card">
+                <div class="func-module-header">
+                    <span class="emoji">&#128100;</span>
+                    <h3>用户注册与登录</h3>
+                </div>
+                <div class="func-module-body">
+                    <h4><span class="icon"><i class="fas fa-info-circle"></i></span> 功能说明</h4>
+                    <p>支持用户名/密码注册、邮箱验证、密码找回、自动登录等功能。提供管理员和普通用户两种登录入口，不同角色登录后展示不同的管理界面。</p>
+
+                    <h4><span class="icon"><i class="fas fa-list-ol"></i></span> 操作步骤</h4>
+                    <ol>
+                        <li>访问前台网站首页，点击右上角「注册」按钮</li>
+                        <li>填写用户名、邮箱、密码等信息，完成注册</li>
+                        <li>使用注册的账号密码登录系统</li>
+                        <li>管理员通过后台登录入口（:2807）进入管理界面</li>
+                    </ol>
+
+                    <div class="screenshot-placeholder">
+                        <span class="emoji">&#128248;</span>
+                        <p>登录界面截图占位符</p>
+                    </div>
+
+                    <h4><span class="icon"><i class="fas fa-code"></i></span> 代码示例</h4>
+                    <pre><code>// 登录请求示例
+const login = async (credentials) => {
+    const response = await api.post('/auth/login', {
+        username: credentials.username,
+        password: credentials.password
+    });
+    // 存储 token
+    localStorage.setItem('token', response.data.token);
+    return response.data;
+};</code></pre>
+                </div>
+            </div>
+
+            <!-- 社团创建与管理 -->
+            <div class="func-module-card">
+                <div class="func-module-header">
+                    <span class="emoji">&#128101;</span>
+                    <h3>社团创建与管理</h3>
+                </div>
+                <div class="func-module-body">
+                    <h4><span class="icon"><i class="fas fa-info-circle"></i></span> 功能说明</h4>
+                    <p>支持社团创建、编辑、删除、分类管理。社团信息包括名称、简介、分类标签、封面图片、成员上限等。支持社团状态控制（正常/暂停/解散）和申请审核流程。</p>
+
+                    <h4><span class="icon"><i class="fas fa-list-ol"></i></span> 操作步骤</h4>
+                    <ol>
+                        <li>管理员在后台进入「社团管理」模块</li>
+                        <li>点击「创建社团」按钮，填写社团基本信息</li>
+                        <li>设置社团分类标签和封面图片</li>
+                        <li>提交创建申请，等待审核通过</li>
+                        <li>社团创建成功后，可在前台网站展示</li>
+                    </ol>
+
+                    <div class="screenshot-placeholder">
+                        <span class="emoji">&#128248;</span>
+                        <p>社团管理界面截图占位符</p>
+                    </div>
+
+                    <h4><span class="icon"><i class="fas fa-code"></i></span> 代码示例</h4>
+                    <pre><code>// 创建社团
+const createClub = async (clubData) => {
+    const response = await api.post('/clubs', {
+        name: clubData.name,
+        description: clubData.description,
+        category: clubData.category,
+        coverImage: clubData.coverImage,
+        memberLimit: clubData.memberLimit
+    });
+    return response.data;
+};</code></pre>
+                </div>
+            </div>
+
+            <!-- 活动发布与报名 -->
+            <div class="func-module-card">
+                <div class="func-module-header">
+                    <span class="emoji">&#128197;</span>
+                    <h3>活动发布与报名</h3>
+                </div>
+                <div class="func-module-body">
+                    <h4><span class="icon"><i class="fas fa-info-circle"></i></span> 功能说明</h4>
+                    <p>支持活动创建、编辑、发布、报名管理、签到记录、活动回顾。活动状态流转包括：草稿 -> 报名中 -> 进行中 -> 已结束。支持线上线下活动，可设置报名人数上限。</p>
+
+                    <h4><span class="icon"><i class="fas fa-list-ol"></i></span> 操作步骤</h4>
+                    <ol>
+                        <li>社团管理员在后台进入「活动管理」模块</li>
+                        <li>点击「创建活动」，填写活动名称、时间、地点等信息</li>
+                        <li>设置报名截止时间和人数上限</li>
+                        <li>发布活动后，前台网站展示活动信息</li>
+                        <li>用户可在前台网站点击「报名参加」</li>
+                        <li>活动开始后，管理员可进行签到管理</li>
+                    </ol>
+
+                    <div class="screenshot-placeholder">
+                        <span class="emoji">&#128248;</span>
+                        <p>活动管理界面截图占位符</p>
+                    </div>
+
+                    <h4><span class="icon"><i class="fas fa-code"></i></span> 代码示例</h4>
+                    <pre><code>// 活动报名
+const joinActivity = async (activityId) => {
+    const response = await api.post(`/activities/${activityId}/join`);
+    if (response.data.success) {
+        // 报名成功，更新 UI
+        showToast('报名成功！请准时参加活动');
+    }
+    return response.data;
+};</code></pre>
+                </div>
+            </div>
+
+            <!-- 成员管理 -->
+            <div class="func-module-card">
+                <div class="func-module-header">
+                    <span class="emoji">&#128101;</span>
+                    <h3>成员管理</h3>
+                </div>
+                <div class="func-module-body">
+                    <h4><span class="icon"><i class="fas fa-info-circle"></i></span> 功能说明</h4>
+                    <p>支持成员信息管理（姓名、学号、联系方式）、角色权限分配（管理员/社长/普通成员）、入团申请与审核、成员数据统计与导出。</p>
+
+                    <h4><span class="icon"><i class="fas fa-list-ol"></i></span> 操作步骤</h4>
+                    <ol>
+                        <li>用户在前台网站申请加入社团</li>
+                        <li>社团管理员在后台审核入团申请</li>
+                        <li>审核通过后，成员信息自动录入系统</li>
+                        <li>管理员可设置成员角色和权限</li>
+                        <li>支持导出成员信息为 Excel 文件</li>
+                    </ol>
+
+                    <div class="screenshot-placeholder">
+                        <span class="emoji">&#128248;</span>
+                        <p>成员管理界面截图占位符</p>
+                    </div>
+
+                    <h4><span class="icon"><i class="fas fa-code"></i></span> 代码示例</h4>
+                    <pre><code>// 获取社团成员列表
+const getMembers = async (clubId, page = 1) => {
+    const response = await api.get(`/clubs/${clubId}/members`, {
+        params: { page, pageSize: 20 }
+    });
+    return response.data;
+};
+
+// 审核入团申请
+const reviewApplication = async (applicationId, approved) => {
+    const response = await api.post(`/applications/${applicationId}/review`, {
+        status: approved ? 'approved' : 'rejected'
+    });
+    return response.data;
+};</code></pre>
+                </div>
+            </div>
+
+            <!-- 通知公告 -->
+            <div class="func-module-card">
+                <div class="func-module-header">
+                    <span class="emoji">&#128276;</span>
+                    <h3>通知公告</h3>
+                </div>
+                <div class="func-module-body">
+                    <h4><span class="icon"><i class="fas fa-info-circle"></i></span> 功能说明</h4>
+                    <p>支持通知公告的创建、编辑、发布、置顶、删除。公告类型包括系统公告、社团公告、活动通知等。支持富文本编辑，可插入图片和链接。</p>
+
+                    <h4><span class="icon"><i class="fas fa-list-ol"></i></span> 操作步骤</h4>
+                    <ol>
+                        <li>管理员在后台进入「内容管理」->「通知公告」模块</li>
+                        <li>点击「发布公告」，填写标题和内容</li>
+                        <li>选择公告类型和发布范围</li>
+                        <li>支持设置置顶和有效期</li>
+                        <li>发布公告后，前台网站展示通知信息</li>
+                    </ol>
+
+                    <div class="screenshot-placeholder">
+                        <span class="emoji">&#128248;</span>
+                        <p>通知公告管理界面截图占位符</p>
+                    </div>
+
+                    <h4><span class="icon"><i class="fas fa-code"></i></span> 代码示例</h4>
+                    <pre><code>// 发布公告
+const publishNotice = async (noticeData) => {
+    const response = await api.post('/notices', {
+        title: noticeData.title,
+        content: noticeData.content, // 富文本 HTML
+        type: noticeData.type,       // system | club | activity
+        isPinned: noticeData.isPinned,
+        expiresAt: noticeData.expiresAt
+    });
+    return response.data;
+};</code></pre>
+                </div>
+            </div>
+
+            <!-- 数据统计 -->
+            <div class="func-module-card">
+                <div class="func-module-header">
+                    <span class="emoji">&#128200;</span>
+                    <h3>数据统计</h3>
+                </div>
+                <div class="func-module-body">
+                    <h4><span class="icon"><i class="fas fa-info-circle"></i></span> 功能说明</h4>
+                    <p>提供社团数据可视化、活动参与率统计、成员增长趋势图、数据导出为 Excel 等功能。帮助管理者快速了解社团运营状况，做出数据驱动的决策。</p>
+
+                    <h4><span class="icon"><i class="fas fa-list-ol"></i></span> 操作步骤</h4>
+                    <ol>
+                        <li>管理员在后台进入「数据统计」模块</li>
+                        <li>查看社团数据总览（成员数、活动数、文章数等）</li>
+                        <li>查看活动参与率统计图表</li>
+                        <li>查看成员增长趋势折线图</li>
+                        <li>点击「导出数据」下载 Excel 报表</li>
+                    </ol>
+
+                    <div class="screenshot-placeholder">
+                        <span class="emoji">&#128248;</span>
+                        <p>数据统计界面截图占位符</p>
+                    </div>
+
+                    <h4><span class="icon"><i class="fas fa-code"></i></span> 代码示例</h4>
+                    <pre><code>// 获取统计数据
+const getStatistics = async (clubId) => {
+    const response = await api.get(`/clubs/${clubId}/statistics`);
+    return {
+        memberCount: response.data.memberCount,
+        activityCount: response.data.activityCount,
+        articleCount: response.data.articleCount,
+        memberGrowth: response.data.memberGrowthTrend, // 近30天
+        activityParticipation: response.data.participationRate
+    };
+};
+
+// 导出 Excel
+const exportData = async (clubId, type) => {
+    const response = await api.get(`/clubs/${clubId}/export`, {
+        params: { type }, // members | activities
+        responseType: 'blob'
+    });
+    // 触发下载
+    const url = window.URL.createObjectURL(response.data);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `${type}_export.xlsx`;
+    link.click();
+};</code></pre>
+                </div>
+            </div>
+
+            <!-- 首页展示 -->
+            <div class="func-module-card">
+                <div class="func-module-header">
+                    <span class="emoji">&#127968;</span>
+                    <h3>首页展示</h3>
+                </div>
+                <div class="func-module-body">
+                    <h4><span class="icon"><i class="fas fa-info-circle"></i></span> 功能说明</h4>
+                    <p>前台网站首页展示轮播图、最新活动推荐、通知公告、社团分类快速入口、热门社团排行榜等。为用户提供直观的信息聚合平台。</p>
+
+                    <h4><span class="icon"><i class="fas fa-list-ol"></i></span> 操作步骤</h4>
+                    <ol>
+                        <li>访问前台网站首页（http://localhost:5173）</li>
+                        <li>浏览轮播图了解精选内容</li>
+                        <li>查看最新活动和通知公告</li>
+                        <li>通过分类入口快速找到感兴趣的社团</li>
+                        <li>查看热门社团排行榜</li>
+                    </ol>
+
+                    <div class="screenshot-placeholder">
+                        <span class="emoji">&#128248;</span>
+                        <p>前台首页截图占位符</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 常见问题 -->
+        <section id="faq" class="section">
+            <h2><span class="emoji">&#10067;</span> <span class="icon"><i class="fas fa-question-circle"></i></span> 常见问题 FAQ</h2>
+            <p class="section-desc">遇到问题时请先查阅以下常见解答</p>
+
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>npm install 安装依赖失败怎么办？</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <ol>
+                            <li>检查网络连接，尝试使用淘宝镜像：<code>npm config set registry https://registry.npmmirror.com</code></li>
+                            <li>删除 <code>node_modules</code> 和 <code>package-lock.json</code> 后重新安装</li>
+                            <li>检查 Node.js 版本是否满足要求（>= 14.0.0）</li>
+                            <li>尝试使用 <code>npm install --legacy-peer-deps</code></li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>启动开发服务器后页面空白？</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <ol>
+                            <li>检查浏览器控制台是否有报错信息</li>
+                            <li>确认 <code>.env</code> 文件配置正确</li>
+                            <li>确认后端 API 服务已启动或 Mock 数据已启用</li>
+                            <li>尝试清除浏览器缓存后刷新页面</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>端口被占用（2807 或 5173）？</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <ol>
+                            <li>Windows: <code>netstat -ano | findstr :2807</code> 查找占用进程，然后 <code>taskkill /PID &lt;进程号&gt; /F</code></li>
+                            <li>Mac/Linux: <code>lsof -i :2807</code> 查找，<code>kill -9 &lt;进程号&gt;</code></li>
+                            <li>或者修改 <code>vite.config.js</code> 中的 <code>server.port</code> 配置使用其他端口</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>如何切换 Mock 数据和真实 API？</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <ol>
+                            <li>在 <code>.env.development</code> 中设置 <code>VITE_USE_MOCK=true</code> 启用 Mock</li>
+                            <li>设置 <code>VITE_USE_MOCK=false</code> 并配置正确的 <code>VITE_API_BASE_URL</code> 使用真实 API</li>
+                            <li>修改配置后需要重启开发服务器</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>Element Plus 样式不生效？</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <ol>
+                            <li>确认已正确安装 Element Plus：<code>npm install element-plus</code></li>
+                            <li>在 <code>main.js</code> 中正确引入并注册：<code>app.use(ElementPlus)</code></li>
+                            <li>检查是否使用了按需引入方式，确认 <code>unplugin-vue-components</code> 配置正确</li>
+                            <li>尝试完整引入方式排查问题</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>如何参与项目贡献？</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <ol>
+                            <li>Fork 项目仓库到你的 GitHub 账号</li>
+                            <li>创建功能分支：<code>git checkout -b feature/your-feature</code></li>
+                            <li>完成开发后提交代码并发起 Pull Request</li>
+                            <li>遵循项目的代码规范和提交规范</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

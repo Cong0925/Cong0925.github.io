@@ -3,42 +3,313 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Club</title>
-    <link rel="stylesheet" href="./css/style.css">
+    <title>社团管理系统 - Student Club Management System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Student Club</h1>
-        <p class="description">学生社团管理系统</p>
-        <div class="features">
-            <h2>前台功能</h2>
-            <ul>
-                <li>社团列表展示</li>
-                <li>活动信息展示</li>
-                <li>新闻通知浏览</li>
-                <li>成员风采展示</li>
+    <!-- 导航栏 -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="../home/index.html" class="nav-logo">
+                <i class="fas fa-arrow-left"></i>
+                <span>返回首页</span>
+            </a>
+            <div class="nav-title">
+                <span class="emoji">&#127881;</span>
+                <span>社团管理系统</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#features">功能</a></li>
+                <li><a href="#tech">技术</a></li>
+                <li><a href="#timeline">历史</a></li>
+                <li><a href="#members">成员</a></li>
             </ul>
+            <a href="https://github.com/Cong0925/student_club" class="nav-github" target="_blank">
+                <i class="fab fa-github"></i>
+            </a>
         </div>
-        <div class="features">
-            <h2>后台管理</h2>
-            <ul>
-                <li>社团管理</li>
-                <li>成员审核</li>
-                <li>内容发布</li>
-                <li>活动管理</li>
-            </ul>
+    </nav>
+
+    <!-- Hero 区域 -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-badge">
+                &#127775; 基于 Vue3 + Vite + Element Plus 构建
+            </div>
+            <h1 class="hero-title">&#127881; 社团管理系统</h1>
+            <p class="hero-subtitle">为高校社团打造的一站式管理平台</p>
+            <p class="hero-description">
+                包含管理后台与前台展示网站，支持社团管理、活动管理、成员管理、
+                内容管理和数据统计等功能，让你的社团管理变得简单又高效！
+            </p>
+
+            <!-- 系统架构图 -->
+            <div class="architecture-diagram">
+                <h3>&#128736; 系统架构</h3>
+                <div class="arch-boxes">
+                    <div class="arch-box admin">
+                        <i class="fas fa-cog"></i>
+                        <span>admin.student_club</span>
+                        <small>管理后台 :2807</small>
+                    </div>
+                    <div class="arch-arrow">
+                        <i class="fas fa-arrows-alt-h"></i>
+                    </div>
+                    <div class="arch-box www">
+                        <i class="fas fa-globe"></i>
+                        <span>www.student_club</span>
+                        <small>前台网站 :5173</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-actions">
+                <a href="demo/index.html" class="btn btn-primary">
+                    <i class="fas fa-play-circle"></i>
+                    快速开始
+                </a>
+                <a href="https://github.com/Cong0925/student_club" class="btn btn-secondary" target="_blank">
+                    <i class="fab fa-github"></i>
+                    查看源码
+                </a>
+            </div>
         </div>
-        <div class="tech-stack">
-            <h2>技术栈</h2>
-            <span class="tag">Vue3</span>
-            <span class="tag">Element Plus</span>
-            <span class="tag">TinyMCE</span>
-            <span class="tag">Pinia</span>
+
+        <!-- 波浪分隔符 -->
+        <div class="wave-separator">
+            <svg viewBox="0 0 1200 60" preserveAspectRatio="none">
+                <path d="M0,0 C300,60 900,0 1200,40 L1200,60 L0,60 Z" class="shape-fill"></path>
+            </svg>
         </div>
-        <div class="links">
-            <a href="https://github.com/Cong0925/student_club" target="_blank" class="btn">GitHub 仓库</a>
+    </section>
+
+    <!-- 功能特性 -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-emoji">&#128640;</span>
+                <h2 class="section-title">功能特性</h2>
+                <p class="section-subtitle">全面覆盖社团管理的各个环节</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <span class="feature-emoji">&#127968;</span>
+                    <h3>首页展示</h3>
+                    <p>展示社团最新动态、热门活动、通知公告，提供直观的信息聚合平台</p>
+                    <span class="feature-tag tag-pink">热门</span>
+                </div>
+
+                <div class="feature-card">
+                    <span class="feature-emoji">&#128101;</span>
+                    <h3>社团管理</h3>
+                    <p>社团信息维护、分类管理、成员审核、社团申请等全流程管理</p>
+                    <span class="feature-tag tag-blue">核心</span>
+                </div>
+
+                <div class="feature-card">
+                    <span class="feature-emoji">&#128197;</span>
+                    <h3>活动管理</h3>
+                    <p>活动创建、报名管理、签到记录、活动回顾，支持线上线下活动</p>
+                    <span class="feature-tag tag-mint">必备</span>
+                </div>
+
+                <div class="feature-card">
+                    <span class="feature-emoji">&#128100;</span>
+                    <h3>成员管理</h3>
+                    <p>成员信息录入、权限分配、角色管理、成员统计分析</p>
+                    <span class="feature-tag tag-purple">管理</span>
+                </div>
+
+                <div class="feature-card">
+                    <span class="feature-emoji">&#128196;</span>
+                    <h3>内容管理</h3>
+                    <p>文章发布、图片管理、轮播图配置、富文本编辑器支持</p>
+                    <span class="feature-tag tag-blue">内容</span>
+                </div>
+
+                <div class="feature-card">
+                    <span class="feature-emoji">&#128200;</span>
+                    <h3>数据统计</h3>
+                    <p>社团数据可视化、活动参与统计、成员增长趋势、数据导出</p>
+                    <span class="feature-tag tag-pink">分析</span>
+                </div>
+            </div>
         </div>
-    </div>
-    <script src="./js/main.js"></script>
+    </section>
+
+    <!-- 技术架构 -->
+    <section class="tech-stack" id="tech">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-emoji">&#128296;</span>
+                <h2 class="section-title">技术架构</h2>
+                <p class="section-subtitle">采用主流前端技术栈，确保性能与可维护性</p>
+            </div>
+
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <div class="tech-icon blue">
+                        <i class="fab fa-vuejs"></i>
+                    </div>
+                    <h4>Vue 3</h4>
+                    <p>渐进式 JavaScript 框架，Composition API 带来更好的代码组织</p>
+                </div>
+
+                <div class="tech-item">
+                    <div class="tech-icon pink">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h4>Vite</h4>
+                    <p>下一代前端构建工具，极速的开发服务器和构建速度</p>
+                </div>
+
+                <div class="tech-item">
+                    <div class="tech-icon purple">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h4>Element Plus</h4>
+                    <p>基于 Vue 3 的组件库，丰富的 UI 组件和完善的文档</p>
+                </div>
+
+                <div class="tech-item">
+                    <div class="tech-icon mint">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h4>Pinia</h4>
+                    <p>轻量级状态管理库，支持 TypeScript，DevTools 支持完善</p>
+                </div>
+
+                <div class="tech-item">
+                    <div class="tech-icon blue">
+                        <i class="fas fa-route"></i>
+                    </div>
+                    <h4>Vue Router</h4>
+                    <p>官方路由管理器，支持嵌套路由、动态路由匹配</p>
+                </div>
+
+                <div class="tech-item">
+                    <div class="tech-icon pink">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h4>TypeScript</h4>
+                    <p>JavaScript 的超集，提供静态类型检查，提升代码质量</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 时间轴 -->
+    <section class="timeline-section" id="timeline">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-emoji">&#128197;</span>
+                <h2 class="section-title">社团活动历史</h2>
+                <p class="section-subtitle">记录每一个精彩瞬间</p>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2026 年 7 月</div>
+                    <div class="timeline-content">
+                        <h4>&#127775; 社团管理系统 v1.0 发布</h4>
+                        <p>完成管理后台与前台网站的核心功能开发，支持社团、活动、成员的全流程管理</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">2026 年 6 月</div>
+                    <div class="timeline-content">
+                        <h4>&#128640; 功能迭代优化</h4>
+                        <p>新增数据统计模块、内容管理系统，优化用户界面交互体验</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">2026 年 5 月</div>
+                    <div class="timeline-content">
+                        <h4>&#128196; 技术方案确定</h4>
+                        <p>确定 Vue3 + Vite + Element Plus 技术栈，完成项目架构设计</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">2026 年 4 月</div>
+                    <div class="timeline-content">
+                        <h4>&#127919; 项目启动</h4>
+                        <p>完成需求分析与原型设计，开始社团管理系统的开发工作</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 成员展示 -->
+    <section class="members-section" id="members">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-emoji">&#128101;</span>
+                <h2 class="section-title">团队成员</h2>
+                <p class="section-subtitle">一群热爱技术的小伙伴</p>
+            </div>
+
+            <div class="members-grid">
+                <div class="member-card">
+                    <div class="member-avatar">&#128104;&#8205;&#128187;</div>
+                    <div class="member-name">项目负责人</div>
+                    <span class="member-role">全栈开发</span>
+                </div>
+
+                <div class="member-card">
+                    <div class="member-avatar">&#128105;&#8205;&#127912;</div>
+                    <div class="member-name">前端开发</div>
+                    <span class="member-role pink">UI 设计</span>
+                </div>
+
+                <div class="member-card">
+                    <div class="member-avatar">&#128104;&#8205;&#128187;</div>
+                    <div class="member-name">后端开发</div>
+                    <span class="member-role mint">API 开发</span>
+                </div>
+
+                <div class="member-card">
+                    <div class="member-avatar">&#128105;&#8205;&#128187;</div>
+                    <div class="member-name">测试工程师</div>
+                    <span class="member-role purple">质量保证</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-wave">
+            <svg viewBox="0 0 1200 60" preserveAspectRatio="none">
+                <path d="M0,0 C300,60 900,0 1200,40 L1200,60 L0,60 Z" class="shape-fill"></path>
+            </svg>
+        </div>
+        <div class="footer-content">
+            <div class="footer-title">&#127881; 社团管理系统</div>
+            <p>让社团管理变得简单又高效</p>
+            <div class="footer-divider"></div>
+            <div class="footer-links">
+                <a href="https://github.com/Cong0925/student_club" target="_blank">
+                    <i class="fab fa-github"></i>
+                    GitHub
+                </a>
+                <a href="demo/index.html">
+                    <i class="fas fa-book"></i>
+                    使用文档
+                </a>
+            </div>
+            <p class="footer-copy">&copy; 2026 社团管理系统. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
 </body>
 </html>

@@ -26,15 +26,14 @@ last_modified: 2026-07-13
 | nodejs-mysql-sequelize | Node.js MySQL Sequelize 示例 | web | ✅ 已提供 | ✅ 已完成 | ✅ 已完成 | 2026-07-09 |
 | spend-note | 记账本 | web | ✅ 已提供 | ✅ 已完成 | ✅ 已完成 | 2026-07-09 |
 | write-helper | 写作助手 | web | ✅ 已提供 | ✅ 已完成 | ✅ 已完成 | 2026-07-09 |
+| vue3-ts-model | Vue3 TypeScript 模版 | template | ✅ 已提供 | ✅ 已完成 | ✅ 已完成 | 2026-07-13 |
+| jquery-svg-d3-demo | jQuery SVG D3 Demo | web | ✅ 已提供 | ✅ 已完成 | ✅ 已完成 | 2026-07-13 |
+| student_club | 社团管理系统 | web | ✅ 已提供 | ✅ 已完成 | ✅ 已完成 | 2026-07-13 |
+| hugoBasicExample | Hugo 基础示例 | web | ✅ 已提供 | ✅ 已完成 | ✅ 已完成 | 2026-07-13 |
 
 ### 待完善项目
 
-| 项目名称 | 项目标题 | 项目类型 | 仓库地址 | 网址首页 | 演示界面 | 最后更新 |
-|----------|----------|----------|----------|----------|----------|----------|
-| hugoBasicExample | Hugo 基础示例 | web | ✅ 已提供 |   待完善 |   待完善 | 2026-07-10 |
-| jquery-svg-d3-demo | jQuery SVG D3 Demo | web | ✅ 已提供 |   待完善 |   待完善 | 2026-07-10 |
-| student_club | 社团管理系统 | web | ✅ 已提供 |   待完善 |   待完善 | 2026-07-10 |
-| vue3-ts-model | Vue3 TypeScript 模版 | template | ✅ 已提供 |   待完善 |   待完善 | 2026-07-10 |
+暂无
 
 ## 🎯 项目整体规划
 

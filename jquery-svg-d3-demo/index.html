@@ -3,35 +3,298 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>jQuery SVG D3 Demo</title>
+    <title>jQuery SVG D3 流程图编辑器 - 交互式节点画布编辑器</title>
+    <meta name="description" content="基于 jQuery、SVG 和 D3.js 的交互式流程图编辑器，支持节点拖拽、连线、力导向图、样式编辑、导入导出等功能。">
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
-    <div class="container">
-        <h1>jQuery SVG D3 Demo</h1>
-        <p class="description">基于 jQuery、SVG 和 D3.js 的交互式节点画布编辑器</p>
-        <div class="features">
-            <h2>功能特性</h2>
-            <ul>
-                <li>多种图形形状支持</li>
-                <li>节点拖拽交互</li>
-                <li>框选操作</li>
-                <li>网格吸附功能</li>
-                <li>连线样式配置</li>
-                <li>D3.js 力导向图</li>
-            </ul>
+    <!-- 动态几何背景层 -->
+    <div id="geometry-bg"></div>
+
+    <!-- 动态连线装饰层 -->
+    <div class="connection-lines"></div>
+
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-home">
+                <i class="fas fa-arrow-left"></i>
+                <span>返回首页</span>
+            </a>
+            <div class="nav-title">
+                <i class="fas fa-project-diagram"></i>
+                <span>jQuery SVG D3 流程图编辑器</span>
+            </div>
+            <a href="https://github.com/Cong0925/jquery-svg-d3-demo" target="_blank" class="nav-github">
+                <i class="fab fa-github"></i>
+                <span>GitHub</span>
+            </a>
         </div>
-        <div class="tech-stack">
-            <h2>技术栈</h2>
-            <span class="tag">jQuery</span>
-            <span class="tag">SVG</span>
-            <span class="tag">D3.js</span>
-            <span class="tag">力导向图</span>
+    </nav>
+
+    <!-- 英雄区域 - 不对称布局 -->
+    <section class="hero">
+        <div class="hero-left">
+            <div class="hero-badge">
+                <i class="fas fa-star"></i>
+                几何艺术风
+            </div>
+            <h1 class="hero-title">
+                <span class="highlight">jQuery SVG D3</span><br>
+                流程图编辑器
+            </h1>
+            <p class="hero-desc">
+                基于 jQuery、SVG 和 D3.js 构建的交互式流程图编辑器。
+                支持多种图形形状、节点拖拽、智能连线、力导向图布局、
+                样式自定义编辑、导入导出等功能，帮助你快速构建专业流程图。
+            </p>
+            <div class="hero-buttons">
+                <a href="./demo/index.html" class="btn btn-primary">
+                    <i class="fas fa-play-circle"></i>
+                    查看演示
+                </a>
+                <a href="https://github.com/Cong0925/jquery-svg-d3-demo" target="_blank" class="btn btn-outline">
+                    <i class="fab fa-github"></i>
+                    GitHub 仓库
+                </a>
+            </div>
+            <div class="hero-tags">
+                <span class="tag">
+                    <i class="fab fa-js-square"></i>
+                    jQuery
+                </span>
+                <span class="tag">
+                    <i class="fas fa-bezier-curve"></i>
+                    SVG
+                </span>
+                <span class="tag">
+                    <i class="fas fa-chart-bar"></i>
+                    D3.js
+                </span>
+            </div>
         </div>
-        <div class="links">
-            <a href="https://github.com/Cong0925/jquery-svg-d3-demo" target="_blank" class="btn">GitHub 仓库</a>
+        <div class="hero-right">
+            <div class="hero-svg-decoration"></div>
         </div>
-    </div>
-    <script src="./js/main.js"></script>
+    </section>
+
+    <!-- 核心特性 - 不对称网格 -->
+    <section class="features-section">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-badge">核心功能</span>
+                <h2 class="section-title">
+                    强大而直观的 <span class="accent">编辑能力</span>
+                </h2>
+                <p class="section-desc">从基础的节点操作到高级的力导向图布局，满足你的各种流程图编辑需求</p>
+            </div>
+            <div class="features-grid">
+                <!-- 大卡片 span 2 -->
+                <div class="feature-card">
+                    <div class="feature-icon shape-circle">
+                        <i class="fas fa-shapes"></i>
+                    </div>
+                    <h3>节点操作</h3>
+                    <p>支持矩形、圆形、菱形、平行四边形、椭圆、六边形等多种图形形状。支持拖拽移动、框选、复制粘贴、删除等操作。</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> 多种图形形状</li>
+                        <li><i class="fas fa-check"></i> 拖拽移动节点</li>
+                        <li><i class="fas fa-check"></i> 框选批量操作</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon shape-diamond">
+                        <i class="fas fa-bezier-curve"></i>
+                    </div>
+                    <h3>连线功能</h3>
+                    <p>从节点边缘拖拽即可创建连线。支持多种连线样式、颜色自定义、箭头方向控制等。</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> 拖拽创建连线</li>
+                        <li><i class="fas fa-check"></i> 连线样式编辑</li>
+                        <li><i class="fas fa-check"></i> 箭头方向控制</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon shape-hexagon">
+                        <i class="fas fa-sitemap"></i>
+                    </div>
+                    <h3>力导向图</h3>
+                    <p>集成 D3.js 力导向图引擎，自动布局节点，通过物理模拟实现智能排列。</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> D3.js 引擎驱动</li>
+                        <li><i class="fas fa-check"></i> 自动智能布局</li>
+                        <li><i class="fas fa-check"></i> 物理模拟效果</li>
+                    </ul>
+                </div>
+
+                <!-- 大卡片 span 2 -->
+                <div class="feature-card">
+                    <div class="feature-icon shape-triangle">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3>样式编辑</h3>
+                    <p>所见即所得的样式编辑面板，实时调整节点和连线的填充颜色、边框、字体、阴影等视觉样式。</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> 填充颜色编辑</li>
+                        <li><i class="fas fa-check"></i> 边框与阴影设置</li>
+                        <li><i class="fas fa-check"></i> 字体样式调整</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon shape-square">
+                        <i class="fas fa-file-export"></i>
+                    </div>
+                    <h3>导入导出</h3>
+                    <p>支持导出为 PNG、SVG、JSON 多种格式，也可导入 JSON 文件恢复编辑状态。</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> PNG / SVG 导出</li>
+                        <li><i class="fas fa-check"></i> JSON 数据导出</li>
+                        <li><i class="fas fa-check"></i> JSON 文件导入</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon shape-circle">
+                        <i class="fas fa-history"></i>
+                    </div>
+                    <h3>数据持久化</h3>
+                    <p>支持撤销重做、网格吸附、缩放平移等编辑辅助功能。数据自动保存。</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> 撤销重做操作</li>
+                        <li><i class="fas fa-check"></i> 网格吸附功能</li>
+                        <li><i class="fas fa-check"></i> 缩放与平移</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 技术栈 -->
+    <section class="tech-section">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-badge">技术栈</span>
+                <h2 class="section-title">
+                    成熟可靠的 <span class="accent">技术组合</span>
+                </h2>
+            </div>
+            <div class="tech-grid">
+                <div class="tech-card">
+                    <div class="tech-icon">
+                        <i class="fab fa-js-square"></i>
+                    </div>
+                    <h3>jQuery</h3>
+                    <p>快速简洁的 DOM 操作与事件处理，提供强大的选择器和链式调用，简化前端开发。</p>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-icon">
+                        <i class="fas fa-bezier-curve"></i>
+                    </div>
+                    <h3>SVG</h3>
+                    <p>基于 XML 的矢量图形格式，支持无损缩放、丰富图形元素和交互事件，是流程图的理想载体。</p>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3>D3.js</h3>
+                    <p>Data-Driven Documents，业界领先的可视化库，提供力导向图、数据绑定等高级功能。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 效果预览 -->
+    <section class="preview-section">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-badge">效果预览</span>
+                <h2 class="section-title">
+                    直观的 <span class="accent">编辑体验</span>
+                </h2>
+                <p class="section-desc">所见即所得的流程图编辑器，让复杂流程变得简单明了</p>
+            </div>
+            <div class="preview-container">
+                <div class="preview-wrapper">
+                    <div class="preview-placeholder">
+                        <div class="preview-canvas">
+                            <svg viewBox="0 0 800 400" class="preview-svg">
+                                <defs>
+                                    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+                                        <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.15"/>
+                                    </filter>
+                                    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+                                        <polygon points="0 0, 10 3.5, 0 7" fill="#FF6B35"/>
+                                    </marker>
+                                </defs>
+                                <!-- 开始节点 -->
+                                <rect x="50" y="170" width="120" height="60" rx="30" fill="#FF6B35" filter="url(#shadow)"/>
+                                <text x="110" y="205" text-anchor="middle" fill="white" font-size="14" font-family="system-ui" font-weight="600">开始</text>
+                                <!-- 连线1 -->
+                                <line x1="170" y1="200" x2="240" y2="200" stroke="#FF6B35" stroke-width="2" marker-end="url(#arrowhead)"/>
+                                <!-- 处理节点 -->
+                                <rect x="250" y="170" width="120" height="60" rx="8" fill="#004E89" filter="url(#shadow)"/>
+                                <text x="310" y="205" text-anchor="middle" fill="white" font-size="14" font-family="system-ui" font-weight="600">处理数据</text>
+                                <!-- 连线2 -->
+                                <line x1="370" y1="200" x2="440" y2="200" stroke="#004E89" stroke-width="2" marker-end="url(#arrowhead)"/>
+                                <!-- 判断节点 -->
+                                <polygon points="500,155 560,200 500,245 440,200" fill="#FFD166" filter="url(#shadow)"/>
+                                <text x="500" y="205" text-anchor="middle" fill="#1a1a2e" font-size="13" font-family="system-ui" font-weight="700">判断</text>
+                                <!-- 连线3 -->
+                                <line x1="560" y1="200" x2="620" y2="200" stroke="#FFD166" stroke-width="2" marker-end="url(#arrowhead)"/>
+                                <!-- 结束节点 -->
+                                <rect x="630" y="170" width="120" height="60" rx="30" fill="#8B5CF6" filter="url(#shadow)"/>
+                                <text x="690" y="205" text-anchor="middle" fill="white" font-size="14" font-family="system-ui" font-weight="600">结束</text>
+                            </svg>
+                        </div>
+                        <div class="preview-label">
+                            <i class="fas fa-mouse-pointer"></i>
+                            编辑器效果预览
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="preview-actions">
+                <a href="./demo/index.html" class="btn btn-primary">
+                    <i class="fas fa-play-circle"></i>
+                    在线体验演示
+                </a>
+                <a href="https://github.com/Cong0925/jquery-svg-d3-demo" target="_blank" class="btn btn-outline">
+                    <i class="fas fa-download"></i>
+                    下载源码
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <span class="footer-title">
+                        <i class="fas fa-project-diagram"></i>
+                        jQuery SVG D3 流程图编辑器
+                    </span>
+                    <span class="footer-desc">基于 jQuery + SVG + D3.js 的交互式流程图编辑器</span>
+                </div>
+                <div class="footer-links">
+                    <a href="../index.html"><i class="fas fa-home"></i> 首页</a>
+                    <a href="./demo/index.html"><i class="fas fa-play"></i> 演示</a>
+                    <a href="https://github.com/Cong0925/jquery-svg-d3-demo" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>Made with <i class="fas fa-heart heart"></i> by Cong0925</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 动态几何背景脚本 -->
+    <script src="js/main.js"></script>
 </body>
 </html>

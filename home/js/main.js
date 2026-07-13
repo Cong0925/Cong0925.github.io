@@ -98,7 +98,7 @@ const projects = [
         type: 'web',
         repo: 'https://github.com/Cong0925/jquery-svg-d3-demo',
         homepage: '../jquery-svg-d3-demo/',
-        demo: '',
+        demo: '../jquery-svg-d3-demo/demo/',
         lastUpdated: '2025-01-15',
     },
     {
@@ -113,7 +113,7 @@ const projects = [
         type: 'template',
         repo: 'https://github.com/Cong0925/vue3-ts-model',
         homepage: '../vue3-ts-model/',
-        demo: '',
+        demo: '../vue3-ts-model/demo/',
         lastUpdated: '2024-12-20',
     },
     {
@@ -128,7 +128,7 @@ const projects = [
         type: 'web',
         repo: 'https://github.com/Cong0925/hugoBasicExample',
         homepage: '../hugoBasicExample/',
-        demo: '',
+        demo: '../hugoBasicExample/demo/',
         lastUpdated: '2024-11-15',
     },
     {
@@ -143,7 +143,7 @@ const projects = [
         type: 'web',
         repo: 'https://github.com/Cong0925/student_club',
         homepage: '../student_club/',
-        demo: '',
+        demo: '../student_club/demo/',
         lastUpdated: '2024-10-25',
     }
     // 后续添加新项目在这里
@@ -299,11 +299,11 @@ function createProjectCard(project, index) {
         buttonsHtml += `<span class="card-btn btn-homepage disabled"><i class="fas fa-globe"></i> 网址首页</span>`;
     }
 
-    // 演示按钮
+    // 快速上手按钮
     if (project.demo) {
-        buttonsHtml += `<a href="${project.demo}" target="_blank" class="card-btn btn-demo"><i class="fas fa-desktop"></i> 演示</a>`;
+        buttonsHtml += `<a href="${project.demo}" target="_blank" class="card-btn btn-demo"><i class="fas fa-rocket"></i> 快速上手</a>`;
     } else {
-        buttonsHtml += `<span class="card-btn btn-demo disabled"><i class="fas fa-desktop"></i> 演示</span>`;
+        buttonsHtml += `<span class="card-btn btn-demo disabled"><i class="fas fa-rocket"></i> 快速上手</span>`;
     }
 
     // 格式化最后修改时间

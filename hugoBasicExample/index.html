@@ -3,36 +3,263 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hugo Blog</title>
+    <title>Hugo 基础示例 - 优雅博客系统</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Hugo Blog</h1>
-        <p class="description">基于 Hugo Clarity 主题的个人博客系统</p>
-        <div class="features">
-            <h2>功能特性</h2>
-            <ul>
-                <li>中英文双语切换</li>
-                <li>用户登录与验证码</li>
-                <li>RSA 密码加密</li>
-                <li>文章发布与管理</li>
-                <li>深色模式支持</li>
-                <li>响应式设计</li>
-                <li>玻璃拟态风格登录弹窗</li>
-            </ul>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../" class="nav-logo">
+                <span class="logo-mark">H</span>
+                Hugo 基础示例
+            </a>
+            <h1 class="nav-title">Personal Blog System</h1>
+            <a href="https://github.com/Cong0925/hugoBasicExample" target="_blank" class="nav-github">
+                <i class="fab fa-github"></i> GitHub
+            </a>
         </div>
-        <div class="tech-stack">
-            <h2>技术栈</h2>
-            <span class="tag">Hugo</span>
-            <span class="tag">Hugo Clarity</span>
-            <span class="tag">Glassmorphism</span>
-            <span class="tag">JSEncrypt</span>
+    </nav>
+
+    <!-- Hero 区域 -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="hero-label">Open Source Blog Framework</span>
+            <h1 class="hero-title">
+                <span class="gold-underline">Hugo</span> 基础示例
+            </h1>
+            <p class="hero-subtitle">
+                基于 Hugo Clarity 主题的个人博客系统，支持中英文双语、登录认证、文章发布，
+                以极简的黑白金色调呈现优雅的阅读体验。
+            </p>
+            <div class="hero-tags">
+                <span class="tag">Hugo Extended</span>
+                <span class="tag">Hugo Clarity</span>
+                <span class="tag">Markdown</span>
+                <span class="tag">JSEncrypt</span>
+            </div>
+            <div class="hero-buttons">
+                <a href="demo/" class="btn btn-primary">
+                    <i class="fas fa-book-open"></i> 查看演示
+                </a>
+                <a href="https://github.com/Cong0925/hugoBasicExample" target="_blank" class="btn btn-secondary">
+                    <i class="fab fa-github"></i> 源码下载
+                </a>
+            </div>
         </div>
-        <div class="links">
-            <a href="https://github.com/Cong0925/hugoBasicExample" target="_blank" class="btn">GitHub 仓库</a>
+    </section>
+
+    <!-- 功能特性 -->
+    <section class="features">
+        <div class="container">
+            <div class="section-header animate-in">
+                <div class="section-number">01</div>
+                <h2 class="section-title">功能特性</h2>
+                <div class="gold-divider"></div>
+                <p class="section-subtitle">精心打造的博客系统，满足现代博客的一切需求</p>
+            </div>
+            <div class="features-grid animate-in">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-language"></i>
+                    </div>
+                    <h3>双语支持</h3>
+                    <p>支持中文/英文一键切换，满足多语言博客需求，让内容触达更广泛的读者</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>登录认证</h3>
+                    <p>支持用户登录、验证码验证、RSA 密码加密，安全可靠的认证机制保障账户安全</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-pen-nib"></i>
+                    </div>
+                    <h3>文章发布</h3>
+                    <p>登录后可发布新文章，支持 Markdown 格式排版，轻松管理博客内容</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>响应式设计</h3>
+                    <p>完美适配桌面端和移动端，自适应不同屏幕尺寸，随时随地阅读</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-moon"></i>
+                    </div>
+                    <h3>深色模式</h3>
+                    <p>支持自动/手动切换深色模式，保护眼睛，提升夜间阅读体验</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>全文搜索</h3>
+                    <p>支持文章全文搜索，快速定位你需要的内容，提升信息检索效率</p>
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
+
+    <!-- 引言区块 -->
+    <section class="quote-section">
+        <div class="container container--narrow">
+            <div class="quote-block animate-in">
+                <span class="quote-mark">"</span>
+                <p class="quote-text">
+                    Hugo 是世界上最快的静态网站生成器，以其惊人的速度和灵活性，
+                    让创作者专注于内容本身，而非繁琐的技术细节。
+                </p>
+                <p class="quote-author">-- Hugo 官方文档</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 技术架构 -->
+    <section class="tech-stack">
+        <div class="container">
+            <div class="section-header animate-in">
+                <div class="section-number">02</div>
+                <h2 class="section-title">技术架构</h2>
+                <div class="gold-divider"></div>
+                <p class="section-subtitle">基于成熟技术栈构建，确保性能与稳定性</p>
+            </div>
+            <div class="tech-magazine animate-in">
+                <div class="tech-left">
+                    <p class="tech-description">
+                        本项目采用 Hugo Extended 作为核心构建引擎，搭配 Hugo Clarity 主题，
+                        实现了现代化的博客体验。前端使用 Glassmorphism 设计风格，
+                        后端通过 JSEncrypt 实现 RSA 密码加密，确保用户认证的安全性。
+                    </p>
+                    <p class="tech-description">
+                        整个系统基于 Go 语言开发的 Hugo 引擎，编译后的静态文件可部署到任何 Web 服务器，
+                        无需后端运行时环境，极大简化了部署和运维成本。
+                    </p>
+                </div>
+                <div class="tech-right">
+                    <div class="tech-grid">
+                        <div class="tech-item">
+                            <i class="fas fa-cube tech-icon"></i>
+                            <span>Hugo Extended</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-palette tech-icon"></i>
+                            <span>Hugo Clarity</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-glass-martini-alt tech-icon"></i>
+                            <span>Glassmorphism</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-lock tech-icon"></i>
+                            <span>JSEncrypt</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fab fa-markdown tech-icon"></i>
+                            <span>Markdown</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-code tech-icon"></i>
+                            <span>TOML</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 项目结构 -->
+    <section class="structure">
+        <div class="container">
+            <div class="section-header animate-in">
+                <div class="section-number">03</div>
+                <h2 class="section-title">项目结构</h2>
+                <div class="gold-divider"></div>
+            </div>
+            <div class="structure-content animate-in">
+                <pre><code>hugoBasicExample/
+├── assets/css/           # 预编译的主题 CSS
+├── config/               # 配置文件
+│   └── _default/
+│       ├── config.toml   # 主配置文件
+│       ├── params.toml   # 网站参数配置
+│       └── menus/        # 菜单配置
+├── content/              # 内容目录
+│   └── post/             # 文章目录
+├── layouts/partials/     # 页面模板
+│   ├── header.html       # 页头（含登录按钮）
+│   ├── login.html        # 登录弹窗
+│   └── sidebar.html      # 侧边栏
+├── static/               # 静态资源
+│   ├── css/              # 自定义样式
+│   └── js/               # 自定义脚本
+└── themes/               # Hugo 主题</code></pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- 快速开始 -->
+    <section class="quick-start">
+        <div class="container">
+            <div class="section-header animate-in">
+                <div class="section-number">04</div>
+                <h2 class="section-title">快速开始</h2>
+                <div class="gold-divider"></div>
+                <p class="section-subtitle">三步即可启动你的 Hugo 博客</p>
+            </div>
+            <div class="steps animate-in">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>安装 Hugo</h3>
+                    <pre><code># Windows
+choco install hugo-extended
+
+# macOS
+brew install hugo
+
+# Linux
+sudo snap install hugo</code></pre>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>克隆项目</h3>
+                    <pre><code>git clone https://github.com/
+  Cong0925/hugoBasicExample.git
+cd hugoBasicExample</code></pre>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>启动服务器</h3>
+                    <pre><code>hugo server
+
+# 访问 http://localhost:1313/
+# 即可预览你的博客</code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-logo">Hugo <span>Basic</span> Example</div>
+            <p>Made with care by <a href="https://github.com/Cong0925" target="_blank">Cong0925</a></p>
+            <div class="footer-tech">
+                <span>Hugo Extended</span>
+                <span>Go</span>
+                <span>Markdown</span>
+                <span>TOML</span>
+                <span>HTML5</span>
+                <span>CSS3</span>
+            </div>
+        </div>
+    </footer>
+
     <script src="./js/main.js"></script>
 </body>
 </html>

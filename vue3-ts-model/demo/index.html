@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue3 管理系统 - 完整使用演示</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../" class="nav-logo"><i class="fas fa-arrow-left"></i> 返回官网</a>
+            <h1 class="nav-title">Vue3 管理系统 - 完整使用演示</h1>
+            <div class="nav-links">
+                <a href="#env">环境准备</a>
+                <a href="#clone">克隆项目</a>
+                <a href="#install">安装依赖</a>
+                <a href="#start">启动项目</a>
+                <a href="#build">构建部署</a>
+                <a href="#config">配置说明</a>
+                <a href="#faq">常见问题</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Vue3 管理系统 完整使用演示</h1>
+            <p>从下载到部署的完整教程</p>
+            <div class="hero-stats">
+                <div class="stat"><span class="stat-number">10+</span><span class="stat-label">详细步骤</span></div>
+                <div class="stat"><span class="stat-number">100%</span><span class="stat-label">成功率</span></div>
+                <div class="stat"><span class="stat-number">5min</span><span class="stat-label">预计时间</span></div>
+            </div>
+        </div>
+    </section>
+
+    <div class="content-wrapper">
+        <section class="step-section" id="env">
+            <div class="step-header"><div class="step-number">1</div><h2>环境准备</h2></div>
+            <div class="step-card">
+                <h3>1.1 检查 Node.js 版本</h3>
+                <p>Vue3 需要 Node.js >= 16.0.0，推荐使用 18.x 或 20.x 版本。</p>
+                <div class="code-block">
+                    <div class="code-header"><span>终端命令</span><button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i> 复制</button></div>
+                    <pre><code># 检查 Node.js 版本
+node -v
+
+# 检查 npm 版本
+npm -v
+
+# 检查 Git 版本
+git --version</code></pre>
+                </div>
+                <div class="tip"><i class="fas fa-lightbulb"></i> <strong>提示：</strong>如果未安装 Node.js，请访问 https://nodejs.org/ 下载并安装。</div>
+            </div>
+            <div class="step-card">
+                <h3>1.2 安装代码编辑器（推荐 VS Code）</h3>
+                <p>推荐使用 VS Code 作为代码编辑器，并安装以下插件：</p>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check"></i> Volar - Vue3 官方插件</li>
+                    <li><i class="fas fa-check"></i> ESLint - 代码检查</li>
+                    <li><i class="fas fa-check"></i> Prettier - 代码格式化</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="step-section" id="clone">
+            <div class="step-header"><div class="step-number">2</div><h2>克隆项目</h2></div>
+            <div class="step-card">
+                <h3>2.1 克隆仓库</h3>
+                <p>打开终端，执行以下命令克隆项目：</p>
+                <div class="code-block">
+                    <div class="code-header"><span>终端命令</span><button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i> 复制</button></div>
+                    <pre><code># 克隆仓库
+git clone https://github.com/Cong0925/vue3-ts-model.git
+
+# 进入项目目录
+cd vue3-ts-model</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <section class="step-section" id="install">
+            <div class="step-header"><div class="step-number">3</div><h2>安装依赖</h2></div>
+            <div class="step-card">
+                <h3>3.1 安装项目依赖</h3>
+                <p>根据你使用的包管理器，选择对应的命令：</p>
+                <div class="tabs">
+                    <button class="tab-btn active" onclick="switchTab(event, 'npm')">npm</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'yarn')">yarn</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'pnpm')">pnpm</button>
+                </div>
+                <div id="npm" class="tab-content active">
+                    <div class="code-block">
+                        <div class="code-header"><span>npm 安装</span><button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i> 复制</button></div>
+                        <pre><code>npm install</code></pre>
+                    </div>
+                </div>
+                <div id="yarn" class="tab-content">
+                    <div class="code-block">
+                        <div class="code-header"><span>yarn 安装</span><button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i> 复制</button></div>
+                        <pre><code>yarn install</code></pre>
+                    </div>
+                </div>
+                <div id="pnpm" class="tab-content">
+                    <div class="code-block">
+                        <div class="code-header"><span>pnpm 安装</span><button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i> 复制</button></div>
+                        <pre><code>pnpm install</code></pre>
+                    </div>
+                </div>
+                <div class="tip"><i class="fas fa-clock"></i> <strong>预计时间：</strong>1-3 分钟（取决于网络速度）</div>
+            </div>
+        </section>
+
+        <section class="step-section" id="start">
+            <div class="step-header"><div class="step-number">4</div><h2>启动项目</h2></div>
+            <div class="step-card">
+                <h3>4.1 启动开发服务器</h3>
+                <p>安装完成后，执行以下命令启动开发服务器：</p>
+                <div class="code-block">
+                    <div class="code-header"><span>终端命令</span><button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i> 复制</button></div>
+                    <pre><code># 启动开发环境
+npm run dev
+
+# 或
+yarn dev</code></pre>
+                </div>
+                <div class="screenshot-placeholder"><i class="fas fa-image"></i><p>启动成功后，浏览器会自动打开 http://localhost:8888</p></div>
+                <div class="success"><i class="fas fa-check-circle"></i> <strong>成功标志：</strong>看到登录页面即表示启动成功</div>
+            </div>
+            <div class="step-card">
+                <h3>4.2 登录系统</h3>
+                <p>启动成功后，你会看到登录页面。可以使用以下测试账号：</p>
+                <div class="info-box">
+                    <h4>测试账号</h4>
+                    <p><strong>用户名：</strong>admin</p>
+                    <p><strong>密码：</strong>123456</p>
+                </div>
+                <div class="screenshot-placeholder"><i class="fas fa-image"></i><p>登录页面截图</p></div>
+            </div>
+        </section>
+
+        <section class="step-section" id="build">
+            <div class="step-header"><div class="step-number">5</div><h2>构建部署</h2></div>
+            <div class="step-card">
+                <h3>5.1 构建生产版本</h3>
+                <p>开发完成后，执行以下命令构建生产版本：</p>
+                <div class="code-block">
+                    <div class="code-header"><span>终端命令</span><button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i> 复制</button></div>
+                    <pre><code># 构建生产版本
+npm run build
+
+# 或
+yarn build</code></pre>
+                </div>
+                <div class="tip"><i class="fas fa-folder"></i> <strong>输出目录：</strong>构建产物将输出到 dist/ 目录</div>
+            </div>
+            <div class="step-card">
+                <h3>5.2 Nginx 部署配置</h3>
+                <div class="code-block">
+                    <div class="code-header"><span>nginx.conf</span></div>
+                    <pre><code>server {
+    listen 80;
+    server_name your-domain.com;
+    root /path/to/dist;
+    index index.html;
+
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+
+    location /api {
+        proxy_pass https://your-api-server.com;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+}</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <section class="step-section" id="config">
+            <div class="step-header"><div class="step-number">6</div><h2>配置说明</h2></div>
+            <div class="step-card">
+                <h3>6.1 环境变量配置</h3>
+                <table class="config-table">
+                    <thead><tr><th>文件</th><th>说明</th></tr></thead>
+                    <tbody>
+                        <tr><td>.env</td><td>公共环境变量</td></tr>
+                        <tr><td>.env.development</td><td>开发环境变量</td></tr>
+                        <tr><td>.env.production</td><td>生产环境变量</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="step-card">
+                <h3>6.2 环境变量内容</h3>
+                <div class="code-block">
+                    <div class="code-header"><span>.env.development</span></div>
+                    <pre><code># 应用标题
+VITE_APP_TITLE=Vue3管理系统
+
+# API 基础路径
+VITE_APP_BASE_API=/api
+
+# API 完整地址
+VITE_APP_API_BASE_URL=https://www.fastmock.site/mock/xxx
+
+# 环境标识
+VITE_APP_ENV=development</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <section class="step-section" id="faq">
+            <div class="step-header"><div class="step-number">7</div><h2>常见问题</h2></div>
+            <div class="step-card">
+                <h3>Q1: 安装依赖失败怎么办？</h3>
+                <div class="code-block">
+                    <div class="code-header"><span>终端命令</span><button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i> 复制</button></div>
+                    <pre><code># 清除缓存
+npm cache clean --force
+
+# 删除 node_modules 重新安装
+rm -rf node_modules package-lock.json
+npm install</code></pre>
+                </div>
+            </div>
+            <div class="step-card">
+                <h3>Q2: 端口被占用怎么办？</h3>
+                <div class="code-block">
+                    <div class="code-header"><span>终端命令</span><button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i> 复制</button></div>
+                    <pre><code># 查找占用端口的进程 (Windows)
+netstat -ano | findstr :8888
+
+# 结束进程 (替换为实际 PID)
+taskkill /PID &lt;pid&gt; /F</code></pre>
+                </div>
+            </div>
+            <div class="step-card">
+                <h3>Q3: 样式不生效怎么办？</h3>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check"></i> 确认使用了 <code>&lt;style scoped&gt;</code></li>
+                    <li><i class="fas fa-check"></i> 检查 CSS 类名是否正确</li>
+                    <li><i class="fas fa-check"></i> 确认样式文件已正确导入</li>
+                    <li><i class="fas fa-check"></i> 重启开发服务器</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+
+    <section class="cta">
+        <div class="container">
+            <h2>开始使用 Vue3 管理系统</h2>
+            <p>现在就开始构建你的下一个项目吧！</p>
+            <div class="cta-buttons">
+                <a href="https://github.com/Cong0925/vue3-ts-model" target="_blank" class="btn btn-primary"><i class="fab fa-github"></i> 查看源码</a>
+                <a href="../" class="btn btn-secondary"><i class="fas fa-home"></i> 返回首页</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container"><p>Made with ❤️ by <a href="https://github.com/Cong0925" target="_blank">Cong0925</a></p></div>
+    </footer>
+
+    <script src="./js/main.js"></script>
+</body>
+</html>

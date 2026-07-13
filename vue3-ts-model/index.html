@@ -3,27 +3,351 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vue3 TS Model</title>
-    <link rel="stylesheet" href="./css/style.css">
+    <meta name="description" content="Vue3 管理系统 - 基于 Vue3 + TypeScript + Vite + Element Plus 的现代化企业级管理后台">
+    <title>Vue3 管理系统 | 高性能企业级解决方案</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Vue3 TS Model</h1>
-        <p class="description">Vue3 + TypeScript 项目模板</p>
-        <div class="features">
-            <h2>功能特性</h2>
-            <ul>
-                <li>Vue3 + TypeScript + Vite</li>
-                <li>Element Plus 组件库</li>
-                <li>Pinia 状态管理</li>
-                <li>富文本编辑器（TinyMCE/Vditor）</li>
-                <li>登录系统与权限管理</li>
+    <!-- CSS 动态背景 -->
+    <div class="bg-grid"></div>
+    <div class="bg-glow"></div>
+
+    <!-- 导航栏 -->
+    <nav class="navbar glass">
+        <div class="nav-container">
+            <a href="../" class="nav-logo">
+                <i class="fas fa-arrow-left"></i> 返回首页
+            </a>
+            <div class="nav-brand">
+                <i class="fas fa-cube"></i>
+                <span>Vue3 Admin</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#features">功能特性</a></li>
+                <li><a href="#tech">技术栈</a></li>
+                <li><a href="#code">代码示例</a></li>
+                <li><a href="#quickstart">快速开始</a></li>
             </ul>
+            <a href="https://github.com/Cong0925/vue3-ts-model" target="_blank" class="btn-github">
+                <i class="fab fa-github"></i> GitHub
+            </a>
         </div>
-        <div class="links">
-            <a href="https://github.com/Cong0925/vue3-ts-model" target="_blank" class="btn">GitHub 仓库</a>
+    </nav>
+
+    <!-- 英雄区域 -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge glass">Vue3 + TypeScript</div>
+            <h1 class="hero-title">
+                <span class="gradient-text">Vue3 管理系统</span>
+            </h1>
+            <p class="hero-subtitle">
+                基于 Vue3 + TypeScript + Vite + Element Plus 构建的现代化企业级管理后台
+            </p>
+            <div class="hero-stats">
+                <div class="stat-item glass">
+                    <span class="stat-icon"><i class="fab fa-vuejs"></i></span>
+                    <span class="stat-value">Vue 3</span>
+                    <span class="stat-label">前端框架</span>
+                </div>
+                <div class="stat-item glass">
+                    <span class="stat-icon"><i class="fas fa-code"></i></span>
+                    <span class="stat-value">TypeScript</span>
+                    <span class="stat-label">类型安全</span>
+                </div>
+                <div class="stat-item glass">
+                    <span class="stat-icon"><i class="fas fa-bolt"></i></span>
+                    <span class="stat-value">Vite</span>
+                    <span class="stat-label">极速构建</span>
+                </div>
+                <div class="stat-item glass">
+                    <span class="stat-icon"><i class="fas fa-palette"></i></span>
+                    <span class="stat-value">Element Plus</span>
+                    <span class="stat-label">UI 组件库</span>
+                </div>
+            </div>
+            <div class="hero-buttons">
+                <a href="https://github.com/Cong0925/vue3-ts-model" target="_blank" class="btn-primary">
+                    <i class="fab fa-github"></i> 查看源码
+                </a>
+                <a href="#features" class="btn-secondary">
+                    <i class="fas fa-arrow-down"></i> 了解更多
+                </a>
+            </div>
         </div>
-    </div>
-    <script src="./js/main.js"></script>
+    </section>
+
+    <!-- 功能特性 -->
+    <section id="features" class="features">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">功能特性</span>
+                <h2 class="section-title">强大的功能模块</h2>
+                <p class="section-desc">提供完整的管理后台解决方案</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card glass">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>登录认证</h3>
+                    <p>支持 JWT Token 认证、路由权限控制、动态菜单生成，保障系统安全</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> JWT Token 认证</li>
+                        <li><i class="fas fa-check"></i> 路由权限控制</li>
+                        <li><i class="fas fa-check"></i> 动态菜单生成</li>
+                    </ul>
+                </div>
+                <div class="feature-card glass">
+                    <div class="feature-icon">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
+                    <h3>页面模块</h3>
+                    <p>模块化页面设计，支持动态路由、缓存策略，提升用户体验</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> 动态路由配置</li>
+                        <li><i class="fas fa-check"></i> 页面缓存策略</li>
+                        <li><i class="fas fa-check"></i> 多标签页管理</li>
+                    </ul>
+                </div>
+                <div class="feature-card glass">
+                    <div class="feature-icon">
+                        <i class="fas fa-pen-fancy"></i>
+                    </div>
+                    <h3>富文本编辑器</h3>
+                    <p>集成高性能富文本编辑器，支持图片上传、格式化、自定义插件</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> 图片上传处理</li>
+                        <li><i class="fas fa-check"></i> 格式化工具栏</li>
+                        <li><i class="fas fa-check"></i> 自定义插件扩展</li>
+                    </ul>
+                </div>
+                <div class="feature-card glass">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>响应式设计</h3>
+                    <p>完美适配各种屏幕尺寸，支持移动端、平板、桌面端访问</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> 移动端适配</li>
+                        <li><i class="fas fa-check"></i> 平板端适配</li>
+                        <li><i class="fas fa-check"></i> 桌面端优化</li>
+                    </ul>
+                </div>
+                <div class="feature-card glass">
+                    <div class="feature-icon">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <h3>性能优化</h3>
+                    <p>采用 Vite 构建，支持代码分割、懒加载、Tree Shaking</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> Vite 极速构建</li>
+                        <li><i class="fas fa-check"></i> 代码分割优化</li>
+                        <li><i class="fas fa-check"></i> 路由懒加载</li>
+                    </ul>
+                </div>
+                <div class="feature-card glass">
+                    <div class="feature-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>TypeScript</h3>
+                    <p>全面采用 TypeScript，提供完整的类型定义，提升代码质量</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> 完整类型定义</li>
+                        <li><i class="fas fa-check"></i> IDE 智能提示</li>
+                        <li><i class="fas fa-check"></i> 编译时错误检查</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 技术栈 -->
+    <section id="tech" class="tech-stack">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">技术栈</span>
+                <h2 class="section-title">现代技术组合</h2>
+                <p class="section-desc">采用业界主流技术，确保项目稳定性和可维护性</p>
+            </div>
+            <div class="tech-grid">
+                <div class="tech-item glass">
+                    <div class="tech-logo vue"><i class="fab fa-vuejs"></i></div>
+                    <h4>Vue 3</h4>
+                    <span class="tech-version">3.x</span>
+                    <p>渐进式 JavaScript 框架，Composition API 提供更好的逻辑复用</p>
+                </div>
+                <div class="tech-item glass">
+                    <div class="tech-logo ts"><i class="fas fa-code"></i></div>
+                    <h4>TypeScript</h4>
+                    <span class="tech-version">5.x</span>
+                    <p>JavaScript 的超集，提供静态类型检查和智能提示</p>
+                </div>
+                <div class="tech-item glass">
+                    <div class="tech-logo vite"><i class="fas fa-bolt"></i></div>
+                    <h4>Vite</h4>
+                    <span class="tech-version">5.x</span>
+                    <p>下一代前端构建工具，极速的冷启动和热更新</p>
+                </div>
+                <div class="tech-item glass">
+                    <div class="tech-logo element"><i class="fas fa-palette"></i></div>
+                    <h4>Element Plus</h4>
+                    <span class="tech-version">2.x</span>
+                    <p>基于 Vue 3 的组件库，提供丰富的 UI 组件</p>
+                </div>
+                <div class="tech-item glass">
+                    <div class="tech-logo pinia"><i class="fas fa-store"></i></div>
+                    <h4>Pinia</h4>
+                    <span class="tech-version">2.x</span>
+                    <p>新一代状态管理库，轻量级且支持 TypeScript</p>
+                </div>
+                <div class="tech-item glass">
+                    <div class="tech-logo router"><i class="fas fa-route"></i></div>
+                    <h4>Vue Router</h4>
+                    <span class="tech-version">4.x</span>
+                    <p>Vue.js 官方路由管理器，支持动态路由和导航守卫</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 代码示例 -->
+    <section id="code" class="code-section">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">代码示例</span>
+                <h2 class="section-title">优雅的代码结构</h2>
+                <p class="section-desc">清晰的代码组织，易于维护和扩展</p>
+            </div>
+            <div class="code-examples">
+                <div class="code-block glass">
+                    <div class="code-header">
+                        <div class="window-dots">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                        </div>
+                        <span class="code-file">App.vue</span>
+                    </div>
+                    <pre class="code-content"><code><span class="kw">import</span> { <span class="fn">createApp</span> } <span class="kw">from</span> <span class="str">'vue'</span>
+<span class="kw">import</span> { <span class="fn">createPinia</span> } <span class="kw">from</span> <span class="str">'pinia'</span>
+<span class="kw">import</span> <span class="var">ElementPlus</span> <span class="kw">from</span> <span class="str">'element-plus'</span>
+<span class="kw">import</span> <span class="var">App</span> <span class="kw">from</span> <span class="str">'./App.vue'</span>
+<span class="kw">import</span> <span class="str">'./styles/main.scss'</span>
+
+<span class="kw">const</span> <span class="var">app</span> = <span class="fn">createApp</span>(<span class="var">App</span>)
+<span class="var">app</span>.<span class="fn">use</span>(<span class="fn">createPinia</span>())
+<span class="var">app</span>.<span class="fn">use</span>(<span class="var">ElementPlus</span>)
+<span class="var">app</span>.<span class="fn">mount</span>(<span class="str">'#app'</span>)</code></pre>
+                </div>
+                <div class="code-block glass">
+                    <div class="code-header">
+                        <div class="window-dots">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                        </div>
+                        <span class="code-file">useAuth.ts</span>
+                    </div>
+                    <pre class="code-content"><code><span class="kw">import</span> { <span class="fn">ref</span>, <span class="fn">computed</span> } <span class="kw">from</span> <span class="str">'vue'</span>
+<span class="kw">import</span> { <span class="var">useUserStore</span> } <span class="kw">from</span> <span class="str">'@/stores/user'</span>
+
+<span class="kw">export function</span> <span class="fn">useAuth</span>() {
+  <span class="kw">const</span> <span class="var">userStore</span> = <span class="fn">useUserStore</span>()
+  <span class="kw">const</span> <span class="var">loading</span> = <span class="fn">ref</span>(<span class="val">false</span>)
+
+  <span class="kw">const</span> <span class="var">isAuthenticated</span> = <span class="fn">computed</span>(
+    () =&gt; !!<span class="var">userStore</span>.<span class="var">token</span>
+  )
+
+  <span class="kw">async function</span> <span class="fn">login</span>(<span class="var">params</span>: <span class="var">LoginParams</span>) {
+    <span class="var">loading</span>.<span class="var">value</span> = <span class="val">true</span>
+    <span class="kw">try</span> {
+      <span class="kw">await</span> <span class="var">userStore</span>.<span class="fn">login</span>(<span class="var">params</span>)
+    } <span class="kw">finally</span> {
+      <span class="var">loading</span>.<span class="var">value</span> = <span class="val">false</span>
+    }
+  }
+
+  <span class="kw">return</span> { <span class="var">isAuthenticated</span>, <span class="var">loading</span>, <span class="var">login</span> }
+}</code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 快速开始 -->
+    <section id="quickstart" class="quickstart">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">快速开始</span>
+                <h2 class="section-title">轻松上手</h2>
+                <p class="section-desc">只需几步即可启动项目</p>
+            </div>
+            <div class="steps-grid">
+                <div class="step-card glass">
+                    <div class="step-number">1</div>
+                    <h4>克隆项目</h4>
+                    <div class="step-code">
+                        <code>git clone https://github.com/Cong0925/vue3-ts-model.git</code>
+                        <button class="copy-btn" data-code="git clone https://github.com/Cong0925/vue3-ts-model.git">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="step-card glass">
+                    <div class="step-number">2</div>
+                    <h4>安装依赖</h4>
+                    <div class="step-code">
+                        <code>cd vue3-ts-model && npm install</code>
+                        <button class="copy-btn" data-code="cd vue3-ts-model && npm install">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="step-card glass">
+                    <div class="step-number">3</div>
+                    <h4>启动开发</h4>
+                    <div class="step-code">
+                        <code>npm run dev</code>
+                        <button class="copy-btn" data-code="npm run dev">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer glass">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <div class="footer-logo">
+                        <i class="fas fa-cube"></i> Vue3 Admin
+                    </div>
+                    <p>现代化企业级管理后台解决方案</p>
+                </div>
+                <div class="footer-links">
+                    <a href="https://github.com/Cong0925/vue3-ts-model" target="_blank">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                    <a href="https://vuejs.org/" target="_blank">
+                        <i class="fab fa-vuejs"></i> Vue.js
+                    </a>
+                    <a href="https://vitejs.dev/" target="_blank">
+                        <i class="fas fa-bolt"></i> Vite
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Vue3 Admin. Built with Vue3 + TypeScript</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
 </body>
 </html>

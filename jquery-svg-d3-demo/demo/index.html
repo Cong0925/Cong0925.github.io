@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery SVG D3 流程图编辑器 - 安装使用教程</title>
+    <meta name="description" content="jQuery SVG D3 流程图编辑器的安装教程和详细操作指南，帮助你快速上手使用。">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-home">
+                <i class="fas fa-arrow-left"></i>
+                <span>返回项目</span>
+            </a>
+            <div class="nav-title">
+                <i class="fas fa-book-open"></i>
+                <span>安装使用教程</span>
+            </div>
+            <a href="https://github.com/Cong0925/jquery-svg-d3-demo" target="_blank" class="nav-github">
+                <i class="fab fa-github"></i>
+                <span>GitHub</span>
+            </a>
+        </div>
+    </nav>
+
+    <div class="page-layout">
+        <!-- 侧边栏导航 -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h3>目录导航</h3>
+                <button class="sidebar-close" id="sidebarClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="#quick-start" class="nav-link active">快速开始</a></li>
+                    <li><a href="#step-1" class="nav-link">1. 添加节点</a></li>
+                    <li><a href="#step-2" class="nav-link">2. 移动节点</a></li>
+                    <li><a href="#step-3" class="nav-link">3. 复制粘贴节点</a></li>
+                    <li><a href="#step-4" class="nav-link">4. 删除节点</a></li>
+                    <li><a href="#step-5" class="nav-link">5. 添加连线</a></li>
+                    <li><a href="#step-6" class="nav-link">6. 编辑连线样式</a></li>
+                    <li><a href="#step-7" class="nav-link">7. 使用对齐功能</a></li>
+                    <li><a href="#step-8" class="nav-link">8. 缩放和平移</a></li>
+                    <li><a href="#step-9" class="nav-link">9. 恢复默认尺寸</a></li>
+                    <li><a href="#step-10" class="nav-link">10. 导出文件</a></li>
+                    <li><a href="#step-11" class="nav-link">11. 导入 JSON</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- 移动端侧边栏切换按钮 -->
+        <button class="sidebar-toggle" id="sidebarToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <!-- 主内容区 -->
+        <main class="main-content">
+            <!-- 快速开始 -->
+            <section id="quick-start" class="content-section">
+                <div class="section-badge">快速开始</div>
+                <h1>jQuery SVG D3 流程图编辑器</h1>
+                <p class="section-intro">
+                    一款基于 jQuery、SVG 和 D3.js 构建的交互式流程图编辑器。
+                    本教程将帮助你快速安装并掌握编辑器的各项功能。
+                </p>
+
+                <h2>环境要求</h2>
+                <div class="info-cards">
+                    <div class="info-card">
+                        <div class="info-card-icon" style="background: rgba(37, 99, 235, 0.1); color: #2563eb;">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <div class="info-card-content">
+                            <h4>现代浏览器</h4>
+                            <p>Chrome、Firefox、Edge、Safari 等现代浏览器（需要支持 ES6+）</p>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-card-icon" style="background: rgba(16, 185, 129, 0.1); color: #059669;">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div class="info-card-content">
+                            <h4>本地服务器</h4>
+                            <p>需要通过本地服务器访问（不能直接双击 HTML 文件打开）</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h2>克隆项目</h2>
+                <div class="code-block">
+                    <div class="code-header">
+                        <span class="code-lang">Terminal</span>
+                        <button class="code-copy" data-code="git clone https://github.com/Cong0925/jquery-svg-d3-demo.git">
+                            <i class="fas fa-copy"></i> 复制
+                        </button>
+                    </div>
+                    <pre><code>git clone https://github.com/Cong0925/jquery-svg-d3-demo.git
+cd jquery-svg-d3-demo</code></pre>
+                </div>
+
+                <h2>启动项目</h2>
+                <p>以下三种方式任选其一即可：</p>
+
+                <div class="method-tabs">
+                    <button class="method-tab active" data-method="vscode">
+                        <i class="fas fa-code"></i> VS Code Live Server
+                    </button>
+                    <button class="method-tab" data-method="python">
+                        <i class="fab fa-python"></i> Python
+                    </button>
+                    <button class="method-tab" data-method="node">
+                        <i class="fab fa-node-js"></i> Node.js
+                    </button>
+                </div>
+
+                <div class="method-content active" id="method-vscode">
+                    <p>1. 使用 VS Code 打开项目文件夹</p>
+                    <p>2. 安装 <strong>Live Server</strong> 扩展</p>
+                    <p>3. 右键点击 <code>index.html</code> 文件，选择 <strong>Open with Live Server</strong></p>
+                </div>
+                <div class="method-content" id="method-python">
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-lang">Terminal</span>
+                            <button class="code-copy" data-code="python -m http.server 8080">
+                                <i class="fas fa-copy"></i> 复制
+                            </button>
+                        </div>
+                        <pre><code>python -m http.server 8080</code></pre>
+                    </div>
+                    <p>然后在浏览器中打开 <code>http://localhost:8080</code></p>
+                </div>
+                <div class="method-content" id="method-node">
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-lang">Terminal</span>
+                            <button class="code-copy" data-code="npx serve .">
+                                <i class="fas fa-copy"></i> 复制
+                            </button>
+                        </div>
+                        <pre><code>npx serve .</code></pre>
+                    </div>
+                    <p>然后在浏览器中打开显示的地址（通常是 <code>http://localhost:3000</code>）</p>
+                </div>
+            </section>
+
+            <!-- 步骤1: 添加节点 -->
+            <section id="step-1" class="content-section">
+                <div class="step-badge">步骤 1</div>
+                <h2>添加节点</h2>
+                <p>编辑器支持多种方式添加节点到画布中。</p>
+
+                <div class="step-content">
+                    <h3>方式一：从形状库添加</h3>
+                    <div class="screenshot-placeholder">
+                        <div class="screenshot-inner">
+                            <div class="mock-shape-panel">
+                                <div class="mock-shape" title="矩形">
+                                    <svg width="40" height="30"><rect x="2" y="2" width="36" height="26" rx="4" fill="#2563eb"/></svg>
+                                </div>
+                                <div class="mock-shape" title="圆形">
+                                    <svg width="40" height="30"><ellipse cx="20" cy="15" rx="16" ry="12" fill="#10b981"/></svg>
+                                </div>
+                                <div class="mock-shape" title="菱形">
+                                    <svg width="40" height="30"><polygon points="20,2 38,15 20,28 2,15" fill="#f59e0b"/></svg>
+                                </div>
+                                <div class="mock-shape" title="平行四边形">
+                                    <svg width="40" height="30"><polygon points="10,2 38,2 30,28 2,28" fill="#ef4444"/></svg>
+                                </div>
+                            </div>
+                            <div class="screenshot-arrow">
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                            <div class="mock-canvas">
+                                <svg width="120" height="80" viewBox="0 0 120 80">
+                                    <rect x="10" y="15" width="100" height="50" rx="6" fill="#2563eb" opacity="0.2" stroke="#2563eb" stroke-width="2" stroke-dasharray="4"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="screenshot-label">
+                            <i class="fas fa-image"></i> 从形状库拖拽添加节点
+                        </div>
+                    </div>
+                    <ol class="step-list">
+                        <li>在左侧形状库中找到需要的图形</li>
+                        <li>点击并拖拽到画布区域</li>
+                        <li>释放鼠标即可添加节点</li>
+                    </ol>
+
+                    <h3>方式二：双击画布添加</h3>
+                    <ol class="step-list">
+                        <li>在画布空白区域双击鼠标</li>
+                        <li>自动在双击位置添加默认矩形节点</li>
+                        <li>节点自动进入编辑状态，可直接输入文本</li>
+                    </ol>
+                </div>
+            </section>
+
+            <!-- 步骤2: 移动节点 -->
+            <section id="step-2" class="content-section">
+                <div class="step-badge">步骤 2</div>
+                <h2>移动节点</h2>
+                <p>通过拖拽可以自由移动节点位置。</p>
+
+                <div class="step-content">
+                    <div class="screenshot-placeholder">
+                        <div class="screenshot-inner">
+                            <div class="mock-canvas-wide">
+                                <svg width="300" height="100" viewBox="0 0 300 100">
+                                    <rect x="20" y="25" width="80" height="50" rx="6" fill="#2563eb" opacity="0.3" stroke="#2563eb" stroke-width="2"/>
+                                    <rect x="200" y="25" width="80" height="50" rx="6" fill="#2563eb" opacity="0.6" stroke="#2563eb" stroke-width="2"/>
+                                    <path d="M100,50 C150,50 150,50 200,50" stroke="#94a3b8" stroke-width="2" fill="none" stroke-dasharray="5,5" marker-end="url(#arrowMock)"/>
+                                    <defs>
+                                        <marker id="arrowMock" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+                                            <polygon points="0 0, 8 3, 0 6" fill="#94a3b8"/>
+                                        </marker>
+                                    </defs>
+                                </svg>
+                                <div class="mock-label">点击选中 → 拖拽移动</div>
+                            </div>
+                        </div>
+                        <div class="screenshot-label">
+                            <i class="fas fa-image"></i> 点击选中并拖拽移动节点
+                        </div>
+                    </div>
+                    <ol class="step-list">
+                        <li><strong>选中节点：</strong>单击画布中的节点</li>
+                        <li><strong>拖拽移动：</strong>按住鼠标左键拖动节点到目标位置</li>
+                        <li><strong>释放定位：</strong>松开鼠标完成移动</li>
+                    </ol>
+                    <div class="tip-box">
+                        <i class="fas fa-lightbulb"></i>
+                        <div>
+                            <strong>提示：</strong>开启网格吸附后，节点移动会自动对齐到最近的网格点，便于排版整齐。
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 步骤3: 复制粘贴节点 -->
+            <section id="step-3" class="content-section">
+                <div class="step-badge">步骤 3</div>
+                <h2>复制粘贴节点</h2>
+                <p>使用快捷键快速复制节点，提高编辑效率。</p>
+
+                <div class="step-content">
+                    <div class="shortcut-list">
+                        <div class="shortcut-item">
+                            <span class="shortcut-key">Ctrl + C</span>
+                            <span class="shortcut-desc">复制选中的节点</span>
+                        </div>
+                        <div class="shortcut-item">
+                            <span class="shortcut-key">Ctrl + V</span>
+                            <span class="shortcut-desc">粘贴复制的节点</span>
+                        </div>
+                    </div>
+                    <ol class="step-list">
+                        <li>选中一个或多个节点</li>
+                        <li>按下 <kbd>Ctrl + C</kbd> 复制</li>
+                        <li>按下 <kbd>Ctrl + V</kbd> 粘贴</li>
+                        <li>新节点会出现在原节点附近</li>
+                    </ol>
+                    <div class="tip-box">
+                        <i class="fas fa-info-circle"></i>
+                        <div>
+                            <strong>说明：</strong>复制粘贴会保留节点的所有属性，包括颜色、大小、文本内容等。
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 步骤4: 删除节点 -->
+            <section id="step-4" class="content-section">
+                <div class="step-badge">步骤 4</div>
+                <h2>删除节点</h2>
+                <p>选中节点后按 Delete 键即可删除。</p>
+
+                <div class="step-content">
+                    <div class="shortcut-list">
+                        <div class="shortcut-item">
+                            <span class="shortcut-key">Delete</span>
+                            <span class="shortcut-desc">删除选中的节点</span>
+                        </div>
+                    </div>
+                    <ol class="step-list">
+                        <li>选中要删除的节点（支持多选）</li>
+                        <li>按下键盘上的 <kbd>Delete</kbd> 键</li>
+                        <li>节点将被删除，相连的连线也会一并删除</li>
+                    </ol>
+                    <div class="tip-box warning">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <div>
+                            <strong>注意：</strong>删除操作可以通过 <kbd>Ctrl + Z</kbd> 撤销恢复。
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 步骤5: 添加连线 -->
+            <section id="step-5" class="content-section">
+                <div class="step-badge">步骤 5</div>
+                <h2>添加连线</h2>
+                <p>从节点边缘拖拽可以创建连线，连接两个节点。</p>
+
+                <div class="step-content">
+                    <div class="screenshot-placeholder">
+                        <div class="screenshot-inner">
+                            <div class="mock-canvas-wide">
+                                <svg width="300" height="100" viewBox="0 0 300 100">
+                                    <rect x="20" y="25" width="80" height="50" rx="6" fill="#2563eb"/>
+                                    <text x="60" y="55" text-anchor="middle" fill="white" font-size="12">节点 A</text>
+                                    <rect x="200" y="25" width="80" height="50" rx="6" fill="#10b981"/>
+                                    <text x="240" y="55" text-anchor="middle" fill="white" font-size="12">节点 B</text>
+                                    <line x1="100" y1="50" x2="200" y2="50" stroke="#2563eb" stroke-width="2" marker-end="url(#arrowBlue)"/>
+                                    <circle cx="100" cy="50" r="5" fill="#ff6b00" stroke="white" stroke-width="2"/>
+                                    <text x="100" y="75" text-anchor="middle" fill="#94a3b8" font-size="10">拖拽起点</text>
+                                    <defs>
+                                        <marker id="arrowBlue" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+                                            <polygon points="0 0, 8 3, 0 6" fill="#2563eb"/>
+                                        </marker>
+                                    </defs>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="screenshot-label">
+                            <i class="fas fa-image"></i> 从节点边缘拖拽创建连线
+                        </div>
+                    </div>
+                    <ol class="step-list">
+                        <li>将鼠标移动到节点边缘，光标变为十字形</li>
+                        <li>按住鼠标左键并拖拽</li>
+                        <li>拖拽到目标节点边缘释放</li>
+                        <li>连线自动创建，带有箭头指示方向</li>
+                    </ol>
+                    <div class="tip-box">
+                        <i class="fas fa-lightbulb"></i>
+                        <div>
+                            <strong>提示：</strong>连线起点和终点会自动吸附到节点的最近边缘点，确保连线整齐美观。
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 步骤6: 编辑连线样式 -->
+            <section id="step-6" class="content-section">
+                <div class="step-badge">步骤 6</div>
+                <h2>编辑连线样式</h2>
+                <p>选中连线后可以在样式面板中修改其外观。</p>
+
+                <div class="step-content">
+                    <ol class="step-list">
+                        <li>单击选中连线</li>
+                        <li>在右侧面板中找到连线样式设置</li>
+                        <li>可修改的样式属性：
+                            <ul class="sub-list">
+                                <li>线条颜色</li>
+                                <li>线条宽度</li>
+                                <li>线条样式（实线、虚线、点线）</li>
+                                <li>箭头样式</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+            </section>
+
+            <!-- 步骤7: 使用对齐功能 -->
+            <section id="step-7" class="content-section">
+                <div class="step-badge">步骤 7</div>
+                <h2>使用对齐功能</h2>
+                <p>多选节点后可以一键对齐，让排版更整齐。</p>
+
+                <div class="step-content">
+                    <div class="shortcut-list">
+                        <div class="shortcut-item">
+                            <span class="shortcut-key">Ctrl + 单击</span>
+                            <span class="shortcut-desc">多选节点</span>
+                        </div>
+                    </div>
+                    <ol class="step-list">
+                        <li>按住 <kbd>Ctrl</kbd> 键，逐个点击要对齐的节点</li>
+                        <li>点击工具栏中的对齐按钮</li>
+                        <li>支持的对齐方式：
+                            <ul class="sub-list">
+                                <li>左对齐</li>
+                                <li>右对齐</li>
+                                <li>顶部对齐</li>
+                                <li>底部对齐</li>
+                                <li>水平居中</li>
+                                <li>垂直居中</li>
+                            </ul>
+                        </li>
+                    </ol>
+                    <div class="tip-box">
+                        <i class="fas fa-lightbulb"></i>
+                        <div>
+                            <strong>提示：</strong>也可以使用框选（在画布空白区域按住拖拽）来批量选中节点。
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 步骤8: 缩放和平移 -->
+            <section id="step-8" class="content-section">
+                <div class="step-badge">步骤 8</div>
+                <h2>缩放和平移</h2>
+                <p>通过鼠标操作可以自由缩放和移动画布视图。</p>
+
+                <div class="step-content">
+                    <div class="shortcut-list">
+                        <div class="shortcut-item">
+                            <span class="shortcut-key">鼠标滚轮</span>
+                            <span class="shortcut-desc">缩放画布</span>
+                        </div>
+                        <div class="shortcut-item">
+                            <span class="shortcut-key">右键拖拽</span>
+                            <span class="shortcut-desc">平移画布</span>
+                        </div>
+                    </div>
+                    <ol class="step-list">
+                        <li><strong>缩放：</strong>将鼠标放在目标位置，滚动滚轮即可缩放</li>
+                        <li><strong>平移：</strong>按住鼠标右键拖拽，可移动整个画布视图</li>
+                        <li><strong>适应窗口：</strong>使用恢复默认尺寸按钮可快速回到初始视图</li>
+                    </ol>
+                </div>
+            </section>
+
+            <!-- 步骤9: 恢复默认尺寸 -->
+            <section id="step-9" class="content-section">
+                <div class="step-badge">步骤 9</div>
+                <h2>恢复默认尺寸</h2>
+                <p>当画布缩放或平移后，可一键恢复到默认视图。</p>
+
+                <div class="step-content">
+                    <ol class="step-list">
+                        <li>点击工具栏中的 <strong>恢复默认尺寸</strong> 按钮</li>
+                        <li>画布将自动缩放和平移，使所有内容适配窗口显示</li>
+                    </ol>
+                    <div class="tip-box">
+                        <i class="fas fa-lightbulb"></i>
+                        <div>
+                            <strong>提示：</strong>此功能在内容较多或缩放比例过大/过小时特别有用。
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 步骤10: 导出文件 -->
+            <section id="step-10" class="content-section">
+                <div class="step-badge">步骤 10</div>
+                <h2>导出文件</h2>
+                <p>支持将编辑器内容导出为多种格式。</p>
+
+                <div class="step-content">
+                    <div class="export-cards">
+                        <div class="export-card">
+                            <div class="export-icon" style="background: rgba(37, 99, 235, 0.1); color: #2563eb;">
+                                <i class="fas fa-file-image"></i>
+                            </div>
+                            <h4>PNG</h4>
+                            <p>导出为高清位图格式，适合分享和演示使用</p>
+                        </div>
+                        <div class="export-card">
+                            <div class="export-icon" style="background: rgba(16, 185, 129, 0.1); color: #059669;">
+                                <i class="fas fa-bezier-curve"></i>
+                            </div>
+                            <h4>SVG</h4>
+                            <p>导出为矢量图形格式，支持无损缩放，适合二次编辑</p>
+                        </div>
+                        <div class="export-card">
+                            <div class="export-icon" style="background: rgba(245, 158, 11, 0.1); color: #d97706;">
+                                <i class="fas fa-file-code"></i>
+                            </div>
+                            <h4>JSON</h4>
+                            <p>导出为结构化数据格式，方便数据交换和后续导入</p>
+                        </div>
+                    </div>
+                    <ol class="step-list">
+                        <li>点击工具栏中的 <strong>导出</strong> 按钮</li>
+                        <li>在下拉菜单中选择导出格式</li>
+                        <li>选择保存位置并确认</li>
+                    </ol>
+                </div>
+            </section>
+
+            <!-- 步骤11: 导入 JSON -->
+            <section id="step-11" class="content-section">
+                <div class="step-badge">步骤 11</div>
+                <h2>导入 JSON</h2>
+                <p>导入之前导出的 JSON 文件，恢复编辑状态。</p>
+
+                <div class="step-content">
+                    <ol class="step-list">
+                        <li>点击工具栏中的 <strong>导入</strong> 按钮</li>
+                        <li>选择之前导出的 JSON 文件</li>
+                        <li>编辑器将自动加载并恢复所有节点和连线</li>
+                    </ol>
+                    <div class="tip-box">
+                        <i class="fas fa-info-circle"></i>
+                        <div>
+                            <strong>说明：</strong>导入 JSON 文件会替换当前画布中的所有内容。建议先导出当前内容作为备份。
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 底部导航 -->
+            <div class="bottom-nav">
+                <a href="../index.html" class="bottom-nav-btn">
+                    <i class="fas fa-arrow-left"></i>
+                    返回项目首页
+                </a>
+                <a href="https://github.com/Cong0925/jquery-svg-d3-demo" target="_blank" class="bottom-nav-btn primary">
+                    <i class="fab fa-github"></i>
+                    查看源码
+                </a>
+            </div>
+        </main>
+    </div>
+
+    <script src="./js/main.js"></script>
+</body>
+</html>
