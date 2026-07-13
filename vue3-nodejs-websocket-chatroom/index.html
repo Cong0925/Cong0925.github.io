@@ -5,12 +5,301 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vue3 WebSocket ChatRoom - 实时聊天室</title>
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Vue3 WebSocket ChatRoom</h1>
-        <p>一个使用Vue3+Node.js+WebSocket实现的实时聊天室示例</p>
-        <a href="https://github.com/Cong0925/vue3_nodejs_websocket_chatRoom" target="_blank" class="btn">查看 GitHub 仓库</a>
+    <!-- 动态背景 -->
+    <div class="bg-animation">
+        <div class="message message-1"><i class="fas fa-comment"></i></div>
+        <div class="message message-2"><i class="fas fa-comments"></i></div>
+        <div class="message message-3"><i class="fas fa-heart"></i></div>
+        <div class="message message-4"><i class="fas fa-smile"></i></div>
+        <div class="message message-5"><i class="fas fa-paper-plane"></i></div>
+        <div class="message message-6"><i class="fas fa-comment-dots"></i></div>
     </div>
+
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../" class="nav-brand">
+                <i class="fas fa-arrow-left"></i>
+                <span>返回首页</span>
+            </a>
+            <div class="nav-title">Vue3 WebSocket ChatRoom</div>
+            <a href="https://github.com/Cong0925/vue3_nodejs_websocket_chatRoom" target="_blank" class="nav-github">
+                <i class="fab fa-github"></i>
+                <span>GitHub</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero区域 -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <i class="fas fa-bolt"></i>
+                实时通信
+            </div>
+            <h1 class="hero-title">
+                <span class="gradient-text">Vue3 WebSocket</span>
+                <br>ChatRoom
+            </h1>
+            <p class="hero-description">
+                一个使用Vue3+Node.js+WebSocket实现的实时聊天室示例，
+                支持多人同时在线聊天，体验流畅的实时通信功能。
+            </p>
+            <div class="hero-tags">
+                <span class="tag"><i class="fab fa-vuejs"></i> Vue3</span>
+                <span class="tag"><i class="fab fa-node-js"></i> Node.js</span>
+                <span class="tag"><i class="fas fa-plug"></i> WebSocket</span>
+                <span class="tag"><i class="fas fa-code"></i> TypeScript</span>
+            </div>
+            <div class="hero-buttons">
+                <a href="https://github.com/Cong0925/vue3_nodejs_websocket_chatRoom" target="_blank" class="btn btn-primary">
+                    <i class="fab fa-github"></i>
+                    查看源码
+                </a>
+                <a href="#features" class="btn btn-secondary">
+                    <i class="fas fa-info-circle"></i>
+                    了解更多
+                </a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="chat-preview">
+                <div class="chat-header">
+                    <div class="chat-avatar">A</div>
+                    <div class="chat-name">聊天室</div>
+                    <div class="chat-status online">在线</div>
+                </div>
+                <div class="chat-messages">
+                    <div class="message-item other">
+                        <div class="message-avatar">B</div>
+                        <div class="message-bubble">你好！欢迎来到聊天室 👋</div>
+                    </div>
+                    <div class="message-item self">
+                        <div class="message-bubble">你好！很高兴认识你 😊</div>
+                        <div class="message-avatar">A</div>
+                    </div>
+                    <div class="message-item other">
+                        <div class="message-avatar">C</div>
+                        <div class="message-bubble">这里支持多人实时聊天哦！</div>
+                    </div>
+                    <div class="message-item self">
+                        <div class="message-bubble">太棒了！ WebSocket真方便</div>
+                        <div class="message-avatar">A</div>
+                    </div>
+                </div>
+                <div class="chat-input">
+                    <input type="text" placeholder="输入消息..." disabled>
+                    <button disabled><i class="fas fa-paper-plane"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 功能特性 -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">
+                <i class="fas fa-star"></i>
+                功能特性
+            </h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <h3>用户登录</h3>
+                    <p>支持用户名密码登录验证，本地存储用户信息，保持登录状态</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>实时通信</h3>
+                    <p>基于WebSocket协议，实现客户端与服务器的全双工实时通信</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>多人聊天</h3>
+                    <p>支持多个用户同时在线聊天，消息实时广播给所有连接的客户端</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>前后端分离</h3>
+                    <p>Vue3前端 + Node.js后端，清晰的项目结构，易于理解和扩展</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>响应式设计</h3>
+                    <p>适配桌面端和移动端，随时随地进行聊天</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>快速部署</h3>
+                    <p>简单的项目结构，几分钟即可完成本地部署和运行</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 技术栈 -->
+    <section class="tech-stack">
+        <div class="container">
+            <h2 class="section-title">
+                <i class="fas fa-layer-group"></i>
+                技术栈
+            </h2>
+            <div class="tech-grid">
+                <div class="tech-card">
+                    <div class="tech-icon vue">
+                        <i class="fab fa-vuejs"></i>
+                    </div>
+                    <h3>Vue3</h3>
+                    <p>渐进式JavaScript框架，使用Composition API和TypeScript</p>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-icon node">
+                        <i class="fab fa-node-js"></i>
+                    </div>
+                    <h3>Node.js</h3>
+                    <p>JavaScript运行时环境，用于搭建WebSocket服务器</p>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-icon websocket">
+                        <i class="fas fa-plug"></i>
+                    </div>
+                    <h3>WebSocket</h3>
+                    <p>全双工通信协议，实现实时双向数据传输</p>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-icon ts">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>TypeScript</h3>
+                    <p>JavaScript的超集，提供静态类型检查和更好的IDE支持</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 项目结构 -->
+    <section class="project-structure">
+        <div class="container">
+            <h2 class="section-title">
+                <i class="fas fa-folder-open"></i>
+                项目结构
+            </h2>
+            <div class="structure-content">
+                <div class="structure-item">
+                    <div class="structure-icon folder">
+                        <i class="fas fa-folder"></i>
+                    </div>
+                    <div class="structure-info">
+                        <h4>server/</h4>
+                        <p>Node.js WebSocket服务器，负责处理客户端连接和消息广播</p>
+                    </div>
+                    <div class="structure-badge backend">后端</div>
+                </div>
+                <div class="structure-item">
+                    <div class="structure-icon folder">
+                        <i class="fas fa-folder"></i>
+                    </div>
+                    <div class="structure-info">
+                        <h4>src/</h4>
+                        <p>Vue3前端源码，包含视图、组件、路由、配置等模块</p>
+                    </div>
+                    <div class="structure-badge frontend">前端</div>
+                </div>
+                <div class="structure-item">
+                    <div class="structure-icon file">
+                        <i class="fas fa-file-code"></i>
+                    </div>
+                    <div class="structure-info">
+                        <h4>server/index.js</h4>
+                        <p>WebSocket服务器入口文件，监听8000端口，处理连接和消息</p>
+                    </div>
+                </div>
+                <div class="structure-item">
+                    <div class="structure-icon file">
+                        <i class="fas fa-file-code"></i>
+                    </div>
+                    <div class="structure-info">
+                        <h4>src/views/login/</h4>
+                        <p>登录页面组件，支持用户名密码验证和本地存储</p>
+                    </div>
+                </div>
+                <div class="structure-item">
+                    <div class="structure-icon file">
+                        <i class="fas fa-file-code"></i>
+                    </div>
+                    <div class="structure-info">
+                        <h4>src/views/Home/</h4>
+                        <p>主页组件，显示系统配置信息</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 快速开始 -->
+    <section class="quick-start">
+        <div class="container">
+            <h2 class="section-title">
+                <i class="fas fa-play-circle"></i>
+                快速开始
+            </h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>克隆项目</h3>
+                        <code>git clone https://github.com/Cong0925/vue3_nodejs_websocket_chatRoom.git</code>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>启动服务器</h3>
+                        <code>cd server && node index.js</code>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>启动前端</h3>
+                        <code>npm run serve</code>
+                    </div>
+                </div>
+            </div>
+            <div class="start-note">
+                <i class="fas fa-info-circle"></i>
+                <p>详细安装教程请查看 <a href="./demo/">快速上手页面</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>Vue3 WebSocket ChatRoom - 实时聊天室示例</p>
+            <div class="footer-tech">
+                <span><i class="fab fa-vuejs"></i> Vue3</span>
+                <span><i class="fab fa-node-js"></i> Node.js</span>
+                <span><i class="fas fa-plug"></i> WebSocket</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./js/main.js"></script>
 </body>
 </html>

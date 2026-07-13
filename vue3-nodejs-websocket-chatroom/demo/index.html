@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>快速上手 - Vue3 WebSocket ChatRoom</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../" class="nav-brand">
+                <i class="fas fa-arrow-left"></i>
+                <span>返回首页</span>
+            </a>
+            <div class="nav-title">快速上手教程</div>
+            <a href="https://github.com/Cong0925/vue3_nodejs_websocket_chatRoom" target="_blank" class="nav-github">
+                <i class="fab fa-github"></i>
+                <span>GitHub</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero区域 -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <i class="fas fa-rocket"></i>
+                快速开始
+            </div>
+            <h1 class="hero-title">
+                <span class="gradient-text">快速上手</span>
+                <br>Vue3 WebSocket ChatRoom
+            </h1>
+            <p class="hero-description">
+                本教程将指导你如何安装、配置和运行Vue3 WebSocket ChatRoom实时聊天室项目。
+            </p>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <div class="stat-value">5</div>
+                    <div class="stat-label">个步骤</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">100%</div>
+                    <div class="stat-label">成功率</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">~10</div>
+                    <div class="stat-label">分钟</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 主要内容 -->
+    <main class="main-content">
+        <!-- 环境要求 -->
+        <section class="section" id="requirements">
+            <h2 class="section-title">
+                <i class="fas fa-cog"></i>
+                环境要求
+            </h2>
+            <div class="requirements-grid">
+                <div class="requirement-card">
+                    <div class="requirement-icon">
+                        <i class="fab fa-node-js"></i>
+                    </div>
+                    <h3>Node.js</h3>
+                    <p>版本 >= 14.0.0</p>
+                    <a href="https://nodejs.org/" target="_blank" class="btn btn-sm">下载安装</a>
+                </div>
+                <div class="requirement-card">
+                    <div class="requirement-icon npm">
+                        <i class="fas fa-box"></i>
+                    </div>
+                    <h3>npm</h3>
+                    <p>版本 >= 6.0.0</p>
+                    <span class="included">随Node.js安装</span>
+                </div>
+                <div class="requirement-card">
+                    <div class="requirement-icon git">
+                        <i class="fab fa-git-alt"></i>
+                    </div>
+                    <h3>Git</h3>
+                    <p>任意版本</p>
+                    <a href="https://git-scm.com/" target="_blank" class="btn btn-sm">下载安装</a>
+                </div>
+                <div class="requirement-card">
+                    <div class="requirement-icon editor">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>代码编辑器</h3>
+                    <p>推荐 VS Code</p>
+                    <a href="https://code.visualstudio.com/" target="_blank" class="btn btn-sm">下载安装</a>
+                </div>
+            </div>
+
+            <div class="verify-section">
+                <h3><i class="fas fa-check-circle"></i> 验证安装</h3>
+                <p>打开终端或命令提示符，运行以下命令验证环境：</p>
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>终端</span>
+                        <button class="copy-btn" data-code="node --version
+npm --version
+git --version"><i class="fas fa-copy"></i> 复制</button>
+                    </div>
+                    <pre><code># 检查 Node.js 版本
+node --version
+
+# 检查 npm 版本
+npm --version
+
+# 检查 Git 版本
+git --version</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- 第一步：克隆项目 -->
+        <section class="section" id="step1">
+            <h2 class="section-title">
+                <i class="fas fa-code-branch"></i>
+                第一步：克隆项目
+            </h2>
+            <div class="step-content">
+                <div class="step-description">
+                    <p>首先，使用 Git 克隆项目到本地：</p>
+                </div>
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>终端</span>
+                        <button class="copy-btn" data-code="git clone https://github.com/Cong0925/vue3_nodejs_websocket_chatRoom.git
+cd vue3_nodejs_websocket_chatRoom"><i class="fas fa-copy"></i> 复制</button>
+                    </div>
+                    <pre><code># 克隆项目
+git clone https://github.com/Cong0925/vue3_nodejs_websocket_chatRoom.git
+
+# 进入项目目录
+cd vue3_nodejs_websocket_chatRoom</code></pre>
+                </div>
+                <div class="tip-box">
+                    <i class="fas fa-lightbulb"></i>
+                    <p>如果网速较慢，可以使用 Gitee 镜像或下载 ZIP 包。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 第二步：安装依赖 -->
+        <section class="section" id="step2">
+            <h2 class="section-title">
+                <i class="fas fa-download"></i>
+                第二步：安装依赖
+            </h2>
+            <div class="step-content">
+                <div class="step-description">
+                    <p>安装前端项目依赖：</p>
+                </div>
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>终端（项目根目录）</span>
+                        <button class="copy-btn" data-code="npm install"><i class="fas fa-copy"></i> 复制</button>
+                    </div>
+                    <pre><code># 安装前端依赖
+npm install</code></pre>
+                </div>
+                <div class="npm-tip">
+                    <h4><i class="fas fa-tachometer-alt"></i> 加速安装（可选）</h4>
+                    <p>如果安装速度较慢，可以使用淘宝镜像：</p>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>终端</span>
+                            <button class="copy-btn" data-code="npm config set registry https://registry.npmmirror.com
+npm install"><i class="fas fa-copy"></i> 复制</button>
+                        </div>
+                        <pre><code># 设置淘宝镜像
+npm config set registry https://registry.npmmirror.com
+
+# 重新安装
+npm install</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 第三步：启动WebSocket服务器 -->
+        <section class="section" id="step3">
+            <h2 class="section-title">
+                <i class="fas fa-server"></i>
+                第三步：启动WebSocket服务器
+            </h2>
+            <div class="step-content">
+                <div class="step-description">
+                    <p>打开新的终端窗口，启动WebSocket服务器：</p>
+                </div>
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>终端（新窗口）</span>
+                        <button class="copy-btn" data-code="cd server
+node index.js"><i class="fas fa-copy"></i> 复制</button>
+                    </div>
+                    <pre><code># 进入服务器目录
+cd server
+
+# 启动WebSocket服务器
+node index.js</code></pre>
+                </div>
+                <div class="success-box">
+                    <i class="fas fa-check-circle"></i>
+                    <p>启动成功后，终端会显示：<code>websocket open</code></p>
+                </div>
+                <div class="info-box">
+                    <i class="fas fa-info-circle"></i>
+                    <p>WebSocket服务器默认监听 <strong>8000</strong> 端口。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 第四步：启动前端 -->
+        <section class="section" id="step4">
+            <h2 class="section-title">
+                <i class="fas fa-play-circle"></i>
+                第四步：启动前端
+            </h2>
+            <div class="step-content">
+                <div class="step-description">
+                    <p>打开另一个终端窗口，启动前端开发服务器：</p>
+                </div>
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>终端（新窗口）</span>
+                        <button class="copy-btn" data-code="npm run serve"><i class="fas fa-copy"></i> 复制</button>
+                    </div>
+                    <pre><code># 启动前端开发服务器
+npm run serve</code></pre>
+                </div>
+                <div class="success-box">
+                    <i class="fas fa-check-circle"></i>
+                    <p>启动成功后，终端会显示访问地址，通常是 <code>http://localhost:8080</code></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 第五步：开始聊天 -->
+        <section class="section" id="step5">
+            <h2 class="section-title">
+                <i class="fas fa-comments"></i>
+                第五步：开始聊天
+            </h2>
+            <div class="step-content">
+                <div class="step-description">
+                    <p>现在可以开始使用聊天室了！</p>
+                </div>
+                <div class="demo-steps">
+                    <div class="demo-step">
+                        <div class="demo-step-number">1</div>
+                        <div class="demo-step-content">
+                            <h4>打开浏览器</h4>
+                            <p>访问 <code>http://localhost:8080</code></p>
+                        </div>
+                    </div>
+                    <div class="demo-step">
+                        <div class="demo-step-number">2</div>
+                        <div class="demo-step-content">
+                            <h4>登录</h4>
+                            <p>输入用户名（至少6位）和密码（密码与用户名相同）</p>
+                        </div>
+                    </div>
+                    <div class="demo-step">
+                        <div class="demo-step-number">3</div>
+                        <div class="demo-step-content">
+                            <h4>多开窗口测试</h4>
+                            <p>打开多个浏览器窗口或标签页，使用不同用户名登录</p>
+                        </div>
+                    </div>
+                    <div class="demo-step">
+                        <div class="demo-step-number">4</div>
+                        <div class="demo-step-content">
+                            <h4>发送消息</h4>
+                            <p>在任一窗口输入消息，其他窗口会实时收到</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="tip-box">
+                    <i class="fas fa-lightbulb"></i>
+                    <p><strong>提示：</strong>登录后，用户信息会保存在本地存储中，下次访问会自动登录。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 常见问题 -->
+        <section class="section" id="faq">
+            <h2 class="section-title">
+                <i class="fas fa-question-circle"></i>
+                常见问题
+            </h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>端口被占用怎么办？</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>如果8000端口被占用，可以修改 <code>server/index.js</code> 中的端口号：</p>
+                        <div class="code-block">
+                            <pre><code>// 修改端口号
+const server = new Ws.Server({port: 8001})  // 改为其他端口</code></pre>
+                        </div>
+                        <p>同时需要修改前端配置文件 <code>src/config/index.ts</code> 中的API地址。</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>前端无法连接WebSocket服务器？</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>请检查以下几点：</p>
+                        <ul>
+                            <li>WebSocket服务器是否已启动（终端显示 <code>websocket open</code>）</li>
+                            <li>服务器端口是否正确（默认8000）</li>
+                            <li>是否有防火墙阻止了连接</li>
+                            <li>浏览器控制台是否有错误信息</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>如何修改登录验证逻辑？</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>登录验证逻辑在 <code>src/views/login/login.vue</code> 中，当前逻辑是：</p>
+                        <ul>
+                            <li>用户名长度不小于6位</li>
+                            <li>密码必须与用户名相同</li>
+                        </ul>
+                        <p>你可以根据需要修改 <code>goPage()</code> 函数中的验证逻辑。</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>如何添加更多功能？</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>你可以参考以下方向扩展功能：</p>
+                        <ul>
+                            <li>添加用户列表显示</li>
+                            <li>实现私聊功能</li>
+                            <li>添加消息类型（图片、表情等）</li>
+                            <li>实现消息持久化存储</li>
+                            <li>添加用户头像和昵称</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 项目结构说明 -->
+        <section class="section" id="structure">
+            <h2 class="section-title">
+                <i class="fas fa-folder-open"></i>
+                项目结构说明
+            </h2>
+            <div class="structure-tree">
+                <div class="tree-item root">
+                    <i class="fas fa-folder-open"></i>
+                    <span>vue3_nodejs_websocket_chatRoom/</span>
+                </div>
+                <div class="tree-item folder">
+                    <i class="fas fa-folder"></i>
+                    <span>server/</span>
+                    <span class="comment"># WebSocket服务器</span>
+                </div>
+                <div class="tree-item file">
+                    <i class="fas fa-file-code"></i>
+                    <span>index.js</span>
+                    <span class="comment"># 服务器入口，监听8000端口</span>
+                </div>
+                <div class="tree-item folder">
+                    <i class="fas fa-folder"></i>
+                    <span>src/</span>
+                    <span class="comment"># 前端源码</span>
+                </div>
+                <div class="tree-item file indent">
+                    <i class="fas fa-file-code"></i>
+                    <span>main.ts</span>
+                    <span class="comment"># 应用入口</span>
+                </div>
+                <div class="tree-item folder indent">
+                    <i class="fas fa-folder"></i>
+                    <span>views/</span>
+                    <span class="comment"># 视图组件</span>
+                </div>
+                <div class="tree-item file indent-2">
+                    <i class="fas fa-file-code"></i>
+                    <span>login/</span>
+                    <span class="comment"># 登录页面</span>
+                </div>
+                <div class="tree-item file indent-2">
+                    <i class="fas fa-file-code"></i>
+                    <span>Home/</span>
+                    <span class="comment"># 主页</span>
+                </div>
+                <div class="tree-item folder indent">
+                    <i class="fas fa-folder"></i>
+                    <span>config/</span>
+                    <span class="comment"># 配置文件</span>
+                </div>
+                <div class="tree-item folder indent">
+                    <i class="fas fa-folder"></i>
+                    <span>router/</span>
+                    <span class="comment"># 路由配置</span>
+                </div>
+                <div class="tree-item folder">
+                    <i class="fas fa-folder"></i>
+                    <span>public/</span>
+                    <span class="comment"># 静态资源</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 下一步 -->
+        <section class="section next-steps">
+            <h2 class="section-title">
+                <i class="fas fa-arrow-right"></i>
+                下一步
+            </h2>
+            <div class="next-steps-grid">
+                <a href="https://github.com/Cong0925/vue3_nodejs_websocket_chatRoom" target="_blank" class="next-step-card">
+                    <i class="fab fa-github"></i>
+                    <h3>查看源码</h3>
+                    <p>在GitHub上查看完整项目代码</p>
+                </a>
+                <a href="../" class="next-step-card">
+                    <i class="fas fa-home"></i>
+                    <h3>返回首页</h3>
+                    <p>查看项目介绍和功能特性</p>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>Vue3 WebSocket ChatRoom - 实时聊天室示例</p>
+            <div class="footer-tech">
+                <span><i class="fab fa-vuejs"></i> Vue3</span>
+                <span><i class="fab fa-node-js"></i> Node.js</span>
+                <span><i class="fas fa-plug"></i> WebSocket</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./js/main.js"></script>
+</body>
+</html>
