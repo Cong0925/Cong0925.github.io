@@ -199,8 +199,6 @@ const projects = [
         icon: 'fas fa-video',
         type: 'web',
         repo: 'https://github.com/Cong0925/DouyinLens',
-        homepage: '../douyin-lens/',
-        demo: '../douyin-lens/demo/',
         lastUpdated: '2026-06-30',
     }
     // 后续添加新项目在这里
