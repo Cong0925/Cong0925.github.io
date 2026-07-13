@@ -216,6 +216,9 @@ let currentSearch = '';
 let currentStatusFilter = 'all';
 let currentTypeFilter = 'all';
 
+// 当前排序状态
+let currentSort = 'default';
+
 // GitHub Stars 缓存
 const starsCache = {};
 
@@ -326,7 +329,7 @@ function getStarsText(project) {
 // 创建项目卡片
 function createProjectCard(project, index) {
     const card = document.createElement('div');
-    card.className = 'project-card';
+    card.className = `project-card type-${project.type}`;
     card.dataset.projectId = project.id;
     card.style.animationDelay = `${index * 0.1}s`;
 
@@ -405,7 +408,8 @@ function createProjectCard(project, index) {
 
 // 筛选项目
 function filterProjects() {
-    return projects.filter(project => {
+    // 先筛选
+    let filtered = projects.filter(project => {
         const matchesSearch = project.title.toLowerCase().includes(currentSearch.toLowerCase()) ||
                             project.description.toLowerCase().includes(currentSearch.toLowerCase()) ||
                             project.tags.some(tag => tag.toLowerCase().includes(currentSearch.toLowerCase()));
@@ -413,6 +417,23 @@ function filterProjects() {
         const matchesType = currentTypeFilter === 'all' || project.type === currentTypeFilter;
         return matchesSearch && matchesStatus && matchesType;
     });
+
+    // 再排序
+    if (currentSort !== 'default') {
+        filtered.sort((a, b) => {
+            const dateA = new Date(a.lastUpdated || '2000-01-01');
+            const dateB = new Date(b.lastUpdated || '2000-01-01');
+
+            if (currentSort === 'time-desc') {
+                return dateB - dateA; // 降序（最新的在前）
+            } else if (currentSort === 'time-asc') {
+                return dateA - dateB; // 升序（最早的在前）
+            }
+            return 0;
+        });
+    }
+
+    return filtered;
 }
 
 // 初始化事件监听
@@ -452,6 +473,15 @@ function initEventListeners() {
             renderProjects();
         });
     });
+
+    // 排序选择器
+    const sortSelect = document.getElementById('sortSelect');
+    if (sortSelect) {
+        sortSelect.addEventListener('change', (e) => {
+            currentSort = e.target.value;
+            renderProjects();
+        });
+    }
 
     // 卡片悬停效果已通过 CSS :hover 实现，无需 JavaScript
 }

@@ -222,11 +222,21 @@
                     <p class="subtitle">我的 GitHub 项目都在这里</p>
                 </div>
                 <div class="search-box">
-                    <i class="fas fa-search search-icon"></i>
-                    <input type="text" id="searchInput" placeholder="搜索项目、技术笔记、开源作品" class="search-input">
-                    <button id="clearSearch" class="clear-btn" style="display: none;">
-                        <i class="fas fa-times"></i>
-                    </button>
+                    <div class="sort-select">
+                        <i class="fas fa-sort sort-icon"></i>
+                        <select id="sortSelect" class="sort-dropdown">
+                            <option value="default">默认排序</option>
+                            <option value="time-desc">时间降序</option>
+                            <option value="time-asc">时间升序</option>
+                        </select>
+                    </div>
+                    <div class="search-input-box">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" id="searchInput" placeholder="搜索项目、技术笔记、开源作品" class="search-input">
+                        <button id="clearSearch" class="clear-btn" style="display: none;">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
                 </div>
             </div>
             <div class="filter-bar">
