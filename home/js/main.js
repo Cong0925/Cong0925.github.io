@@ -192,7 +192,7 @@ const projects = [
         id: 12,
         name: 'douyin-lens',
         title: 'DouyinLens',
-        description: '面向抖音创作者的AI视频分析与内容创作助手，提供视频分析、内容创作等功能（项目停工）。',
+        description: '面向抖音创作者的AI视频分析与内容创作助手，提供视频分析、内容创作等功能（技术实现大模型不给力，项目停工）。',
         status: 'stopped',
         statusText: '停工',
         tags: ['抖音', 'AI', '视频分析', '内容创作', 'Vue3'],
@@ -200,6 +200,19 @@ const projects = [
         type: 'web',
         repo: 'https://github.com/Cong0925/DouyinLens',
         lastUpdated: '2026-06-30',
+    },
+    {
+        id: 13,
+        name: 'wasteland-tamer-mini-game',
+        title: '废土中的驯兽师',
+        description: '末日抓宠题材的角色扮演小游戏，玩家穿越废土捕捉变异生物，通过回合制战斗挑战区域首领，揭开废土沦陷的真相。（由于技术原因，微信小游戏界面难以实现预期效果，停工）',
+        status: 'stopped',
+        statusText: '停工',
+        tags: ['小程序', '游戏', '角色扮演', '末日', '抓宠'],
+        icon: 'fas fa-gamepad',
+        type: 'miniprogram',
+        repo: 'https://github.com/Cong0925/wasteland-tamer-mini-game',
+        lastUpdated: '2026-07-14',
     }
     // 后续添加新项目在这里
 ];
